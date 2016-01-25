@@ -1,0 +1,9 @@
+[package]
+name = "passman"
+version = "0.1.0"
+authors = ["Armin Widegreen <armin.widegreen@gmail.com>"]
+
+[dependencies]
+gpgme = "0.4.0"
+clap = "*"
+#ncurses = "*"
