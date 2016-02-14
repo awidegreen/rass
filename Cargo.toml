@@ -1,9 +1,11 @@
 [package]
-name = "passman"
+name = "rass"
 version = "0.1.0"
 authors = ["Armin Widegreen <armin.widegreen@gmail.com>"]
 
 [dependencies]
-gpgme = "0.4.0"
+gpgme = { git = "https://github.com/johnschug/rust-gpgme", rev = "012cef75" }
+#gpgme = { path = "../rust-gpgme" }
+#gpgme = "0.4.0"
 clap = "*"
-#ncurses = "*"
+rpassword = "0.1"
