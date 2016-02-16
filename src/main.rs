@@ -1,4 +1,4 @@
-extern crate rass;
+extern crate rasslib;
 extern crate clap;
 extern crate rpassword;
 
@@ -9,8 +9,8 @@ use std::path::PathBuf;
 
 use clap::{Arg, ArgMatches, SubCommand};
 
-use rass::store::PassStore;
-use rass::vcs;
+use rasslib::store::PassStore;
+use rasslib::vcs;
 
 static STORE_DIR_ENV_NAME: &'static str = "PASSWORD_STORE_DIR";
 

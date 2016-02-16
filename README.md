@@ -14,7 +14,7 @@ need to have a recent version of GPGme installed,
 ## Installation
 
 ```shell
-$ cargo install rass
+$ cargo install rust-rass
 ```
 
 ## Limitations

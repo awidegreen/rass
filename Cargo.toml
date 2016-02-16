@@ -1,7 +1,15 @@
 [package]
-name = "rass"
+name = "rust-pass"
 version = "0.1.0"
 authors = ["Armin Widegreen <armin.widegreen@gmail.com>"]
+
+[lib]
+name = "rasslib"
+path = "src/lib.rs"
+
+[[bin]]
+name = "rass"
+path = "src/main.rs"
 
 [dependencies]
 gpgme = { git = "https://github.com/johnschug/rust-gpgme", rev = "012cef75" }
