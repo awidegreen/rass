@@ -5,7 +5,6 @@ authors = ["Armin Widegreen <armin.widegreen@gmail.com>"]
 
 [dependencies]
 gpgme = { git = "https://github.com/johnschug/rust-gpgme", rev = "012cef75" }
-#gpgme = { path = "../rust-gpgme" }
 #gpgme = "0.4.0"
 clap = "*"
 rpassword = "0.1"
