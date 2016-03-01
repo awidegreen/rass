@@ -58,7 +58,7 @@ $ rass
 Show an entry
 ```shell
 $ rass PASS_ENTRY
-
+```
 
 Insert a new entry (subcommand `insert` or `add`)
 ```shell
