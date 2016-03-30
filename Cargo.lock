@@ -1,8 +1,8 @@
 [root]
-name = "rust-pass"
+name = "rass"
 version = "0.1.0"
 dependencies = [
- "clap 2.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "clap 2.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "gpgme 0.4.0 (git+https://github.com/johnschug/rust-gpgme?rev=012cef75)",
  "rpassword 0.1.3 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
@@ -24,7 +24,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "clap"
-version = "2.1.0"
+version = "2.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "ansi_term 0.7.2 (registry+https://github.com/rust-lang/crates.io-index)",

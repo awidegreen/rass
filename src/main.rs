@@ -22,6 +22,14 @@ fn main() {
         },
         Err(_)  => PassStore::new(),
     };
+    let store = match store {
+        Ok(s) => s,
+        Err(e) => 
+        {
+            println!("Error parsing store {}", e);
+            return
+        }
+    };
     let vcs = vcs::GitWrapper::new(&store.get_location());
 
     let mut app = PassstoreApp {
@@ -98,22 +106,15 @@ impl PassstoreApp {
         }
     }
 
-    fn list(&self, matches: &ArgMatches) {
-        for entry in self.store.entries() {
-            if matches.is_present("long") {
-                println!("{}", self.store.absolute_path(entry).to_str().unwrap())
-            }
-            else {
-                println!("{}", entry.location())
-            }
-        }
+    fn list(&self, _matches: &ArgMatches) {
+        self.store.print_tree();
     }
 
     fn show(&self, matches: &ArgMatches) {
         let pass = matches.value_of("PASS").unwrap_or("");
         match self.store.get(pass) {
             Some(entry) => { 
-                match self.store.read(entry) {
+                match self.store.read(&entry) {
                     Some(x) => print!("{}", x),
                     None => println!("Unable to read!"),
                 }           
@@ -127,43 +128,50 @@ impl PassstoreApp {
     fn find(&self, matches: &ArgMatches) {
         let query = matches.value_of("QUERY").unwrap();
         let print = matches.is_present("print");
-        let matches = match matches.is_present("name") {
-            true => self.store.find_by_name(query),
-            _    => self. store.find_by_location(query),
-        };
+        //let matches = match matches.is_present("name") {
+            //true => self.store.find_by_name(query),
+            //_    => self. store.find_by_location(query),
+        //};
+        let matches = self.store.find(query);
+
+        if matches.len() == 1 {                
+            let e = &matches[0];
+            println!("Only found: '{}'", e);
+            if let Some(x) =  self.store.read(e) {
+                println!("{}", x);
+                return
+            } else {
+                println!("Unable to read!");
+            }
+        }
 
         for e in matches {        
             if print {
-                match self.store.read(e) {
-                    Some(x) => println!("{}:\n{}", e.location(), x),
+                match self.store.read(&e) {
+                    Some(x) => println!("{}:\n{}", e, x),
                     None => println!("Unable to read!"),
                 }
             }
             else {
-                println!("{}", e.location())
+                println!("{}", e)
             }
         }
     }
 
     fn remove<T: vcs::VersionControl>(&mut self, vcs: T, matches: &ArgMatches) {
         let pass = matches.value_of("PASS").unwrap_or("");
-        let entry = match self.store.get(pass) {
-            Some(e) => e.clone(),
-            None => {
-                println!("Error: {} is not in the password store.", pass);
-                return;
+        if let Some(entry) = self.store.get(pass) {
+            if !matches.is_present("force") {
+                let q = format!("Are you sure you would like to delete {}? [y/N]", pass);;
+                match yes_no(q.as_ref(), YesNoAnswer::NO) {
+                    YesNoAnswer::NO  => return,
+                    YesNoAnswer::YES => (),
+                }
+                let _ = self.store.remove(vcs, &entry);
             }
-        };
-
-        if !matches.is_present("force") {
-            let q = format!("Are you sure you would like to delete {}? [y/N]", pass);;
-            match yes_no(q.as_ref(), YesNoAnswer::NO) {
-                YesNoAnswer::NO  => return,
-                YesNoAnswer::YES => (),
-            }
+        } else {
+            println!("Error: {} is not in the password store.", pass);
         }
-
-        self.store.remove(vcs, entry).unwrap();
     }
 }
 

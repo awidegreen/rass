@@ -4,6 +4,7 @@ use std::path::PathBuf;
 use std::env;
 use std::ffi;
 use std::fmt;
+use std::convert;
 use std::error;
 use std::io;
 use std::fs::File;
@@ -11,6 +12,7 @@ use std::fs;
 use std::io::prelude::*;
 use std::result;
 
+use tree;
 use gpgme::Data;
 
 use ::vcs;
@@ -22,6 +24,7 @@ pub static PASS_GPGID_FILE: &'static str = ".gpg-id";
 pub enum PassStoreError {
     GPG(gpgme::Error),
     Io(io::Error),
+    Other(String),
 }
 
 pub type Result<T> = result::Result<T, PassStoreError>;
@@ -42,6 +45,7 @@ impl fmt::Display for PassStoreError {
         match *self {
             PassStoreError::GPG(ref err) => write!(f, "GPG error: {}", err),
             PassStoreError::Io(ref err) => write!(f, "IO error: {}", err),
+            PassStoreError::Other(ref err) => write!(f, "Other error: {}", err),
         }
     }
 }
@@ -50,6 +54,7 @@ impl error::Error for PassStoreError {
         match *self {
             PassStoreError::GPG(_) => "gpg error",
             PassStoreError::Io(ref err) => err.description(),
+            PassStoreError::Other(ref err) => err,
         }
     }
 
@@ -57,9 +62,13 @@ impl error::Error for PassStoreError {
         match *self {
             PassStoreError::GPG(ref err) => Some(err),
             PassStoreError::Io(ref err) => Some(err),
+            PassStoreError::Other(ref _err) => None,
         }
     }
 }
+
+pub type PassTree     = tree::Tree<PassEntry>;
+pub type PassTreePath = tree::Path<PassEntry>;
 
 
 /// Represents the underlying directory structure of a password store. 
@@ -67,7 +76,7 @@ impl error::Error for PassStoreError {
 #[derive(Debug)]
 pub struct PassStore {
     passhome: PathBuf,
-    entries: Vec<PassEntry>,
+    entries: PassTree,
     gpgid: String,
     verbose: bool,
 }       
@@ -80,40 +89,40 @@ pub struct PassStore {
 /// `PassEntry`. 
 impl PassStore {
     /// Constructs a new `PassStore` with the default store location.
-    pub fn new() -> PassStore {
+    pub fn new() -> Result<PassStore> {
         let def_path = PassStore::get_default_location();
         let mut store =  PassStore { 
-            entries: vec![],
+            entries: PassTree::default(),
             passhome: def_path.clone(),
             gpgid: String::new(),
             verbose: false,
         };
-        store.fill();
-        store
+        try!(store.fill());
+        Ok(store)
     }
 
     /// Constructs a new `PassStore` using the provided location.
     ///
     /// # Examples
     ///
-    /// ```ignore
+    /// ```
     /// use std::path::PathBuf;
-    /// use rass::store::PassStore;
+    /// use rasslib::store::PassStore;
     ///
     /// let p = PathBuf::from("/home/bar/.store");
     ///
     /// let store = PassStore::from(&p);
     ///
     /// ```
-    pub fn from(path: &PathBuf) -> PassStore {
+    pub fn from(path: &PathBuf) -> Result<PassStore> {
         let mut store =  PassStore { 
-            entries: vec![],
+            entries: PassTree::default(),
             passhome: path.clone(),
             gpgid: String::new(),
             verbose: false,
         };
-        store.fill();
-        store
+        try!(store.fill());
+        Ok(store)
     }
 
     /// Set the verbose printouts for the store.
@@ -121,50 +130,63 @@ impl PassStore {
         self.verbose = verbose
     }
 
-    /// Returns all `PassStore` entries.
-    pub fn entries(&self) -> &Vec<PassEntry> {
-        &self.entries
-    }
-
     /// Returns the absolute_path of a given `PassEntry`.
-    pub fn absolute_path(&self, entry: &PassEntry) -> PathBuf {
-        self.passhome.clone().join(&entry.path)
+    pub fn absolute_path(&self, entry: &str) -> PathBuf {
+        self.passhome.clone().join(PathBuf::from(entry))
     }
 
-    fn fill(&mut self) {
+    fn fill(&mut self) -> Result<()> {
         let t = self.passhome.clone();
-        self.parse(&t);
+        self.entries = try!(self.parse(&t));
+
+        Ok(())
     }
 
-    fn parse(&mut self, path: &PathBuf) {
-        for entry in fs::read_dir(path).unwrap() {
-            let entry = entry.unwrap();
-            let p = entry.path();
+    fn parse(&mut self, path: &PathBuf) -> Result<PassTree>
+    {
+        let entry = PassEntry::new(&path, &self.passhome);
 
-            if p.ends_with(".git") {
-                continue;
-            }
+        let mut current = tree::Tree::new(entry);
 
-            let ending = ffi::OsStr::new(PASS_ENTRY_EXTENSION);
-            if p.is_file() {
-                if p.extension() == Some(ending) {
-                    let e =  PassEntry::new(&p, &self.passhome);
-                    self.entries.push(e);
+        if path.is_dir() {
+            let rd = match fs::read_dir(path) {
+                Err(_) => {
+                    let s = format!("Unable to read dir: {:?}", path);
+                    return Err(PassStoreError::Other(s))
+                },
+                Ok(r) => r
+            };
+
+            for entry in rd {
+                let entry = match entry {
+                    Ok(e) => e,
+                    Err(_) => continue
+                };
+                let p = entry.path();
+
+                if p.ends_with(".git") {
                     continue;
                 }
+
                 let gpgid_fname = ffi::OsStr::new(PASS_GPGID_FILE);
                 if p.file_name() == Some(gpgid_fname) {
                     self.gpgid = match get_gpgid_from_file(&p) {
                         Ok(id) => id,
                         Err(_) => panic!("Unable to open file: {}", 
-                                         PASS_GPGID_FILE)
-                    }
+                                            PASS_GPGID_FILE)
+                    };
+                    continue;
                 }
-            }
-            else if p.is_dir() {
-                self.parse(&p);
+                let ending = ffi::OsStr::new(PASS_ENTRY_EXTENSION);
+                if p.is_file() && p.extension() != Some(ending) {
+                    continue;
+                }
+
+                let sub = try!(self.parse(&p));
+                current.add(sub);
             }
         }
+        Ok(current)
     } 
     
     fn get_default_location() -> PathBuf {
@@ -178,50 +200,42 @@ impl PassStore {
         self.passhome.to_str().unwrap_or("").to_string()
     }
 
-    /// Find an entry in the `PassStore` by its location.
-    pub fn find_by_location<S>(&self, query: S) -> Vec<&PassEntry> 
-        where S: Into<String> {
-
-        let query = query.into();
-        let r: Vec<&PassEntry> = self.entries
-            .iter()
-            .filter(|&x| x.location().contains(&query))
-            .collect();
-        
-        r
-    }
-
     /// Find and returns a Vector of `PassEntry`s by its name.
-    pub fn find_by_name<S>(&self, query: S) -> Vec<&PassEntry> 
+    pub fn find<S>(&self, query: S) -> Vec<PassTreePath> 
         where S: Into<String> {
 
         let query = query.into();
-        let r: Vec<&PassEntry> = self.entries
-            .iter()
-            .filter(|&x| x.name().contains(&query) )
-            .collect();
-        r
+        self.entries
+            .into_iter()
+            .filter(|x| x.to_string().contains(&query) )
+            .collect()
     }
 
     /// Get a `PassEntry` first based on its location, if not found, try by
     /// its name.
-    pub fn get<S>(&self, pass: S) -> Option<&PassEntry> 
-        where S: Into<String>{
+    pub fn get<S>(&self, pass: S) -> Option<PassTreePath> 
+        where S: Into<String> {
 
         let pass = pass.into();
-        let r = self.entries.iter().find(|&x| x.location() == pass);
-        match r {
-            Some(_) => r,
-            None => { 
-                self.entries.iter().find(|&x| x.name() == pass)
-            }
-        }
+        //println!("pass term: {}", pass);
+        //for e in self.entries.into_iter() {
+            //println!("current: {}", e);
+            //if e.to_string() == pass {
+                //return Some(e);
+            //}
+        //}
+        //return None
+        self.entries
+            .into_iter()
+            .find(|x| x.to_string() == pass)
     }
 
     /// Reads and returns the content of the given `PassEntry`. The for the 
     /// gpg-file related to the `PassEntry` encrypt. 
-    pub fn read(&self, entry: &PassEntry) -> Option<String> {
-        let p = self.passhome.clone().join(&entry.path);
+    pub fn read(&self, entry: &PassTreePath) -> Option<String> {
+        let mut p = self.passhome.clone().join(PathBuf::from(entry.to_string()));
+        p.set_extension(PASS_ENTRY_EXTENSION);
+        //println!("Read path: {}", p.to_str().unwrap());
         let mut input = match Data::load(p.to_str().unwrap()) {
             Ok(input) => input,
             Err(_) => {
@@ -286,31 +300,40 @@ impl PassStore {
     /// original reference.
     pub fn remove<VCS>(&mut self, 
                        vcs: VCS,
-                       entry: PassEntry) -> Result<()> 
+                       entry: &PassTreePath) -> Result<()> 
             where VCS: vcs::VersionControl 
     {
         if self.verbose {
-            println!("Remove {}", entry.location());
+            println!("Remove {}", entry);
         }
 
-        self.entries.retain(|ref e| e.location() != entry.location());
+        self.entries.remove(entry);
     
-        let mut p = self.absolute_path(&entry);
+        let mut p = self.absolute_path(&entry.to_string());
         p.set_extension(PASS_ENTRY_EXTENSION);
         println!("{:?}", p);
         try!(fs::remove_file(&p));
 
         try!(vcs.remove(p.to_str().unwrap()));
-        try!(vcs.commit(&format!("Remove {} from store.", entry.location())));
+        try!(vcs.commit(&format!("Remove {} from store.", entry.to_string())));
 
         Ok(())
+    }
+
+    pub fn entries<'a>(&'a self) -> &'a PassTree {
+        &self.entries
+    }
+
+    pub fn print_tree(&self) {
+        let printer = tree::TreePrinter::new("Password Store");
+        printer.print(&self.entries);
     }
 }
 
 /// Represents an entry in a `PassStore` relative to the stores location.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Default, PartialEq)]
 pub struct PassEntry {
-    path: PathBuf,
+    name: String,
 }
 
 impl PassEntry {
@@ -320,62 +343,43 @@ impl PassEntry {
     ///
     /// ```
     /// use std::path::PathBuf;
-    /// use rass::store::PassEntry;
+    /// use rasslib::store::PassEntry;
     ///
     /// let entry_path = PathBuf::from("/home/bar/.store/foobar.gpg");
     /// let store_path = PathBuf::from("/home/bar/.store");
     ///
-    /// let entry = PassEntry::new(&entry_path, &store_path);
+    /// let _entry = PassEntry::new(&entry_path, &store_path);
     /// ```
     /// 
     pub fn new(path: &PathBuf, passhome: &PathBuf) -> PassEntry {
         let path = ::util::strip_path(path, passhome);
 
+        // contains the full path!
+        //let name = path.to_str().unwrap().to_string();
+        let name = match path.components().last() {
+            Some(last) => last.as_os_str().to_str().unwrap().to_string(),
+            None => String::from(""),
+        };
         PassEntry {
-            path: path,
+            name: name,
         }
     }
+}
 
-    /// Returns the name of the `PassEntry` as String. Returns only the name 
-    /// of the gpg file without the gpg file extension.
-    ///
-    /// # Examples
-    /// ```
-    /// use std::path::PathBuf;
-    /// use rass::store::PassEntry;
-    ///
-    /// let entry_path = PathBuf::from("/home/bar/.store/bla/foobar.gpg");
-    /// let store_path = PathBuf::from("/home/bar/.store");
-    ///
-    /// let entry = PassEntry::new(&entry_path, &store_path);
-    ///
-    /// assert_eq!("foobar", entry.name()); 
-    /// ```
-    pub fn name(&self) -> String {
-        let mut tp = self.path.clone();
-        tp.set_extension("");
-        tp.file_name().unwrap().to_str().unwrap().to_string()
+impl fmt::Display for PassEntry {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        if self.name.ends_with(".gpg") {
+            write!(f, "{}", &self.name[..self.name.len()-4])
+        } 
+        else { 
+            write!(f, "{}", &self.name)
+        }
     }
+}
 
-    /// Returns the path of the `PassEntry` as String, relative to the store and
-    /// without gpg file extension.
-    ///
-    /// # Examples
-    /// ```
-    /// use std::path::PathBuf;
-    /// use rass::store::PassEntry;
-    ///
-    /// let entry_path = PathBuf::from("/home/bar/.store/bla/foobar.gpg");
-    /// let store_path = PathBuf::from("/home/bar/.store");
-    ///
-    /// let entry = PassEntry::new(&entry_path, &store_path);
-    ///
-    /// assert_eq!("bla/foobar", entry.location()); 
-    /// ```
-    pub fn location(&self) -> String {
-        let mut tp = self.path.clone();
-        tp.set_extension("");
-        tp.to_str().unwrap().to_string()
+impl convert::Into<String> for PassEntry {
+    fn into(self) -> String {
+        self.name
     }
 }
 

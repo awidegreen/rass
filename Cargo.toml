@@ -1,5 +1,5 @@
 [package]
-name = "rust-pass"
+name = "rass"
 version = "0.1.0"
 authors = ["Armin Widegreen <armin.widegreen@gmail.com>"]
 
