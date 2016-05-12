@@ -22,6 +22,7 @@ pub struct Path<T>
     where T: fmt::Display + clone::Clone 
 {
     elements: Vec<T>,
+    is_leaf: bool,
 }
 
 impl<'a, T> Path<T>
@@ -32,6 +33,7 @@ impl<'a, T> Path<T>
     pub fn from(elements: vec::Vec<T>) -> Path<T> {
         Path {
             elements: elements,
+            is_leaf: false,
         }
     }
     
@@ -49,6 +51,11 @@ impl<'a, T> Path<T>
             }
         }
         string::String::from_utf8(r).unwrap_or(String::new())
+    }
+
+    /// Returns true is the path is a leaf of the tree, otherwise false.
+    pub fn is_leaf(&self) -> bool {
+        self.is_leaf
     }
 }
 
@@ -88,16 +95,21 @@ impl<T> PathBuilder<T>
 }
 
 /// Visitor pattern implementation for the PathBuilder.
-/// Each node in the path will be visited. 
+/// Each node in the path will be visited. It is worth to mentioned that the 
+/// root node will not be part of the resulting string
 impl<'a, T> TreeVisitor<'a, T> for PathBuilder<T> 
     where T: fmt::Display + clone::Clone + cmp::PartialEq 
 {
     fn visit(&self, tree: &'a Tree<T>, _: bool) 
     {
+        // ignore the root because it is not part of the path
+        if tree.is_root { return }
+
         let elements = self.trace.clone();
         elements.borrow_mut().push(tree.name().clone());
         let path = Path {
-            elements: elements.into_inner()
+            elements: elements.into_inner(),
+            is_leaf: tree.is_leaf(),
         };
 
         let mut r = self.result.borrow_mut();
@@ -135,6 +147,7 @@ impl<'a, T> TreeVisitor<'a, T> for PathBuilder<T>
 pub struct Tree<T> where T: fmt::Display + cmp::PartialEq + clone::Clone
 {
     name: T,
+    is_root: bool,
     subs: Vec<Tree<T>>,
 }
 
@@ -158,13 +171,24 @@ impl<T> Tree<T> where T: fmt::Display + cmp::PartialEq + clone::Clone
     pub fn new(name: T) -> Tree<T> {
         Tree {
             name: name,
+            is_root: false,
             subs: vec![],
         }
     }                                           
 
+    /// Sets the Tree as root of the tree structure
+    pub fn set_root(&mut self, is_root: bool) {
+        self.is_root = is_root
+    }
+
     /// Return the name of the element
     pub fn name(&self) -> &T {
         &self.name
+    }
+
+    /// Return the name of the element
+    pub fn name_mut(&mut self) -> &mut T {
+        &mut self.name
     }
 
     /// Adds a node to the tree where the note is of type `Tree<T>`.
@@ -172,10 +196,14 @@ impl<T> Tree<T> where T: fmt::Display + cmp::PartialEq + clone::Clone
         self.subs.push(sub)
     }
 
+    pub fn is_leaf(&self) -> bool {
+        self.subs.is_empty()
+    }
+
     /// Remove an element from the Tree as specified by the `path`. Returns 
     /// `true` if the element has been found and removed.
     pub fn remove(&mut self, path: &Path<T>) -> bool {
-        if path.elements.len() == 1 { return false; }
+        if path.elements.len() == 0 { return false; }
 
         let e = path.elements[1..]
             .iter()
@@ -183,14 +211,10 @@ impl<T> Tree<T> where T: fmt::Display + cmp::PartialEq + clone::Clone
             .collect();
         let new_path = Path::from(e);
 
-        if self.name != path.elements[0] {
-            return false;
-        }
-
-        if new_path.elements.len() == 1 {
+        if new_path.elements.len() == 0 {
             let l_before = self.subs.len();
 
-            self.subs.retain(|ref x| x.name != new_path.elements[0]);
+            self.subs.retain(|ref x| x.name != path.elements[0]);
 
             return l_before != self.subs.len();
         }
@@ -200,6 +224,39 @@ impl<T> Tree<T> where T: fmt::Display + cmp::PartialEq + clone::Clone
         }
 
         return false
+    }
+
+    /// Gets an Entry (`Tree<T>`) from a given `path`.
+    pub fn get_entry_from_path<'a>(&'a self, path: &Path<T>) -> Option<&'a Tree<T>> {
+        if path.elements.len() == 0 { return Some(self); }
+
+        if self.is_root {
+            for x in &self.subs {
+                if let Some(r) = x.get_entry_from_path(path) {
+                    return Some(r);
+                }
+            }
+            return None
+        }
+
+        let e = path.elements[1..]
+            .iter()
+            .map(|x| x.clone())
+            .collect();
+        let new_path = Path::from(e); 
+
+        if self.name == path.elements[0] {
+            if new_path.elements.len() == 0 {
+                return Some(self);
+            }
+            for x in &self.subs {
+                if let Some(r) = x.get_entry_from_path(&new_path) {
+                    return Some(r);
+                }
+            }
+        }
+        
+        None
     }
 }
 
@@ -293,16 +350,14 @@ pub struct TreePrinter {
     trace: RefCell<Vec<&'static str>>,
     out:   RefCell<Vec<u8>>,
     depth: RefCell<u8>,
-    root:  String,
 }
 
 impl TreePrinter {
-    pub fn new(root_node: &str) -> TreePrinter {
+    pub fn new() -> TreePrinter {
         TreePrinter { 
             trace: RefCell::new(vec![]), 
             out:   RefCell::new(vec![]),
             depth: RefCell::new(0),
-            root:  root_node.to_string(),
         }
     }
 
@@ -311,6 +366,7 @@ impl TreePrinter {
     {
         self.reset();
         tree.accept(self, false);
+
         print!("{}", str::from_utf8(&*self.out.borrow()).unwrap());
     }
 
@@ -388,10 +444,50 @@ mod test {
     }
 
     #[test]
+    fn tree_get_entry_from_path() {
+        type Tree = super::Tree<String>;
+        type Path = super::Path<String>;
+        let mut root = Tree::new("root".to_string());
+        let mut s1 = Tree::new("s1".to_string());
+        let s1_s1 = Tree::new("s1_s1".to_string());
+        let s1_s2 = Tree::new("s1_s2".to_string());
+        let s1_s3 = Tree::new("s1_s3".to_string());
+        s1.add(s1_s1);
+        s1.add(s1_s2);
+        s1.add(s1_s3);
+        root.add(s1);
+
+        // not marked as root
+        let e = ["root","s1"].iter().map(|x| x.to_string()).collect();
+        let p = Path::from(e);
+        {
+            let sub = root.get_entry_from_path(&p);
+
+            assert_eq!(true, sub.is_some());
+            let sub = sub.unwrap();
+            assert_eq!(sub.name().to_string(), "s1");
+            assert_eq!(sub.subs.len(), 3);
+        }
+
+        // marked as root!
+        root.set_root(true);
+        let e = ["s1"].iter().map(|x| x.to_string()).collect();
+        let p = Path::from(e);
+
+        let sub = root.get_entry_from_path(&p);
+
+        assert_eq!(true, sub.is_some());
+        let sub = sub.unwrap();
+        assert_eq!(sub.name().to_string(), "s1");
+        assert_eq!(sub.subs.len(), 3);
+    }
+
+    #[test]
     fn tree_remove() {
         type Tree = super::Tree<String>;
         type Path = super::Path<String>;
         let mut root = Tree::new("root".to_string());
+        root.set_root(true);
         let mut s1 = Tree::new("s1".to_string());
         let s1_s1 = Tree::new("s1_s1".to_string());
         let s1_s2 = Tree::new("s1_s2".to_string());
@@ -399,40 +495,38 @@ mod test {
         s1.add(s1_s2);
         root.add(s1);
 
-        let e = ["root", "s1", "s1_s1"].iter().map(|x| x.to_string()).collect();
+        let e = ["s1", "s1_s1"].iter().map(|x| x.to_string()).collect();
         let p = Path::from(e);
         // WORKING
         let result = root.remove(&p);
         assert_eq!(result, true);
 
         let paths: Vec<Path> = root.into_iter().collect();
-        assert_eq!(paths.len(), 3);
-        assert_eq!(paths[0].to_string(), "root");
-        assert_eq!(paths[1].to_string(), "root/s1");
-        assert_eq!(paths[2].to_string(), "root/s1/s1_s2");
+        assert_eq!(paths.len(), 2);
+        assert_eq!(paths[0].to_string(), "s1");
+        assert_eq!(paths[1].to_string(), "s1/s1_s2");
 
-        let e = ["root", "s2"].iter().map(|x| x.to_string()).collect();
+        let e = ["s2"].iter().map(|x| x.to_string()).collect();
         let p = Path::from(e);
-        // NOT WORKING
+        // NOT WORKING since it is not found in the tree
         let result = root.remove(&p);
         assert_eq!(result, false);
-        assert_eq!(paths.len(), 3);
+        assert_eq!(paths.len(), 2);
 
-        // remove root shall not work, rather remove the root element as such
-        let e = ["root"].iter().map(|x| x.to_string()).collect();
+        // remove root shall NOT work, rather remove the root element as such
+        let e : Vec<String> = vec![];
         let p = Path::from(e);
         let result = root.remove(&p);
         assert_eq!(result, false);
-        assert_eq!(paths.len(), 3);
+        assert_eq!(paths.len(), 2);
 
-        let e = ["root", "s1"].iter().map(|x| x.to_string()).collect();
+        let e = ["s1"].iter().map(|x| x.to_string()).collect();
         let p = Path::from(e);
         // WORKING
         let result = root.remove(&p);
         assert_eq!(result, true);
 
         let paths: Vec<Path> = root.into_iter().collect();
-        assert_eq!(paths.len(), 1);
-        assert_eq!(paths[0].to_string(), "root");
+        assert_eq!(paths.len(), 0);
     }
 }

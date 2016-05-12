@@ -16,6 +16,7 @@ pub trait VersionControl {
     fn add(&self, file: &str) -> Result<ExitStatus>; 
     fn remove(&self, file: &str) -> Result<ExitStatus>;
     fn commit(&self, message: &str) -> Result<ExitStatus>;
+    fn cmd_dispatch(&self, args: Vec<&str>) -> Result<ExitStatus>;
 }
 
 impl GitWrapper {
@@ -73,6 +74,13 @@ impl VersionControl for GitWrapper {
         cmd.arg("rm")
            .arg("-qr")
            .arg(file)
+           .current_dir(&self.repo);
+        cmd.status()
+    }
+
+    fn cmd_dispatch(&self, args: Vec<&str>) -> Result<ExitStatus> {
+        let mut cmd = Command::new("git");
+        cmd.args(args.as_slice())
            .current_dir(&self.repo);
         cmd.status()
     }

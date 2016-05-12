@@ -20,9 +20,6 @@ $ cargo install rust-rass
 ## Limitations
 
 In comparison to `pass`, `rass` does not support [yet]: 
-* show the content of the password in tree-style: I'm currently lacking a 
-proper way of showing a tree like structure from rust
-* relay git command (like `rass git ...`) directly to `git`
 * no clipboard support
 * editing of pass entries
 * initialize
@@ -69,6 +66,18 @@ $ rass insert foobar
 $ rass insert -m foobar
 ```
 
+Dispatch `git` command to rass, executed within the password-store
+```shell
+# push new entries to origin
+$ rass git push origin master
+
+# pull latest changes
+$ rass git pull
+
+# show the git log of the password-store
+$ rass git log
+```
+
 
 ## ToDo
 
@@ -77,7 +86,6 @@ $ rass insert -m foobar
   * `generate`
   * `mv`
   * `cp`
-  * `git` - how?
   * `edit`
 * some more tests
 * a simple CLI UI?

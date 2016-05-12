@@ -120,7 +120,7 @@ impl PassStore {
             passhome: path.clone(),
             gpgid: String::new(),
             verbose: false,
-        };
+        };           
         try!(store.fill());
         Ok(store)
     }
@@ -138,6 +138,8 @@ impl PassStore {
     fn fill(&mut self) -> Result<()> {
         let t = self.passhome.clone();
         self.entries = try!(self.parse(&t));
+        self.entries.set_root(true);
+        self.entries.name_mut().name = String::from("Password Store");
 
         Ok(())
     }
@@ -146,7 +148,7 @@ impl PassStore {
     {
         let entry = PassEntry::new(&path, &self.passhome);
 
-        let mut current = tree::Tree::new(entry);
+        let mut current = PassTree::new(entry);
 
         if path.is_dir() {
             let rd = match fs::read_dir(path) {
@@ -189,6 +191,8 @@ impl PassStore {
         Ok(current)
     } 
     
+
+    /// Internal to get the default location of a store
     fn get_default_location() -> PathBuf {
         let mut passhome = env::home_dir().unwrap();
         passhome.push(".password-store");
@@ -211,20 +215,15 @@ impl PassStore {
             .collect()
     }
 
-    /// Get a `PassEntry` first based on its location, if not found, try by
-    /// its name.
-    pub fn get<S>(&self, pass: S) -> Option<PassTreePath> 
-        where S: Into<String> {
-
+    /// Get a `PassTreePath` from the give parameter `pass`. Returns an 
+    pub fn get<S>(&self, pass: S) -> Option<PassTreePath> where S: Into<String> 
+    {
         let pass = pass.into();
-        //println!("pass term: {}", pass);
-        //for e in self.entries.into_iter() {
-            //println!("current: {}", e);
-            //if e.to_string() == pass {
-                //return Some(e);
-            //}
-        //}
-        //return None
+
+        if pass.is_empty() {
+            return Some(PassTreePath::from(vec![]));
+        }
+
         self.entries
             .into_iter()
             .find(|x| x.to_string() == pass)
@@ -320,13 +319,21 @@ impl PassStore {
         Ok(())
     }
 
+    /// Gets all entries from the store as a `Tree` structure.
     pub fn entries<'a>(&'a self) -> &'a PassTree {
         &self.entries
     }
 
-    pub fn print_tree(&self) {
-        let printer = tree::TreePrinter::new("Password Store");
-        printer.print(&self.entries);
+    /// Prints a give `path` as a tree. Note, if the `path` does not point
+    /// to any entry in the store, nothing will be printed!
+    pub fn print_tree(&self, path: &PassTreePath) {
+
+        if let Some(t) = self.entries.get_entry_from_path(path) {
+            let printer = tree::TreePrinter::new();
+            printer.print(&t);
+        } else {
+            println!("Unable to get entry for path '{}'", path);
+        }
     }
 }
 
@@ -363,7 +370,7 @@ impl PassEntry {
         PassEntry {
             name: name,
         }
-    }
+    }               
 }
 
 impl fmt::Display for PassEntry {

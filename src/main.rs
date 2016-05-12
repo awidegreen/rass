@@ -6,6 +6,7 @@ use std::io;
 use std::io::prelude::*;
 use std::env;
 use std::path::PathBuf;
+use std::process;
 
 use clap::{Arg, ArgMatches, SubCommand};
 
@@ -48,6 +49,7 @@ fn main() {
         ("add", Some(matches)) =>    { app.insert(vcs, &matches); true } // alias for insert
         ("show", Some(matches)) =>   { app.show(&matches); true }
         ("ls", Some(matches)) =>     { app.list(&matches); true }
+        ("git", Some(matches)) =>    { app.git_exec(vcs, &matches); true }
         ("rm", Some(matches)) =>     { app.remove(vcs, &matches); true }
         _ => false
     };
@@ -68,6 +70,19 @@ struct PassstoreApp {
 }
 
 impl PassstoreApp {
+    fn git_exec<T: vcs::VersionControl>(&self, vcs: T, matches: &ArgMatches) {
+        if !matches.is_present("PARAMS") {
+            println!("Not git parameters found!");
+            process::exit(-1);
+        }
+;
+        let params: Vec<_> = matches.values_of("PARAMS").unwrap().collect();
+
+        if let Ok(r) = vcs.cmd_dispatch(params) {
+            process::exit(r.code().unwrap_or(-1))
+        }
+    }
+
     fn insert<T: vcs::VersionControl>(&mut self, vcs: T, matches: &ArgMatches) {
         let pass = matches.value_of("PASS").unwrap_or("");
 
@@ -106,22 +121,35 @@ impl PassstoreApp {
         }
     }
 
-    fn list(&self, _matches: &ArgMatches) {
-        self.store.print_tree();
+    fn list(&self, matches: &ArgMatches) {
+        let pass = matches.value_of("PASS").unwrap_or_default();
+
+        let pass = if pass.ends_with("/") { 
+            &pass[0..pass.len()-1]
+        } else {
+            pass
+        };
+
+        if let Some(path) = self.store.get(pass) {
+            self.store.print_tree(&path);
+        } else {
+            println!("Unable to find path for '{}'", pass);
+        }
     }
 
     fn show(&self, matches: &ArgMatches) {
         let pass = matches.value_of("PASS").unwrap_or("");
-        match self.store.get(pass) {
-            Some(entry) => { 
+        if let Some(entry) = self.store.get(pass) {
+            if entry.is_leaf() {
                 match self.store.read(&entry) {
                     Some(x) => print!("{}", x),
                     None => println!("Unable to read!"),
                 }           
-            },
-            None => {
-                println!("Error: {} is not in the password store.", pass);
+            } else {
+                self.store.print_tree(&entry);
             }
+        } else {
+            println!("Error: {} is not in the password store.", pass);
         }
     }
 
@@ -237,7 +265,12 @@ fn get_matches<'a>() -> clap::ArgMatches<'a> {
                     .about("List the whole store")
                     .arg(Arg::with_name("long")
                          .help("Print the full qualified location instead.")
-                         .short("l")))
+                         .short("l"))
+                    .arg(Arg::with_name("PASS")
+                         .help("Print a sub-entry instead of full store.")
+                         .default_value("")
+                         .required(false)
+                         .index(1)))
         .subcommand(SubCommand::with_name("rm")
                     .about("Remove entry from the store")
                     .arg(Arg::with_name("PASS")
@@ -250,6 +283,11 @@ fn get_matches<'a>() -> clap::ArgMatches<'a> {
                          .short("f")
                          .long("force")
                          .help("Forces to delete an entry, without interaction.")))
+        .subcommand(SubCommand::with_name("git")
+                    .about("Dispatch git command to execute within the store")
+                    .arg(Arg::with_name("PARAMS")
+                         .multiple(true)
+                         .required(true)))
         .get_matches()
 }
 
