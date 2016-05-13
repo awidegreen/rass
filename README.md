@@ -5,6 +5,8 @@ A [password-store](https://www.passwordstore.org/) clone written in Rust.
 The name `rass` is a combination of **r**ust and p**ass** whereas `pass` being 
 the command line tool for password-store.
 
+[Documentation](https://awidegreen.github.io/rass/)
+
 ## Requirements
 
 Due to `rass` dependency to [rust-gpgme](https://crates.io/crates/gpgme/) you 
@@ -13,6 +15,14 @@ need to have a recent version of GPGme installed,
 
 ## Installation
 
+From source:
+```shell
+$ git clone https://github.com/awidegreen/rass
+$ cd rass
+$ cargo build --release
+```
+
+NOTE: Not released on crates.io yet
 ```shell
 $ cargo install rust-rass
 ```

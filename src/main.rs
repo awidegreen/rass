@@ -1,4 +1,5 @@
 extern crate rasslib;
+#[macro_use]
 extern crate clap;
 extern crate rpassword;
 
@@ -7,8 +8,8 @@ use std::io::prelude::*;
 use std::env;
 use std::path::PathBuf;
 use std::process;
-
-use clap::{Arg, ArgMatches, SubCommand};
+ 
+use clap::{App, Arg, ArgMatches, SubCommand};
 
 use rasslib::store::PassStore;
 use rasslib::vcs;
@@ -205,10 +206,10 @@ impl PassstoreApp {
 
 
 
-fn get_matches<'a>() -> clap::ArgMatches<'a> {
-    clap::App::new("rass")
+fn get_matches<'a>() -> ArgMatches<'a> {
+    App::new("rass")
         .author("Armin Widegreen, armin.widegreen@gmail.com")
-        .version("0.1.0")
+        .version(crate_version!())
         .about("A manager for a pass-store, the command line password manager")
         .arg(Arg::with_name("PASS")
              .help("pass-name which shall be shown, first try pass-name (full path),\

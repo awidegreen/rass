@@ -1,7 +1,13 @@
 [package]
 name = "rass"
-version = "0.1.0"
+version = "0.2.0"
+description = "A rust implementation for the standard *nix password manager: pass"
 authors = ["Armin Widegreen <armin.widegreen@gmail.com>"]
+repository = "https://github.com/awidegreen/rass"
+documentation = "https://awidegreen.github.io/rass/"
+license = "ISC"
+keywords = ["password", "manager", "passwordstore"]
+readme = "README.md"
 
 [lib]
 name = "rasslib"
