@@ -17,7 +17,7 @@ need to have a recent version of GPGme installed,
 
 From source:
 ```shell
-$ git clone https://github.com/awidegreen/rass
+$ git clone https://github.com/awidegreen/rass.git
 $ cd rass
 $ cargo build --release
 ```
