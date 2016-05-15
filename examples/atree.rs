@@ -22,7 +22,7 @@ fn main() {
     root.add(s1);
     root.add(s2);
 
-    let printer = tree::TreePrinter::new("the root");
+    let printer = tree::TreePrinter::new();
     printer.print(&root);
 
     for e in &root {

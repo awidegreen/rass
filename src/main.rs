@@ -52,6 +52,7 @@ fn main() {
         ("ls", Some(matches)) =>     { app.list(&matches); true }
         ("git", Some(matches)) =>    { app.git_exec(vcs, &matches); true }
         ("rm", Some(matches)) =>     { app.remove(vcs, &matches); true }
+        ("grep", Some(matches)) =>   { app.grep(&matches); true }
         _ => false
     };
 
@@ -202,6 +203,19 @@ impl PassstoreApp {
             println!("Error: {} is not in the password store.", pass);
         }
     }
+
+    fn grep(&self, matches: &ArgMatches) {
+        let params : Vec<&str>  = matches.values_of("PARAMS").unwrap().collect();
+        if params.len() < 1 {
+            println!("No search team specified");
+            process::exit(-1);
+        }
+
+        let searcher = matches.value_of("SEACHER").unwrap_or("grep");
+        if let Ok(out) = self.store.grep(&searcher, &params) {
+            println!("{}", out);
+        }
+    }
 }
 
 
@@ -210,7 +224,7 @@ fn get_matches<'a>() -> ArgMatches<'a> {
     App::new("rass")
         .author("Armin Widegreen, armin.widegreen@gmail.com")
         .version(crate_version!())
-        .about("A manager for a pass-store, the command line password manager")
+        .about("A manager for password-store, the *nix command line password manager")
         .arg(Arg::with_name("PASS")
              .help("pass-name which shall be shown, first try pass-name (full path),\
                    if nothing is found, I'll try just the pass name.")
@@ -261,7 +275,6 @@ fn get_matches<'a>() -> ArgMatches<'a> {
                     .arg(Arg::with_name("PASS")
                         .required(true)
                         .index(1)))
-                    .about("see insert")
         .subcommand(SubCommand::with_name("ls")
                     .about("List the whole store")
                     .arg(Arg::with_name("long")
@@ -286,6 +299,20 @@ fn get_matches<'a>() -> ArgMatches<'a> {
                          .help("Forces to delete an entry, without interaction.")))
         .subcommand(SubCommand::with_name("git")
                     .about("Dispatch git command to execute within the store")
+                    .arg(Arg::with_name("PARAMS")
+                         .multiple(true)
+                         .required(true)))
+        .subcommand(SubCommand::with_name("grep")
+                    .about("Greps for given search term in the password store. \
+                          Relays the all parameter (except searcher) to to the \
+                          command specified in SEACHER parameter, default \
+                          'grep'. Therefore standard grep options apply.")
+                    .arg(Arg::with_name("SEARCHER")
+                         .possible_values(&["ag", "grep", "ack"])
+                         .short("s")
+                         .long("searcher")
+                         .required(false)
+                         .default_value("grep"))
                     .arg(Arg::with_name("PARAMS")
                          .multiple(true)
                          .required(true)))

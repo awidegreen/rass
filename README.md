@@ -88,6 +88,12 @@ $ rass git pull
 $ rass git log
 ```
 
+Grep for a string in the password store. 
+```shell
+# search for "foobar" in the entire store 
+$ rass grep foobar
+```
+For more information see the help: `rass help`
 
 ## ToDo
 

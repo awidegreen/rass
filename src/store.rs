@@ -17,6 +17,13 @@ use gpgme::Data;
 
 use ::vcs;
 
+macro_rules! println_stderr(
+    ($($arg:tt)*) => { {
+        let r = writeln!(&mut ::std::io::stderr(), $($arg)*);
+        r.expect("failed printing to stderr");
+    } }
+);
+
 pub static PASS_ENTRY_EXTENSION: &'static str = "gpg";
 pub static PASS_GPGID_FILE: &'static str = ".gpg-id";
 
@@ -232,12 +239,16 @@ impl PassStore {
     /// Reads and returns the content of the given `PassEntry`. The for the 
     /// gpg-file related to the `PassEntry` encrypt. 
     pub fn read(&self, entry: &PassTreePath) -> Option<String> {
-        let mut p = self.passhome.clone().join(PathBuf::from(entry.to_string()));
-        p.set_extension(PASS_ENTRY_EXTENSION);
-        //println!("Read path: {}", p.to_str().unwrap());
+        let p = String::from(format!("{}.{}", entry.to_string(), 
+                                    PASS_ENTRY_EXTENSION));
+        let p = self.passhome.clone().join(PathBuf::from(p));
+        if self.verbose {
+            println!("Read path: {}", p.to_str().unwrap());
+        }
         let mut input = match Data::load(p.to_str().unwrap()) {
             Ok(input) => input,
-            Err(_) => {
+            Err(x) => {
+                println_stderr!("Unable to load ({:?}): {}", p, x);
                 return None;
             }
         };
@@ -247,7 +258,8 @@ impl PassStore {
         let mut output = Data::new().unwrap();
         match ctx.decrypt(&mut input, &mut output) {
             Ok(..) => (),
-            Err(_) => {
+            Err(x) => {
+                println_stderr!("Unable to decrypt {:?}: {}", p, x);
                 return None;
             }
         }
@@ -332,8 +344,69 @@ impl PassStore {
             let printer = tree::TreePrinter::new();
             printer.print(&t);
         } else {
-            println!("Unable to get entry for path '{}'", path);
+            println_stderr!("Unable to get entry for path '{}'", path);
         }
+    }
+
+
+    /// Executes over all entries in the store with the given search parameters.
+    /// Take note that `grep_args` can include all grep parameters which are 
+    /// relevant for a piped grep execution. However, the last parameter shall 
+    /// always be the grep command. 
+    pub fn grep(&self, searcher: &str, grep_args: &Vec<&str>) -> Result<String> {
+        use std::process::{Command, Stdio};
+        use std::io::{Write};
+
+        if self.verbose {
+            println!("Use searcher: {}", searcher);
+        }
+
+        let mut result = String::new();
+
+        for entry in &self.entries {
+            if !entry.is_leaf() { continue; }
+            if self.verbose {
+                println!("Current entry: {}", &entry);
+            }
+
+            let content = self.read(&entry);
+            if content.is_none() {
+                continue
+            }
+            let content = content.unwrap();
+
+            let grep = match Command::new(searcher)
+                .arg("--color=always")
+                .args(grep_args.as_slice())
+                .stdin(Stdio::piped())
+                .stdout(Stdio::piped())
+                .spawn() {
+                Ok(x) => x,
+                Err(why) => {   
+                    println_stderr!("unable to spawn {}: {}", 
+                                    searcher, why);
+                    continue;
+                    }
+            };
+
+            if let Err(why) = grep.stdin.unwrap().write_all(content.as_bytes()) {
+                println_stderr!("Could not write to grep stdin {}: {}", 
+                         searcher, why);
+            }
+
+            let mut grep_out = String::new();
+            match grep.stdout.unwrap().read_to_string(&mut grep_out) {
+                Err(why) =>
+                    println_stderr!("Unable to read from  {} stdout: {}", 
+                             searcher, why),
+                _ => ()
+            }
+            if !grep_out.is_empty() {
+                result.push_str(&format!("{}:\n{}\n", entry, &grep_out));
+            }
+        }
+
+        Ok(result)
     }
 }
 
@@ -355,7 +428,9 @@ impl PassEntry {
     /// let entry_path = PathBuf::from("/home/bar/.store/foobar.gpg");
     /// let store_path = PathBuf::from("/home/bar/.store");
     ///
-    /// let _entry = PassEntry::new(&entry_path, &store_path);
+    /// let entry = PassEntry::new(&entry_path, &store_path);
+    ///
+    /// assert_eq!("foobar", &format!("{}",entry));
     /// ```
     /// 
     pub fn new(path: &PathBuf, passhome: &PathBuf) -> PassEntry {
@@ -397,4 +472,27 @@ fn get_gpgid_from_file(path: &PathBuf) -> Result<String> {
     let mut buffer = String::new();
     reader.read_line(&mut buffer).unwrap();
     Ok(buffer.trim().to_string())
+}
+
+#[cfg(test)]
+mod test {
+    mod entry {
+        use std::path::PathBuf;
+        use ::store::PassEntry;
+
+        #[test]
+        fn test_new() {
+            let entry_path = PathBuf::from("/home/bar/.store/foobar.gpg");
+            let store_path = PathBuf::from("/home/bar/.store");
+            let entry = PassEntry::new(&entry_path, &store_path);
+
+            assert_eq!("foobar", &format!("{}", entry));
+
+            // test entry with url as name
+            let entry_path = PathBuf::from("/home/bar/.store/foobar.com.gpg");
+            let entry = PassEntry::new(&entry_path, &store_path);
+
+            assert_eq!("foobar.com", &format!("{}",entry));
+        }
+    }
 }

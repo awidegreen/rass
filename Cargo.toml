@@ -1,6 +1,6 @@
 [package]
 name = "rass"
-version = "0.2.0"
+version = "0.3.0"
 description = "A rust implementation for the standard *nix password manager: pass"
 authors = ["Armin Widegreen <armin.widegreen@gmail.com>"]
 repository = "https://github.com/awidegreen/rass"
