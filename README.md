@@ -1,4 +1,5 @@
 # rass 
+[![Build Status](https://travis-ci.org/awidegreen/rass.svg?branch=master)](https://travis-ci.org/awidegreen/rass)
 
 A [password-store](https://www.passwordstore.org/) clone written in Rust. 
 
