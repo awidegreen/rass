@@ -1,8 +1,25 @@
 language: rust
+sudo: false
+addons:
+  apt:
+    packages:
+      - libgpgme11-dev
 rust:
   - stable
   - beta
   - nightly
-matrix:
-  allow_failures:
-    - rust: nightly
+script: 
+  - cargo build --verbose
+  - cargo test --verbose
+  - cargo doc
+after_success: |
+  [ $TRAVIS_BRANCH = master ] &&
+  [ $TRAVIS_PULL_REQUEST = false ] &&
+  echo '<meta http-equiv=refresh content=0;url=gpgme/index.html>' > target/doc/index.html &&
+  pip install --user ghp-import &&
+  $HOME/.local/bin/ghp-import -n target/doc &&
+  git push -qf https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git gh-pages
+env:
+  global:
+    - secure: "31EE4fA1hbq4j8NeiLJdn3HRWVzHWCa3ggRwuSvnscZBInqGOkRqxUsz70uqXBfkakGU1CPRKfS7zm0iLUu964U4gBd6lERzwPcEfyRJoKhj5jH9HKulrchssga1xKkHTNlb6SnBr6LTeCWzwEft5b7ATvhFEL3kpGHbcpNkKo3mXwy30SJNAXhE8u/w/QeQdsanN5yL8QnFCpP+DXchhlv1oIfk/oBMtAXDuqnmbd+cMnb3OyTaKb4JNDecCRaefboKvAPnToS0tl3uMrMafT24ANMQsLt+ExiGdUvGD3mhxsEPNGXRRwj6GWi+JlkwPxLxE7Bt0s8RBdrZEl6iayY93griX+Am9fym7FpzsKSJJad3c/fHd1RoOC5Ds"
+
