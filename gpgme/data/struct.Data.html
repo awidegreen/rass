@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Data` struct in crate `gpgme`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Data">
+
+    <title>gpgme::data::Data - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>gpgme</a>::<wbr><a href='index.html'>data</a></p><script>window.sidebarCurrent = {name: 'Data', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>gpgme</a>::<wbr><a href='index.html'>data</a>::<wbr><a class='struct' href=''>Data</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-1036' class='srclink' href='../../src/gpgme/data.rs.html#78-81' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Data&lt;'a&gt; {
+    // some fields omitted
+}</pre><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;'a&gt; <a class='struct' href='../../gpgme/data/struct.Data.html' title='gpgme::data::Data'>Data</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.stdin' class='method'><code>fn <a href='#method.stdin' class='fnname'>stdin</a>() -&gt; <a class='type' href='../../gpgme/type.Result.html' title='gpgme::Result'>Result</a>&lt;<a class='struct' href='../../gpgme/data/struct.Data.html' title='gpgme::data::Data'>Data</a>&lt;'static&gt;&gt;</code></h4>
+<h4 id='method.stdout' class='method'><code>fn <a href='#method.stdout' class='fnname'>stdout</a>() -&gt; <a class='type' href='../../gpgme/type.Result.html' title='gpgme::Result'>Result</a>&lt;<a class='struct' href='../../gpgme/data/struct.Data.html' title='gpgme::data::Data'>Data</a>&lt;'static&gt;&gt;</code></h4>
+<h4 id='method.stderr' class='method'><code>fn <a href='#method.stderr' class='fnname'>stderr</a>() -&gt; <a class='type' href='../../gpgme/type.Result.html' title='gpgme::Result'>Result</a>&lt;<a class='struct' href='../../gpgme/data/struct.Data.html' title='gpgme::data::Data'>Data</a>&lt;'static&gt;&gt;</code></h4>
+<h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='type' href='../../gpgme/type.Result.html' title='gpgme::Result'>Result</a>&lt;<a class='struct' href='../../gpgme/data/struct.Data.html' title='gpgme::data::Data'>Data</a>&lt;'static&gt;&gt;</code></h4>
+<div class='docblock'><p>Constructs an empty data object.</p>
+</div><h4 id='method.load' class='method'><code>fn <a href='#method.load' class='fnname'>load</a>&lt;P: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>&gt;&gt;&gt;(path: P) -&gt; <a class='type' href='../../gpgme/type.Result.html' title='gpgme::Result'>Result</a>&lt;<a class='struct' href='../../gpgme/data/struct.Data.html' title='gpgme::data::Data'>Data</a>&lt;'static&gt;&gt;</code></h4>
+<div class='docblock'><p>Constructs a data object and fills it with the contents of the file
+referenced by <code>path</code>.</p>
+</div><h4 id='method.from_bytes' class='method'><code>fn <a href='#method.from_bytes' class='fnname'>from_bytes</a>&lt;B: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html' title='core::convert::AsRef'>AsRef</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>[</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>&gt;&gt;(bytes: B) -&gt; <a class='type' href='../../gpgme/type.Result.html' title='gpgme::Result'>Result</a>&lt;<a class='struct' href='../../gpgme/data/struct.Data.html' title='gpgme::data::Data'>Data</a>&lt;'static&gt;&gt;</code></h4>
+<div class='docblock'><p>Constructs a data object and fills it with a copy of <code>bytes</code>.</p>
+</div><h4 id='method.from_buffer' class='method'><code>fn <a href='#method.from_buffer' class='fnname'>from_buffer</a>&lt;B: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html' title='core::convert::AsRef'>AsRef</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>[</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>&gt; + ?<a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html' title='core::marker::Sized'>Sized</a>&gt;(buf: &amp;B) -&gt; <a class='type' href='../../gpgme/type.Result.html' title='gpgme::Result'>Result</a>&lt;<a class='struct' href='../../gpgme/data/struct.Data.html' title='gpgme::data::Data'>Data</a>&gt;</code></h4>
+<div class='docblock'><p>Constructs a data object which copies from <code>buf</code> as needed.</p>
+</div><h4 id='method.from_fd' class='method'><code>fn <a href='#method.from_fd' class='fnname'>from_fd</a>&lt;T: <a class='trait' href='https://doc.rust-lang.org/nightly/std/sys/ext/io/trait.AsRawFd.html' title='std::sys::ext::io::AsRawFd'>AsRawFd</a> + ?<a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html' title='core::marker::Sized'>Sized</a>&gt;(file: &amp;T) -&gt; <a class='type' href='../../gpgme/type.Result.html' title='gpgme::Result'>Result</a>&lt;<a class='struct' href='../../gpgme/data/struct.Data.html' title='gpgme::data::Data'>Data</a>&gt;</code></h4>
+<h4 id='method.from_raw_file' class='method'><code>unsafe fn <a href='#method.from_raw_file' class='fnname'>from_raw_file</a>&lt;'b&gt;(file: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut </a><a class='enum' href='../../libc/enum.FILE.html' title='libc::FILE'>FILE</a>) -&gt; <a class='type' href='../../gpgme/type.Result.html' title='gpgme::Result'>Result</a>&lt;<a class='struct' href='../../gpgme/data/struct.Data.html' title='gpgme::data::Data'>Data</a>&lt;'b&gt;&gt;</code></h4>
+<h4 id='method.from_reader' class='method'><code>fn <a href='#method.from_reader' class='fnname'>from_reader</a>&lt;R&gt;(r: R) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../../gpgme/data/struct.Data.html' title='gpgme::data::Data'>Data</a>&lt;'static&gt;, <a class='struct' href='../../gpgme/data/struct.WrappedError.html' title='gpgme::data::WrappedError'>WrappedError</a>&lt;R&gt;&gt; <span class='where'>where R: <a class='trait' href='https://doc.rust-lang.org/nightly/std/io/trait.Read.html' title='std::io::Read'>Read</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Send.html' title='core::marker::Send'>Send</a> + 'static</span></code></h4>
+<h4 id='method.from_seekable_reader' class='method'><code>fn <a href='#method.from_seekable_reader' class='fnname'>from_seekable_reader</a>&lt;R&gt;(r: R) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../../gpgme/data/struct.Data.html' title='gpgme::data::Data'>Data</a>&lt;'static&gt;, <a class='struct' href='../../gpgme/data/struct.WrappedError.html' title='gpgme::data::WrappedError'>WrappedError</a>&lt;R&gt;&gt; <span class='where'>where R: <a class='trait' href='https://doc.rust-lang.org/nightly/std/io/trait.Read.html' title='std::io::Read'>Read</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/std/io/trait.Seek.html' title='std::io::Seek'>Seek</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Send.html' title='core::marker::Send'>Send</a> + 'static</span></code></h4>
+<h4 id='method.from_writer' class='method'><code>fn <a href='#method.from_writer' class='fnname'>from_writer</a>&lt;W&gt;(w: W) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../../gpgme/data/struct.Data.html' title='gpgme::data::Data'>Data</a>&lt;'static&gt;, <a class='struct' href='../../gpgme/data/struct.WrappedError.html' title='gpgme::data::WrappedError'>WrappedError</a>&lt;W&gt;&gt; <span class='where'>where W: <a class='trait' href='https://doc.rust-lang.org/nightly/std/io/trait.Write.html' title='std::io::Write'>Write</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Send.html' title='core::marker::Send'>Send</a> + 'static</span></code></h4>
+<h4 id='method.from_seekable_writer' class='method'><code>fn <a href='#method.from_seekable_writer' class='fnname'>from_seekable_writer</a>&lt;W&gt;(w: W) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../../gpgme/data/struct.Data.html' title='gpgme::data::Data'>Data</a>&lt;'static&gt;, <a class='struct' href='../../gpgme/data/struct.WrappedError.html' title='gpgme::data::WrappedError'>WrappedError</a>&lt;W&gt;&gt; <span class='where'>where W: <a class='trait' href='https://doc.rust-lang.org/nightly/std/io/trait.Write.html' title='std::io::Write'>Write</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/std/io/trait.Seek.html' title='std::io::Seek'>Seek</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Send.html' title='core::marker::Send'>Send</a> + 'static</span></code></h4>
+<h4 id='method.from_stream' class='method'><code>fn <a href='#method.from_stream' class='fnname'>from_stream</a>&lt;S: <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Send.html' title='core::marker::Send'>Send</a> + 'static&gt;(s: S) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../../gpgme/data/struct.Data.html' title='gpgme::data::Data'>Data</a>&lt;'static&gt;, <a class='struct' href='../../gpgme/data/struct.WrappedError.html' title='gpgme::data::WrappedError'>WrappedError</a>&lt;S&gt;&gt; <span class='where'>where S: <a class='trait' href='https://doc.rust-lang.org/nightly/std/io/trait.Read.html' title='std::io::Read'>Read</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/std/io/trait.Write.html' title='std::io::Write'>Write</a></span></code></h4>
+<h4 id='method.from_seekable_stream' class='method'><code>fn <a href='#method.from_seekable_stream' class='fnname'>from_seekable_stream</a>&lt;S&gt;(s: S) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../../gpgme/data/struct.Data.html' title='gpgme::data::Data'>Data</a>&lt;'static&gt;, <a class='struct' href='../../gpgme/data/struct.WrappedError.html' title='gpgme::data::WrappedError'>WrappedError</a>&lt;S&gt;&gt; <span class='where'>where S: <a class='trait' href='https://doc.rust-lang.org/nightly/std/io/trait.Read.html' title='std::io::Read'>Read</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/std/io/trait.Write.html' title='std::io::Write'>Write</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/std/io/trait.Seek.html' title='std::io::Seek'>Seek</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Send.html' title='core::marker::Send'>Send</a> + 'static</span></code></h4>
+<h4 id='method.filename' class='method'><code>fn <a href='#method.filename' class='fnname'>filename</a>(&amp;self) -&gt; <a class='type' href='../../gpgme/type.StrResult.html' title='gpgme::StrResult'>StrResult</a></code></h4>
+<h4 id='method.clear_filename' class='method'><code>fn <a href='#method.clear_filename' class='fnname'>clear_filename</a>(&amp;mut self) -&gt; <a class='type' href='../../gpgme/type.Result.html' title='gpgme::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<h4 id='method.set_filename' class='method'><code>fn <a href='#method.set_filename' class='fnname'>set_filename</a>&lt;S: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>&gt;&gt;&gt;(&amp;mut self, name: S) -&gt; <a class='type' href='../../gpgme/type.Result.html' title='gpgme::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<h4 id='method.encoding' class='method'><code>fn <a href='#method.encoding' class='fnname'>encoding</a>(&amp;self) -&gt; <a class='struct' href='../../gpgme/data/struct.Encoding.html' title='gpgme::data::Encoding'>Encoding</a></code></h4>
+<h4 id='method.set_encoding' class='method'><code>fn <a href='#method.set_encoding' class='fnname'>set_encoding</a>(&amp;mut self, enc: <a class='struct' href='../../gpgme/data/struct.Encoding.html' title='gpgme::data::Encoding'>Encoding</a>) -&gt; <a class='type' href='../../gpgme/type.Result.html' title='gpgme::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<h4 id='method.identify' class='method'><code>fn <a href='#method.identify' class='fnname'>identify</a>(&amp;mut self) -&gt; <a class='struct' href='../../gpgme/data/struct.Type.html' title='gpgme::data::Type'>Type</a></code></h4>
+<h4 id='method.into_bytes' class='method'><code>fn <a href='#method.into_bytes' class='fnname'>into_bytes</a>(self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>&gt;&gt;</code></h4>
+<h4 id='method.into_string' class='method'><code>fn <a href='#method.into_string' class='fnname'>into_string</a>(self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>, <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.FromUtf8Error.html' title='collections::string::FromUtf8Error'>FromUtf8Error</a>&gt;&gt;</code></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl&lt;'a&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='../../gpgme/data/struct.Data.html' title='gpgme::data::Data'>Data</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.drop' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#tymethod.drop' class='fnname'>drop</a>(&amp;mut self)</code></h4>
+</div><h3 class='impl'><code>impl&lt;'a&gt; <a class='trait' href='../../gpgme/trait.Wrapper.html' title='gpgme::Wrapper'>Wrapper</a> for <a class='struct' href='../../gpgme/data/struct.Data.html' title='gpgme::data::Data'>Data</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='associatedtype.Raw' class='type'><code>type <a href='../../gpgme/trait.Wrapper.html#associatedtype.Raw' class='type'>Raw</a> = <a class='type' href='../../gpgme_sys/types/type.gpgme_data_t.html' title='gpgme_sys::types::gpgme_data_t'>gpgme_data_t</a></code></h4>
+<h4 id='method.from_raw' class='method'><code>unsafe fn <a href='../../gpgme/trait.Wrapper.html#tymethod.from_raw' class='fnname'>from_raw</a>&lt;'b&gt;(raw: <a class='type' href='../../gpgme_sys/types/type.gpgme_data_t.html' title='gpgme_sys::types::gpgme_data_t'>gpgme_data_t</a>) -&gt; <a class='struct' href='../../gpgme/data/struct.Data.html' title='gpgme::data::Data'>Data</a>&lt;'b&gt;</code></h4>
+<h4 id='method.as_raw' class='method'><code>fn <a href='../../gpgme/trait.Wrapper.html#tymethod.as_raw' class='fnname'>as_raw</a>(&amp;self) -&gt; <a class='type' href='../../gpgme_sys/types/type.gpgme_data_t.html' title='gpgme_sys::types::gpgme_data_t'>gpgme_data_t</a></code></h4>
+<h4 id='method.into_raw' class='method'><code>fn <a href='../../gpgme/trait.Wrapper.html#method.into_raw' class='fnname'>into_raw</a>(self) -&gt; Self::<a class='trait' href='../../gpgme/trait.Wrapper.html' title='gpgme::Wrapper'>Raw</a> <span class='where'>where Self: <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html' title='core::marker::Sized'>Sized</a></span></code></h4>
+</div><h3 class='impl'><code>impl&lt;'a&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/std/io/trait.Read.html' title='std::io::Read'>Read</a> for <a class='struct' href='../../gpgme/data/struct.Data.html' title='gpgme::data::Data'>Data</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.read' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/std/io/trait.Read.html#tymethod.read' class='fnname'>read</a>(&amp;mut self, buf: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;mut [</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/std/io/error/type.Result.html' title='std::io::error::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>&gt;</code></h4>
+<h4 id='method.read_to_end' class='method'><span class="since">1.0.0</span><code>fn <a href='https://doc.rust-lang.org/nightly/std/io/trait.Read.html#method.read_to_end' class='fnname'>read_to_end</a>(&amp;mut self, buf: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>&gt;) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, <a class='struct' href='https://doc.rust-lang.org/nightly/std/io/error/struct.Error.html' title='std::io::error::Error'>Error</a>&gt;</code></h4>
+<h4 id='method.read_to_string' class='method'><span class="since">1.0.0</span><code>fn <a href='https://doc.rust-lang.org/nightly/std/io/trait.Read.html#method.read_to_string' class='fnname'>read_to_string</a>(&amp;mut self, buf: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, <a class='struct' href='https://doc.rust-lang.org/nightly/std/io/error/struct.Error.html' title='std::io::error::Error'>Error</a>&gt;</code></h4>
+<h4 id='method.read_exact' class='method'><span class="since">1.6.0</span><code>fn <a href='https://doc.rust-lang.org/nightly/std/io/trait.Read.html#method.read_exact' class='fnname'>read_exact</a>(&amp;mut self, buf: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;mut [</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, <a class='struct' href='https://doc.rust-lang.org/nightly/std/io/error/struct.Error.html' title='std::io::error::Error'>Error</a>&gt;</code></h4>
+<h4 id='method.by_ref' class='method'><span class="since">1.0.0</span><code>fn <a href='https://doc.rust-lang.org/nightly/std/io/trait.Read.html#method.by_ref' class='fnname'>by_ref</a>(&amp;mut self) -&gt; &amp;mut Self</code></h4>
+<h4 id='method.bytes' class='method'><span class="since">1.0.0</span><code>fn <a href='https://doc.rust-lang.org/nightly/std/io/trait.Read.html#method.bytes' class='fnname'>bytes</a>(self) -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/std/io/struct.Bytes.html' title='std::io::Bytes'>Bytes</a>&lt;Self&gt;</code></h4>
+<h4 id='method.chars' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/std/io/trait.Read.html#method.chars' class='fnname'>chars</a>(self) -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/std/io/struct.Chars.html' title='std::io::Chars'>Chars</a>&lt;Self&gt;</code></h4>
+<h4 id='method.chain' class='method'><span class="since">1.0.0</span><code>fn <a href='https://doc.rust-lang.org/nightly/std/io/trait.Read.html#method.chain' class='fnname'>chain</a>&lt;R&gt;(self, next: R) -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/std/io/struct.Chain.html' title='std::io::Chain'>Chain</a>&lt;Self, R&gt; <span class='where'>where R: <a class='trait' href='https://doc.rust-lang.org/nightly/std/io/trait.Read.html' title='std::io::Read'>Read</a></span></code></h4>
+<h4 id='method.take' class='method'><span class="since">1.0.0</span><code>fn <a href='https://doc.rust-lang.org/nightly/std/io/trait.Read.html#method.take' class='fnname'>take</a>(self, limit: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>) -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/std/io/struct.Take.html' title='std::io::Take'>Take</a>&lt;Self&gt;</code></h4>
+</div><h3 class='impl'><code>impl&lt;'a&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/std/io/trait.Write.html' title='std::io::Write'>Write</a> for <a class='struct' href='../../gpgme/data/struct.Data.html' title='gpgme::data::Data'>Data</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.write' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/std/io/trait.Write.html#tymethod.write' class='fnname'>write</a>(&amp;mut self, buf: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/std/io/error/type.Result.html' title='std::io::error::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>&gt;</code></h4>
+<h4 id='method.flush' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/std/io/trait.Write.html#tymethod.flush' class='fnname'>flush</a>(&amp;mut self) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/std/io/error/type.Result.html' title='std::io::error::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<h4 id='method.write_all' class='method'><span class="since">1.0.0</span><code>fn <a href='https://doc.rust-lang.org/nightly/std/io/trait.Write.html#method.write_all' class='fnname'>write_all</a>(&amp;mut self, buf: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, <a class='struct' href='https://doc.rust-lang.org/nightly/std/io/error/struct.Error.html' title='std::io::error::Error'>Error</a>&gt;</code></h4>
+<h4 id='method.write_fmt' class='method'><span class="since">1.0.0</span><code>fn <a href='https://doc.rust-lang.org/nightly/std/io/trait.Write.html#method.write_fmt' class='fnname'>write_fmt</a>(&amp;mut self, fmt: <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Arguments.html' title='core::fmt::Arguments'>Arguments</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, <a class='struct' href='https://doc.rust-lang.org/nightly/std/io/error/struct.Error.html' title='std::io::error::Error'>Error</a>&gt;</code></h4>
+<h4 id='method.by_ref-1' class='method'><span class="since">1.0.0</span><code>fn <a href='https://doc.rust-lang.org/nightly/std/io/trait.Write.html#method.by_ref' class='fnname'>by_ref</a>(&amp;mut self) -&gt; &amp;mut Self</code></h4>
+</div><h3 class='impl'><code>impl&lt;'a&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/std/io/trait.Seek.html' title='std::io::Seek'>Seek</a> for <a class='struct' href='../../gpgme/data/struct.Data.html' title='gpgme::data::Data'>Data</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.seek' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/std/io/trait.Seek.html#tymethod.seek' class='fnname'>seek</a>(&amp;mut self, pos: <a class='enum' href='https://doc.rust-lang.org/nightly/std/io/enum.SeekFrom.html' title='std::io::SeekFrom'>SeekFrom</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/std/io/error/type.Result.html' title='std::io::error::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>&gt;</code></h4>
+</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl&lt;'a&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../gpgme/data/struct.Data.html' title='gpgme::data::Data'>Data</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "gpgme";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `edit` mod in crate `gpgme`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, edit">
+
+    <title>gpgme::edit - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>gpgme</a></p><script>window.sidebarCurrent = {name: 'edit', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>gpgme</a>::<wbr><a class='mod' href=''>edit</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-2011' class='srclink' href='../../src/gpgme/edit.rs.html#1-172' title='goto source code'>[src]</a></span></h1>
+<h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>pub use context::{<a class='trait' href='../../gpgme/context/trait.EditHandler.html' title='gpgme::context::EditHandler'>EditHandler</a>, <a class='struct' href='../../gpgme/context/struct.EditStatus.html' title='gpgme::context::EditStatus'>EditStatus</a>};</code></td></tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.EditorWrapper.html'
+                                  title='gpgme::edit::EditorWrapper'>EditorWrapper</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.StatusCode.html'
+                                  title='gpgme::edit::StatusCode'>StatusCode</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.CONFIRM_CANCEL.html'
+                                  title='gpgme::edit::CONFIRM_CANCEL'>CONFIRM_CANCEL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.CONFIRM_CREATE_KEY.html'
+                                  title='gpgme::edit::CONFIRM_CREATE_KEY'>CONFIRM_CREATE_KEY</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.CONFIRM_KEY_VALID.html'
+                                  title='gpgme::edit::CONFIRM_KEY_VALID'>CONFIRM_KEY_VALID</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.CONFIRM_SAVE.html'
+                                  title='gpgme::edit::CONFIRM_SAVE'>CONFIRM_SAVE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.KEY_ALGORITHM.html'
+                                  title='gpgme::edit::KEY_ALGORITHM'>KEY_ALGORITHM</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.KEY_COMMENT.html'
+                                  title='gpgme::edit::KEY_COMMENT'>KEY_COMMENT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.KEY_CURVE.html'
+                                  title='gpgme::edit::KEY_CURVE'>KEY_CURVE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.KEY_EMAIL.html'
+                                  title='gpgme::edit::KEY_EMAIL'>KEY_EMAIL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.KEY_FLAGS.html'
+                                  title='gpgme::edit::KEY_FLAGS'>KEY_FLAGS</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.KEY_NAME.html'
+                                  title='gpgme::edit::KEY_NAME'>KEY_NAME</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.KEY_SIZE.html'
+                                  title='gpgme::edit::KEY_SIZE'>KEY_SIZE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.KEY_UID_COMMAND.html'
+                                  title='gpgme::edit::KEY_UID_COMMAND'>KEY_UID_COMMAND</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.KEY_VALID.html'
+                                  title='gpgme::edit::KEY_VALID'>KEY_VALID</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.NO.html'
+                                  title='gpgme::edit::NO'>NO</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PROMPT.html'
+                                  title='gpgme::edit::PROMPT'>PROMPT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.QUIT.html'
+                                  title='gpgme::edit::QUIT'>QUIT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SAVE.html'
+                                  title='gpgme::edit::SAVE'>SAVE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_ABORT.html'
+                                  title='gpgme::edit::STATUS_ABORT'>STATUS_ABORT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_ALREADY_SIGNED.html'
+                                  title='gpgme::edit::STATUS_ALREADY_SIGNED'>STATUS_ALREADY_SIGNED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_ATTRIBUTE.html'
+                                  title='gpgme::edit::STATUS_ATTRIBUTE'>STATUS_ATTRIBUTE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_BACKUP_KEY_CREATED.html'
+                                  title='gpgme::edit::STATUS_BACKUP_KEY_CREATED'>STATUS_BACKUP_KEY_CREATED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_BADARMOR.html'
+                                  title='gpgme::edit::STATUS_BADARMOR'>STATUS_BADARMOR</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_BADMDC.html'
+                                  title='gpgme::edit::STATUS_BADMDC'>STATUS_BADMDC</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_BADSIG.html'
+                                  title='gpgme::edit::STATUS_BADSIG'>STATUS_BADSIG</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_BAD_PASSPHRASE.html'
+                                  title='gpgme::edit::STATUS_BAD_PASSPHRASE'>STATUS_BAD_PASSPHRASE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_BEGIN_DECRYPTION.html'
+                                  title='gpgme::edit::STATUS_BEGIN_DECRYPTION'>STATUS_BEGIN_DECRYPTION</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_BEGIN_ENCRYPTION.html'
+                                  title='gpgme::edit::STATUS_BEGIN_ENCRYPTION'>STATUS_BEGIN_ENCRYPTION</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_BEGIN_SIGNING.html'
+                                  title='gpgme::edit::STATUS_BEGIN_SIGNING'>STATUS_BEGIN_SIGNING</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_BEGIN_STREAM.html'
+                                  title='gpgme::edit::STATUS_BEGIN_STREAM'>STATUS_BEGIN_STREAM</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_CARDCTRL.html'
+                                  title='gpgme::edit::STATUS_CARDCTRL'>STATUS_CARDCTRL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_DECRYPTION_FAILED.html'
+                                  title='gpgme::edit::STATUS_DECRYPTION_FAILED'>STATUS_DECRYPTION_FAILED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_DECRYPTION_INFO.html'
+                                  title='gpgme::edit::STATUS_DECRYPTION_INFO'>STATUS_DECRYPTION_INFO</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_DECRYPTION_OKAY.html'
+                                  title='gpgme::edit::STATUS_DECRYPTION_OKAY'>STATUS_DECRYPTION_OKAY</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_DELETE_PROBLEM.html'
+                                  title='gpgme::edit::STATUS_DELETE_PROBLEM'>STATUS_DELETE_PROBLEM</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_ENC_TO.html'
+                                  title='gpgme::edit::STATUS_ENC_TO'>STATUS_ENC_TO</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_END_DECRYPTION.html'
+                                  title='gpgme::edit::STATUS_END_DECRYPTION'>STATUS_END_DECRYPTION</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_END_ENCRYPTION.html'
+                                  title='gpgme::edit::STATUS_END_ENCRYPTION'>STATUS_END_ENCRYPTION</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_END_STREAM.html'
+                                  title='gpgme::edit::STATUS_END_STREAM'>STATUS_END_STREAM</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_ENTER.html'
+                                  title='gpgme::edit::STATUS_ENTER'>STATUS_ENTER</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_EOF.html'
+                                  title='gpgme::edit::STATUS_EOF'>STATUS_EOF</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_ERRMDC.html'
+                                  title='gpgme::edit::STATUS_ERRMDC'>STATUS_ERRMDC</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_ERROR.html'
+                                  title='gpgme::edit::STATUS_ERROR'>STATUS_ERROR</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_ERRSIG.html'
+                                  title='gpgme::edit::STATUS_ERRSIG'>STATUS_ERRSIG</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_EXPKEYSIG.html'
+                                  title='gpgme::edit::STATUS_EXPKEYSIG'>STATUS_EXPKEYSIG</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_EXPSIG.html'
+                                  title='gpgme::edit::STATUS_EXPSIG'>STATUS_EXPSIG</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_FILE_DONE.html'
+                                  title='gpgme::edit::STATUS_FILE_DONE'>STATUS_FILE_DONE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_FILE_ERROR.html'
+                                  title='gpgme::edit::STATUS_FILE_ERROR'>STATUS_FILE_ERROR</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_FILE_START.html'
+                                  title='gpgme::edit::STATUS_FILE_START'>STATUS_FILE_START</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_GET_BOOL.html'
+                                  title='gpgme::edit::STATUS_GET_BOOL'>STATUS_GET_BOOL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_GET_HIDDEN.html'
+                                  title='gpgme::edit::STATUS_GET_HIDDEN'>STATUS_GET_HIDDEN</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_GET_LINE.html'
+                                  title='gpgme::edit::STATUS_GET_LINE'>STATUS_GET_LINE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_GOODMDC.html'
+                                  title='gpgme::edit::STATUS_GOODMDC'>STATUS_GOODMDC</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_GOODSIG.html'
+                                  title='gpgme::edit::STATUS_GOODSIG'>STATUS_GOODSIG</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_GOOD_PASSPHRASE.html'
+                                  title='gpgme::edit::STATUS_GOOD_PASSPHRASE'>STATUS_GOOD_PASSPHRASE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_GOT_IT.html'
+                                  title='gpgme::edit::STATUS_GOT_IT'>STATUS_GOT_IT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_IMPORTED.html'
+                                  title='gpgme::edit::STATUS_IMPORTED'>STATUS_IMPORTED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_IMPORT_OK.html'
+                                  title='gpgme::edit::STATUS_IMPORT_OK'>STATUS_IMPORT_OK</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_IMPORT_PROBLEM.html'
+                                  title='gpgme::edit::STATUS_IMPORT_PROBLEM'>STATUS_IMPORT_PROBLEM</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_IMPORT_RES.html'
+                                  title='gpgme::edit::STATUS_IMPORT_RES'>STATUS_IMPORT_RES</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_INV_RECP.html'
+                                  title='gpgme::edit::STATUS_INV_RECP'>STATUS_INV_RECP</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_INV_SGNR.html'
+                                  title='gpgme::edit::STATUS_INV_SGNR'>STATUS_INV_SGNR</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_KEYEXPIRED.html'
+                                  title='gpgme::edit::STATUS_KEYEXPIRED'>STATUS_KEYEXPIRED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_KEYREVOKED.html'
+                                  title='gpgme::edit::STATUS_KEYREVOKED'>STATUS_KEYREVOKED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_KEY_CREATED.html'
+                                  title='gpgme::edit::STATUS_KEY_CREATED'>STATUS_KEY_CREATED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_KEY_NOT_CREATED.html'
+                                  title='gpgme::edit::STATUS_KEY_NOT_CREATED'>STATUS_KEY_NOT_CREATED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_LEAVE.html'
+                                  title='gpgme::edit::STATUS_LEAVE'>STATUS_LEAVE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_MISSING_PASSPHRASE.html'
+                                  title='gpgme::edit::STATUS_MISSING_PASSPHRASE'>STATUS_MISSING_PASSPHRASE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_MOUNTPOINT.html'
+                                  title='gpgme::edit::STATUS_MOUNTPOINT'>STATUS_MOUNTPOINT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_NEED_PASSPHRASE.html'
+                                  title='gpgme::edit::STATUS_NEED_PASSPHRASE'>STATUS_NEED_PASSPHRASE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_NEED_PASSPHRASE_PIN.html'
+                                  title='gpgme::edit::STATUS_NEED_PASSPHRASE_PIN'>STATUS_NEED_PASSPHRASE_PIN</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_NEED_PASSPHRASE_SYM.html'
+                                  title='gpgme::edit::STATUS_NEED_PASSPHRASE_SYM'>STATUS_NEED_PASSPHRASE_SYM</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_NEWSIG.html'
+                                  title='gpgme::edit::STATUS_NEWSIG'>STATUS_NEWSIG</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_NODATA.html'
+                                  title='gpgme::edit::STATUS_NODATA'>STATUS_NODATA</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_NOTATION_DATA.html'
+                                  title='gpgme::edit::STATUS_NOTATION_DATA'>STATUS_NOTATION_DATA</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_NOTATION_NAME.html'
+                                  title='gpgme::edit::STATUS_NOTATION_NAME'>STATUS_NOTATION_NAME</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_NO_PUBKEY.html'
+                                  title='gpgme::edit::STATUS_NO_PUBKEY'>STATUS_NO_PUBKEY</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_NO_RECP.html'
+                                  title='gpgme::edit::STATUS_NO_RECP'>STATUS_NO_RECP</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_NO_SECKEY.html'
+                                  title='gpgme::edit::STATUS_NO_SECKEY'>STATUS_NO_SECKEY</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_NO_SGNR.html'
+                                  title='gpgme::edit::STATUS_NO_SGNR'>STATUS_NO_SGNR</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_PINENTRY_LAUNCHED.html'
+                                  title='gpgme::edit::STATUS_PINENTRY_LAUNCHED'>STATUS_PINENTRY_LAUNCHED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_PKA_TRUST_BAD.html'
+                                  title='gpgme::edit::STATUS_PKA_TRUST_BAD'>STATUS_PKA_TRUST_BAD</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_PKA_TRUST_GOOD.html'
+                                  title='gpgme::edit::STATUS_PKA_TRUST_GOOD'>STATUS_PKA_TRUST_GOOD</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_PLAINTEXT.html'
+                                  title='gpgme::edit::STATUS_PLAINTEXT'>STATUS_PLAINTEXT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_PLAINTEXT_LENGTH.html'
+                                  title='gpgme::edit::STATUS_PLAINTEXT_LENGTH'>STATUS_PLAINTEXT_LENGTH</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_POLICY_URL.html'
+                                  title='gpgme::edit::STATUS_POLICY_URL'>STATUS_POLICY_URL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_PROGRESS.html'
+                                  title='gpgme::edit::STATUS_PROGRESS'>STATUS_PROGRESS</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_REVKEYSIG.html'
+                                  title='gpgme::edit::STATUS_REVKEYSIG'>STATUS_REVKEYSIG</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_RSA_OR_IDEA.html'
+                                  title='gpgme::edit::STATUS_RSA_OR_IDEA'>STATUS_RSA_OR_IDEA</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_SC_OP_FAILURE.html'
+                                  title='gpgme::edit::STATUS_SC_OP_FAILURE'>STATUS_SC_OP_FAILURE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_SC_OP_SUCCESS.html'
+                                  title='gpgme::edit::STATUS_SC_OP_SUCCESS'>STATUS_SC_OP_SUCCESS</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_SESSION_KEY.html'
+                                  title='gpgme::edit::STATUS_SESSION_KEY'>STATUS_SESSION_KEY</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_SHM_GET.html'
+                                  title='gpgme::edit::STATUS_SHM_GET'>STATUS_SHM_GET</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_SHM_GET_BOOL.html'
+                                  title='gpgme::edit::STATUS_SHM_GET_BOOL'>STATUS_SHM_GET_BOOL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_SHM_GET_HIDDEN.html'
+                                  title='gpgme::edit::STATUS_SHM_GET_HIDDEN'>STATUS_SHM_GET_HIDDEN</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_SHM_INFO.html'
+                                  title='gpgme::edit::STATUS_SHM_INFO'>STATUS_SHM_INFO</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_SIGEXPIRED.html'
+                                  title='gpgme::edit::STATUS_SIGEXPIRED'>STATUS_SIGEXPIRED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_SIG_CREATED.html'
+                                  title='gpgme::edit::STATUS_SIG_CREATED'>STATUS_SIG_CREATED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_SIG_ID.html'
+                                  title='gpgme::edit::STATUS_SIG_ID'>STATUS_SIG_ID</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_SIG_SUBPACKET.html'
+                                  title='gpgme::edit::STATUS_SIG_SUBPACKET'>STATUS_SIG_SUBPACKET</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_SUCCESS.html'
+                                  title='gpgme::edit::STATUS_SUCCESS'>STATUS_SUCCESS</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_TRUNCATED.html'
+                                  title='gpgme::edit::STATUS_TRUNCATED'>STATUS_TRUNCATED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_TRUST_FULLY.html'
+                                  title='gpgme::edit::STATUS_TRUST_FULLY'>STATUS_TRUST_FULLY</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_TRUST_MARGINAL.html'
+                                  title='gpgme::edit::STATUS_TRUST_MARGINAL'>STATUS_TRUST_MARGINAL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_TRUST_NEVER.html'
+                                  title='gpgme::edit::STATUS_TRUST_NEVER'>STATUS_TRUST_NEVER</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_TRUST_ULTIMATE.html'
+                                  title='gpgme::edit::STATUS_TRUST_ULTIMATE'>STATUS_TRUST_ULTIMATE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_TRUST_UNDEFINED.html'
+                                  title='gpgme::edit::STATUS_TRUST_UNDEFINED'>STATUS_TRUST_UNDEFINED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_UNEXPECTED.html'
+                                  title='gpgme::edit::STATUS_UNEXPECTED'>STATUS_UNEXPECTED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_USERID_HINT.html'
+                                  title='gpgme::edit::STATUS_USERID_HINT'>STATUS_USERID_HINT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.STATUS_VALIDSIG.html'
+                                  title='gpgme::edit::STATUS_VALIDSIG'>STATUS_VALIDSIG</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.YES.html'
+                                  title='gpgme::edit::YES'>YES</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='trait' href='trait.Editor.html'
+                                  title='gpgme::edit::Editor'>Editor</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "gpgme";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

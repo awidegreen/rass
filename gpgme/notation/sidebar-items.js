@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["CRITICAL",""],["HUMAN_READABLE",""]],"struct":[["Flags",""],["SignatureNotation",""],["SignatureNotationIter",""]]});

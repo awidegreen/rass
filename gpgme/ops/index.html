@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `ops` mod in crate `gpgme`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, ops">
+
+    <title>gpgme::ops - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>gpgme</a></p><script>window.sidebarCurrent = {name: 'ops', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>gpgme</a>::<wbr><a class='mod' href=''>ops</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-2481' class='srclink' href='../../src/gpgme/ops.rs.html#1-509' title='goto source code'>[src]</a></span></h1>
+<h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.DecryptResult.html'
+                                  title='gpgme::ops::DecryptResult'>DecryptResult</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.EncryptFlags.html'
+                                  title='gpgme::ops::EncryptFlags'>EncryptFlags</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.EncryptResult.html'
+                                  title='gpgme::ops::EncryptResult'>EncryptResult</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.ExportMode.html'
+                                  title='gpgme::ops::ExportMode'>ExportMode</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.ImportFlags.html'
+                                  title='gpgme::ops::ImportFlags'>ImportFlags</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.ImportResult.html'
+                                  title='gpgme::ops::ImportResult'>ImportResult</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.ImportStatus.html'
+                                  title='gpgme::ops::ImportStatus'>ImportStatus</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.ImportStatusIter.html'
+                                  title='gpgme::ops::ImportStatusIter'>ImportStatusIter</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.InvalidKey.html'
+                                  title='gpgme::ops::InvalidKey'>InvalidKey</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.InvalidKeyIter.html'
+                                  title='gpgme::ops::InvalidKeyIter'>InvalidKeyIter</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.KeyGenerateResult.html'
+                                  title='gpgme::ops::KeyGenerateResult'>KeyGenerateResult</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.KeyListMode.html'
+                                  title='gpgme::ops::KeyListMode'>KeyListMode</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.KeyListResult.html'
+                                  title='gpgme::ops::KeyListResult'>KeyListResult</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.NewSignature.html'
+                                  title='gpgme::ops::NewSignature'>NewSignature</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.NewSignatureIter.html'
+                                  title='gpgme::ops::NewSignatureIter'>NewSignatureIter</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.PkaTrust.html'
+                                  title='gpgme::ops::PkaTrust'>PkaTrust</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Recipient.html'
+                                  title='gpgme::ops::Recipient'>Recipient</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.RecipientIter.html'
+                                  title='gpgme::ops::RecipientIter'>RecipientIter</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.SignMode.html'
+                                  title='gpgme::ops::SignMode'>SignMode</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.SignResult.html'
+                                  title='gpgme::ops::SignResult'>SignResult</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Signature.html'
+                                  title='gpgme::ops::Signature'>Signature</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.SignatureIter.html'
+                                  title='gpgme::ops::SignatureIter'>SignatureIter</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.SignatureSummary.html'
+                                  title='gpgme::ops::SignatureSummary'>SignatureSummary</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.VerifyResult.html'
+                                  title='gpgme::ops::VerifyResult'>VerifyResult</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.ENCRYPT_ALWAYS_TRUST.html'
+                                  title='gpgme::ops::ENCRYPT_ALWAYS_TRUST'>ENCRYPT_ALWAYS_TRUST</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.ENCRYPT_EXPECT_SIGN.html'
+                                  title='gpgme::ops::ENCRYPT_EXPECT_SIGN'>ENCRYPT_EXPECT_SIGN</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.ENCRYPT_NO_COMPRESS.html'
+                                  title='gpgme::ops::ENCRYPT_NO_COMPRESS'>ENCRYPT_NO_COMPRESS</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.ENCRYPT_NO_ENCRYPT_TO.html'
+                                  title='gpgme::ops::ENCRYPT_NO_ENCRYPT_TO'>ENCRYPT_NO_ENCRYPT_TO</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.ENCRYPT_PREPARE.html'
+                                  title='gpgme::ops::ENCRYPT_PREPARE'>ENCRYPT_PREPARE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.EXPORT_EXTERN.html'
+                                  title='gpgme::ops::EXPORT_EXTERN'>EXPORT_EXTERN</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.EXPORT_MINIMAL.html'
+                                  title='gpgme::ops::EXPORT_MINIMAL'>EXPORT_MINIMAL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.EXPORT_PKCS12.html'
+                                  title='gpgme::ops::EXPORT_PKCS12'>EXPORT_PKCS12</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.EXPORT_RAW.html'
+                                  title='gpgme::ops::EXPORT_RAW'>EXPORT_RAW</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.EXPORT_SECRET.html'
+                                  title='gpgme::ops::EXPORT_SECRET'>EXPORT_SECRET</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.IMPORT_NEW.html'
+                                  title='gpgme::ops::IMPORT_NEW'>IMPORT_NEW</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.IMPORT_SECRET.html'
+                                  title='gpgme::ops::IMPORT_SECRET'>IMPORT_SECRET</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.IMPORT_SIG.html'
+                                  title='gpgme::ops::IMPORT_SIG'>IMPORT_SIG</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.IMPORT_SUBKEY.html'
+                                  title='gpgme::ops::IMPORT_SUBKEY'>IMPORT_SUBKEY</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.IMPORT_UID.html'
+                                  title='gpgme::ops::IMPORT_UID'>IMPORT_UID</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.KEY_LIST_MODE_EPHEMERAL.html'
+                                  title='gpgme::ops::KEY_LIST_MODE_EPHEMERAL'>KEY_LIST_MODE_EPHEMERAL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.KEY_LIST_MODE_EXTERN.html'
+                                  title='gpgme::ops::KEY_LIST_MODE_EXTERN'>KEY_LIST_MODE_EXTERN</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.KEY_LIST_MODE_LOCAL.html'
+                                  title='gpgme::ops::KEY_LIST_MODE_LOCAL'>KEY_LIST_MODE_LOCAL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.KEY_LIST_MODE_SIGS.html'
+                                  title='gpgme::ops::KEY_LIST_MODE_SIGS'>KEY_LIST_MODE_SIGS</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.KEY_LIST_MODE_SIG_NOTATIONS.html'
+                                  title='gpgme::ops::KEY_LIST_MODE_SIG_NOTATIONS'>KEY_LIST_MODE_SIG_NOTATIONS</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.KEY_LIST_MODE_VALIDATE.html'
+                                  title='gpgme::ops::KEY_LIST_MODE_VALIDATE'>KEY_LIST_MODE_VALIDATE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PKA_TRUST_BAD.html'
+                                  title='gpgme::ops::PKA_TRUST_BAD'>PKA_TRUST_BAD</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PKA_TRUST_NO_INFO.html'
+                                  title='gpgme::ops::PKA_TRUST_NO_INFO'>PKA_TRUST_NO_INFO</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PKA_TRUST_OKAY.html'
+                                  title='gpgme::ops::PKA_TRUST_OKAY'>PKA_TRUST_OKAY</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SIGNATURE_BAD_POLICY.html'
+                                  title='gpgme::ops::SIGNATURE_BAD_POLICY'>SIGNATURE_BAD_POLICY</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SIGNATURE_CRL_MISSING.html'
+                                  title='gpgme::ops::SIGNATURE_CRL_MISSING'>SIGNATURE_CRL_MISSING</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SIGNATURE_CRL_TOO_OLD.html'
+                                  title='gpgme::ops::SIGNATURE_CRL_TOO_OLD'>SIGNATURE_CRL_TOO_OLD</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SIGNATURE_GREEN.html'
+                                  title='gpgme::ops::SIGNATURE_GREEN'>SIGNATURE_GREEN</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SIGNATURE_KEY_EXPIRED.html'
+                                  title='gpgme::ops::SIGNATURE_KEY_EXPIRED'>SIGNATURE_KEY_EXPIRED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SIGNATURE_KEY_MISSING.html'
+                                  title='gpgme::ops::SIGNATURE_KEY_MISSING'>SIGNATURE_KEY_MISSING</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SIGNATURE_KEY_REVOKED.html'
+                                  title='gpgme::ops::SIGNATURE_KEY_REVOKED'>SIGNATURE_KEY_REVOKED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SIGNATURE_RED.html'
+                                  title='gpgme::ops::SIGNATURE_RED'>SIGNATURE_RED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SIGNATURE_SIG_EXPIRED.html'
+                                  title='gpgme::ops::SIGNATURE_SIG_EXPIRED'>SIGNATURE_SIG_EXPIRED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SIGNATURE_SYS_ERROR.html'
+                                  title='gpgme::ops::SIGNATURE_SYS_ERROR'>SIGNATURE_SYS_ERROR</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SIGNATURE_VALID.html'
+                                  title='gpgme::ops::SIGNATURE_VALID'>SIGNATURE_VALID</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SIGN_MODE_CLEAR.html'
+                                  title='gpgme::ops::SIGN_MODE_CLEAR'>SIGN_MODE_CLEAR</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SIGN_MODE_DETACH.html'
+                                  title='gpgme::ops::SIGN_MODE_DETACH'>SIGN_MODE_DETACH</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SIGN_MODE_NORMAL.html'
+                                  title='gpgme::ops::SIGN_MODE_NORMAL'>SIGN_MODE_NORMAL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='trait' href='trait.OpResult.html'
+                                  title='gpgme::ops::OpResult'>OpResult</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "gpgme";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

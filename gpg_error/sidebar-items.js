@@ -1,0 +1,1 @@
+initSidebarItems({"macro":[["return_err!",""]],"struct":[["Error","A type wrapping errors produced by GPG libraries."]],"type":[["ErrorCode",""],["ErrorSource",""],["Result",""]]});

@@ -1,0 +1,3416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `gpgme_sys` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, gpgme_sys">
+
+    <title>gpgme_sys - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'gpgme_sys', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>gpgme_sys</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-0' class='srclink' href='../src/gpgme_sys/lib.rs.html#1-13' title='goto source code'>[src]</a></span></h1>
+<h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>pub use libgpg_error_sys::<a class='mod' href='../libgpg_error_sys/consts/index.html' title='libgpg_error_sys::consts'>consts</a>::*;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='errors/index.html'
+                                  title='gpgme_sys::errors'>errors</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct._gpgme_engine_info.html'
+                                  title='gpgme_sys::_gpgme_engine_info'>_gpgme_engine_info</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct._gpgme_import_status.html'
+                                  title='gpgme_sys::_gpgme_import_status'>_gpgme_import_status</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct._gpgme_invalid_key.html'
+                                  title='gpgme_sys::_gpgme_invalid_key'>_gpgme_invalid_key</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct._gpgme_key.html'
+                                  title='gpgme_sys::_gpgme_key'>_gpgme_key</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct._gpgme_key_sig.html'
+                                  title='gpgme_sys::_gpgme_key_sig'>_gpgme_key_sig</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct._gpgme_new_signature.html'
+                                  title='gpgme_sys::_gpgme_new_signature'>_gpgme_new_signature</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct._gpgme_op_decrypt_result.html'
+                                  title='gpgme_sys::_gpgme_op_decrypt_result'>_gpgme_op_decrypt_result</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct._gpgme_op_encrypt_result.html'
+                                  title='gpgme_sys::_gpgme_op_encrypt_result'>_gpgme_op_encrypt_result</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct._gpgme_op_genkey_result.html'
+                                  title='gpgme_sys::_gpgme_op_genkey_result'>_gpgme_op_genkey_result</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct._gpgme_op_import_result.html'
+                                  title='gpgme_sys::_gpgme_op_import_result'>_gpgme_op_import_result</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct._gpgme_op_keylist_result.html'
+                                  title='gpgme_sys::_gpgme_op_keylist_result'>_gpgme_op_keylist_result</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct._gpgme_op_sign_result.html'
+                                  title='gpgme_sys::_gpgme_op_sign_result'>_gpgme_op_sign_result</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct._gpgme_op_verify_result.html'
+                                  title='gpgme_sys::_gpgme_op_verify_result'>_gpgme_op_verify_result</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct._gpgme_op_vfs_mount_result.html'
+                                  title='gpgme_sys::_gpgme_op_vfs_mount_result'>_gpgme_op_vfs_mount_result</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct._gpgme_recipient.html'
+                                  title='gpgme_sys::_gpgme_recipient'>_gpgme_recipient</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct._gpgme_sig_notation.html'
+                                  title='gpgme_sys::_gpgme_sig_notation'>_gpgme_sig_notation</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct._gpgme_signature.html'
+                                  title='gpgme_sys::_gpgme_signature'>_gpgme_signature</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct._gpgme_subkey.html'
+                                  title='gpgme_sys::_gpgme_subkey'>_gpgme_subkey</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct._gpgme_trust_item.html'
+                                  title='gpgme_sys::_gpgme_trust_item'>_gpgme_trust_item</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct._gpgme_user_id.html'
+                                  title='gpgme_sys::_gpgme_user_id'>_gpgme_user_id</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.gpgme_conf_arg.html'
+                                  title='gpgme_sys::gpgme_conf_arg'>gpgme_conf_arg</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.gpgme_conf_comp.html'
+                                  title='gpgme_sys::gpgme_conf_comp'>gpgme_conf_comp</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.gpgme_conf_opt.html'
+                                  title='gpgme_sys::gpgme_conf_opt'>gpgme_conf_opt</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.gpgme_data_cbs.html'
+                                  title='gpgme_sys::gpgme_data_cbs'>gpgme_data_cbs</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.gpgme_io_cbs.html'
+                                  title='gpgme_sys::gpgme_io_cbs'>gpgme_io_cbs</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.gpgme_io_event_done_data.html'
+                                  title='gpgme_sys::gpgme_io_event_done_data'>gpgme_io_event_done_data</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='enum' href='enum.gpgme_context.html'
+                                  title='gpgme_sys::gpgme_context'>gpgme_context</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='enum' href='enum.gpgme_data.html'
+                                  title='gpgme_sys::gpgme_data'>gpgme_data</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_AUDITLOG_HTML.html'
+                                  title='gpgme_sys::GPGME_AUDITLOG_HTML'>GPGME_AUDITLOG_HTML</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_AUDITLOG_WITH_HELP.html'
+                                  title='gpgme_sys::GPGME_AUDITLOG_WITH_HELP'>GPGME_AUDITLOG_WITH_HELP</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_CONF_ADVANCED.html'
+                                  title='gpgme_sys::GPGME_CONF_ADVANCED'>GPGME_CONF_ADVANCED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_CONF_ALIAS_LIST.html'
+                                  title='gpgme_sys::GPGME_CONF_ALIAS_LIST'>GPGME_CONF_ALIAS_LIST</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_CONF_BASIC.html'
+                                  title='gpgme_sys::GPGME_CONF_BASIC'>GPGME_CONF_BASIC</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_CONF_DEFAULT.html'
+                                  title='gpgme_sys::GPGME_CONF_DEFAULT'>GPGME_CONF_DEFAULT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_CONF_DEFAULT_DESC.html'
+                                  title='gpgme_sys::GPGME_CONF_DEFAULT_DESC'>GPGME_CONF_DEFAULT_DESC</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_CONF_EXPERT.html'
+                                  title='gpgme_sys::GPGME_CONF_EXPERT'>GPGME_CONF_EXPERT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_CONF_FILENAME.html'
+                                  title='gpgme_sys::GPGME_CONF_FILENAME'>GPGME_CONF_FILENAME</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_CONF_GROUP.html'
+                                  title='gpgme_sys::GPGME_CONF_GROUP'>GPGME_CONF_GROUP</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_CONF_INT32.html'
+                                  title='gpgme_sys::GPGME_CONF_INT32'>GPGME_CONF_INT32</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_CONF_INTERNAL.html'
+                                  title='gpgme_sys::GPGME_CONF_INTERNAL'>GPGME_CONF_INTERNAL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_CONF_INVISIBLE.html'
+                                  title='gpgme_sys::GPGME_CONF_INVISIBLE'>GPGME_CONF_INVISIBLE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_CONF_KEY_FPR.html'
+                                  title='gpgme_sys::GPGME_CONF_KEY_FPR'>GPGME_CONF_KEY_FPR</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_CONF_LDAP_SERVER.html'
+                                  title='gpgme_sys::GPGME_CONF_LDAP_SERVER'>GPGME_CONF_LDAP_SERVER</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_CONF_LIST.html'
+                                  title='gpgme_sys::GPGME_CONF_LIST'>GPGME_CONF_LIST</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_CONF_NONE.html'
+                                  title='gpgme_sys::GPGME_CONF_NONE'>GPGME_CONF_NONE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_CONF_NO_ARG_DESC.html'
+                                  title='gpgme_sys::GPGME_CONF_NO_ARG_DESC'>GPGME_CONF_NO_ARG_DESC</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_CONF_NO_CHANGE.html'
+                                  title='gpgme_sys::GPGME_CONF_NO_CHANGE'>GPGME_CONF_NO_CHANGE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_CONF_OPTIONAL.html'
+                                  title='gpgme_sys::GPGME_CONF_OPTIONAL'>GPGME_CONF_OPTIONAL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_CONF_PUB_KEY.html'
+                                  title='gpgme_sys::GPGME_CONF_PUB_KEY'>GPGME_CONF_PUB_KEY</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_CONF_RUNTIME.html'
+                                  title='gpgme_sys::GPGME_CONF_RUNTIME'>GPGME_CONF_RUNTIME</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_CONF_SEC_KEY.html'
+                                  title='gpgme_sys::GPGME_CONF_SEC_KEY'>GPGME_CONF_SEC_KEY</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_CONF_STRING.html'
+                                  title='gpgme_sys::GPGME_CONF_STRING'>GPGME_CONF_STRING</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_CONF_UINT32.html'
+                                  title='gpgme_sys::GPGME_CONF_UINT32'>GPGME_CONF_UINT32</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_DATA_ENCODING_ARMOR.html'
+                                  title='gpgme_sys::GPGME_DATA_ENCODING_ARMOR'>GPGME_DATA_ENCODING_ARMOR</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_DATA_ENCODING_BASE64.html'
+                                  title='gpgme_sys::GPGME_DATA_ENCODING_BASE64'>GPGME_DATA_ENCODING_BASE64</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_DATA_ENCODING_BINARY.html'
+                                  title='gpgme_sys::GPGME_DATA_ENCODING_BINARY'>GPGME_DATA_ENCODING_BINARY</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_DATA_ENCODING_NONE.html'
+                                  title='gpgme_sys::GPGME_DATA_ENCODING_NONE'>GPGME_DATA_ENCODING_NONE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_DATA_ENCODING_URL.html'
+                                  title='gpgme_sys::GPGME_DATA_ENCODING_URL'>GPGME_DATA_ENCODING_URL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_DATA_ENCODING_URL0.html'
+                                  title='gpgme_sys::GPGME_DATA_ENCODING_URL0'>GPGME_DATA_ENCODING_URL0</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_DATA_ENCODING_URLESC.html'
+                                  title='gpgme_sys::GPGME_DATA_ENCODING_URLESC'>GPGME_DATA_ENCODING_URLESC</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_DATA_TYPE_CMS_ENCRYPTED.html'
+                                  title='gpgme_sys::GPGME_DATA_TYPE_CMS_ENCRYPTED'>GPGME_DATA_TYPE_CMS_ENCRYPTED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_DATA_TYPE_CMS_OTHER.html'
+                                  title='gpgme_sys::GPGME_DATA_TYPE_CMS_OTHER'>GPGME_DATA_TYPE_CMS_OTHER</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_DATA_TYPE_CMS_SIGNED.html'
+                                  title='gpgme_sys::GPGME_DATA_TYPE_CMS_SIGNED'>GPGME_DATA_TYPE_CMS_SIGNED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_DATA_TYPE_INVALID.html'
+                                  title='gpgme_sys::GPGME_DATA_TYPE_INVALID'>GPGME_DATA_TYPE_INVALID</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_DATA_TYPE_PGP_KEY.html'
+                                  title='gpgme_sys::GPGME_DATA_TYPE_PGP_KEY'>GPGME_DATA_TYPE_PGP_KEY</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_DATA_TYPE_PGP_OTHER.html'
+                                  title='gpgme_sys::GPGME_DATA_TYPE_PGP_OTHER'>GPGME_DATA_TYPE_PGP_OTHER</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_DATA_TYPE_PGP_SIGNED.html'
+                                  title='gpgme_sys::GPGME_DATA_TYPE_PGP_SIGNED'>GPGME_DATA_TYPE_PGP_SIGNED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_DATA_TYPE_PKCS12.html'
+                                  title='gpgme_sys::GPGME_DATA_TYPE_PKCS12'>GPGME_DATA_TYPE_PKCS12</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_DATA_TYPE_UNKNOWN.html'
+                                  title='gpgme_sys::GPGME_DATA_TYPE_UNKNOWN'>GPGME_DATA_TYPE_UNKNOWN</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_DATA_TYPE_X509_CERT.html'
+                                  title='gpgme_sys::GPGME_DATA_TYPE_X509_CERT'>GPGME_DATA_TYPE_X509_CERT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_ENCRYPT_ALWAYS_TRUST.html'
+                                  title='gpgme_sys::GPGME_ENCRYPT_ALWAYS_TRUST'>GPGME_ENCRYPT_ALWAYS_TRUST</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_ENCRYPT_EXPECT_SIGN.html'
+                                  title='gpgme_sys::GPGME_ENCRYPT_EXPECT_SIGN'>GPGME_ENCRYPT_EXPECT_SIGN</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_ENCRYPT_NO_COMPRESS.html'
+                                  title='gpgme_sys::GPGME_ENCRYPT_NO_COMPRESS'>GPGME_ENCRYPT_NO_COMPRESS</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_ENCRYPT_NO_ENCRYPT_TO.html'
+                                  title='gpgme_sys::GPGME_ENCRYPT_NO_ENCRYPT_TO'>GPGME_ENCRYPT_NO_ENCRYPT_TO</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_ENCRYPT_PREPARE.html'
+                                  title='gpgme_sys::GPGME_ENCRYPT_PREPARE'>GPGME_ENCRYPT_PREPARE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_EVENT_DONE.html'
+                                  title='gpgme_sys::GPGME_EVENT_DONE'>GPGME_EVENT_DONE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_EVENT_NEXT_KEY.html'
+                                  title='gpgme_sys::GPGME_EVENT_NEXT_KEY'>GPGME_EVENT_NEXT_KEY</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_EVENT_NEXT_TRUSTITEM.html'
+                                  title='gpgme_sys::GPGME_EVENT_NEXT_TRUSTITEM'>GPGME_EVENT_NEXT_TRUSTITEM</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_EVENT_START.html'
+                                  title='gpgme_sys::GPGME_EVENT_START'>GPGME_EVENT_START</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_EXPORT_MODE_EXTERN.html'
+                                  title='gpgme_sys::GPGME_EXPORT_MODE_EXTERN'>GPGME_EXPORT_MODE_EXTERN</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_EXPORT_MODE_MINIMAL.html'
+                                  title='gpgme_sys::GPGME_EXPORT_MODE_MINIMAL'>GPGME_EXPORT_MODE_MINIMAL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_EXPORT_MODE_PKCS12.html'
+                                  title='gpgme_sys::GPGME_EXPORT_MODE_PKCS12'>GPGME_EXPORT_MODE_PKCS12</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_EXPORT_MODE_RAW.html'
+                                  title='gpgme_sys::GPGME_EXPORT_MODE_RAW'>GPGME_EXPORT_MODE_RAW</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_EXPORT_MODE_SECRET.html'
+                                  title='gpgme_sys::GPGME_EXPORT_MODE_SECRET'>GPGME_EXPORT_MODE_SECRET</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_IMPORT_NEW.html'
+                                  title='gpgme_sys::GPGME_IMPORT_NEW'>GPGME_IMPORT_NEW</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_IMPORT_SECRET.html'
+                                  title='gpgme_sys::GPGME_IMPORT_SECRET'>GPGME_IMPORT_SECRET</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_IMPORT_SIG.html'
+                                  title='gpgme_sys::GPGME_IMPORT_SIG'>GPGME_IMPORT_SIG</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_IMPORT_SUBKEY.html'
+                                  title='gpgme_sys::GPGME_IMPORT_SUBKEY'>GPGME_IMPORT_SUBKEY</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_IMPORT_UID.html'
+                                  title='gpgme_sys::GPGME_IMPORT_UID'>GPGME_IMPORT_UID</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_INCLUDE_CERTS_DEFAULT.html'
+                                  title='gpgme_sys::GPGME_INCLUDE_CERTS_DEFAULT'>GPGME_INCLUDE_CERTS_DEFAULT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_KEYLIST_MODE_EPHEMERAL.html'
+                                  title='gpgme_sys::GPGME_KEYLIST_MODE_EPHEMERAL'>GPGME_KEYLIST_MODE_EPHEMERAL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_KEYLIST_MODE_EXTERN.html'
+                                  title='gpgme_sys::GPGME_KEYLIST_MODE_EXTERN'>GPGME_KEYLIST_MODE_EXTERN</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_KEYLIST_MODE_LOCAL.html'
+                                  title='gpgme_sys::GPGME_KEYLIST_MODE_LOCAL'>GPGME_KEYLIST_MODE_LOCAL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_KEYLIST_MODE_SIGS.html'
+                                  title='gpgme_sys::GPGME_KEYLIST_MODE_SIGS'>GPGME_KEYLIST_MODE_SIGS</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_KEYLIST_MODE_SIG_NOTATIONS.html'
+                                  title='gpgme_sys::GPGME_KEYLIST_MODE_SIG_NOTATIONS'>GPGME_KEYLIST_MODE_SIG_NOTATIONS</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_KEYLIST_MODE_VALIDATE.html'
+                                  title='gpgme_sys::GPGME_KEYLIST_MODE_VALIDATE'>GPGME_KEYLIST_MODE_VALIDATE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_KEYLIST_MODE_WITH_SECRET.html'
+                                  title='gpgme_sys::GPGME_KEYLIST_MODE_WITH_SECRET'>GPGME_KEYLIST_MODE_WITH_SECRET</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_MD_CRC24_RFC2440.html'
+                                  title='gpgme_sys::GPGME_MD_CRC24_RFC2440'>GPGME_MD_CRC24_RFC2440</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_MD_CRC32.html'
+                                  title='gpgme_sys::GPGME_MD_CRC32'>GPGME_MD_CRC32</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_MD_CRC32_RFC1510.html'
+                                  title='gpgme_sys::GPGME_MD_CRC32_RFC1510'>GPGME_MD_CRC32_RFC1510</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_MD_HAVAL.html'
+                                  title='gpgme_sys::GPGME_MD_HAVAL'>GPGME_MD_HAVAL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_MD_MD2.html'
+                                  title='gpgme_sys::GPGME_MD_MD2'>GPGME_MD_MD2</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_MD_MD4.html'
+                                  title='gpgme_sys::GPGME_MD_MD4'>GPGME_MD_MD4</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_MD_MD5.html'
+                                  title='gpgme_sys::GPGME_MD_MD5'>GPGME_MD_MD5</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_MD_NONE.html'
+                                  title='gpgme_sys::GPGME_MD_NONE'>GPGME_MD_NONE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_MD_RMD160.html'
+                                  title='gpgme_sys::GPGME_MD_RMD160'>GPGME_MD_RMD160</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_MD_SHA1.html'
+                                  title='gpgme_sys::GPGME_MD_SHA1'>GPGME_MD_SHA1</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_MD_SHA224.html'
+                                  title='gpgme_sys::GPGME_MD_SHA224'>GPGME_MD_SHA224</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_MD_SHA256.html'
+                                  title='gpgme_sys::GPGME_MD_SHA256'>GPGME_MD_SHA256</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_MD_SHA384.html'
+                                  title='gpgme_sys::GPGME_MD_SHA384'>GPGME_MD_SHA384</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_MD_SHA512.html'
+                                  title='gpgme_sys::GPGME_MD_SHA512'>GPGME_MD_SHA512</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_MD_TIGER.html'
+                                  title='gpgme_sys::GPGME_MD_TIGER'>GPGME_MD_TIGER</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_PINENTRY_MODE_ASK.html'
+                                  title='gpgme_sys::GPGME_PINENTRY_MODE_ASK'>GPGME_PINENTRY_MODE_ASK</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_PINENTRY_MODE_CANCEL.html'
+                                  title='gpgme_sys::GPGME_PINENTRY_MODE_CANCEL'>GPGME_PINENTRY_MODE_CANCEL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_PINENTRY_MODE_DEFAULT.html'
+                                  title='gpgme_sys::GPGME_PINENTRY_MODE_DEFAULT'>GPGME_PINENTRY_MODE_DEFAULT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_PINENTRY_MODE_ERROR.html'
+                                  title='gpgme_sys::GPGME_PINENTRY_MODE_ERROR'>GPGME_PINENTRY_MODE_ERROR</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_PINENTRY_MODE_LOOPBACK.html'
+                                  title='gpgme_sys::GPGME_PINENTRY_MODE_LOOPBACK'>GPGME_PINENTRY_MODE_LOOPBACK</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_PK_DSA.html'
+                                  title='gpgme_sys::GPGME_PK_DSA'>GPGME_PK_DSA</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_PK_ECC.html'
+                                  title='gpgme_sys::GPGME_PK_ECC'>GPGME_PK_ECC</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_PK_ECDH.html'
+                                  title='gpgme_sys::GPGME_PK_ECDH'>GPGME_PK_ECDH</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_PK_ECDSA.html'
+                                  title='gpgme_sys::GPGME_PK_ECDSA'>GPGME_PK_ECDSA</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_PK_ELG.html'
+                                  title='gpgme_sys::GPGME_PK_ELG'>GPGME_PK_ELG</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_PK_ELG_E.html'
+                                  title='gpgme_sys::GPGME_PK_ELG_E'>GPGME_PK_ELG_E</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_PK_RSA.html'
+                                  title='gpgme_sys::GPGME_PK_RSA'>GPGME_PK_RSA</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_PK_RSA_E.html'
+                                  title='gpgme_sys::GPGME_PK_RSA_E'>GPGME_PK_RSA_E</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_PK_RSA_S.html'
+                                  title='gpgme_sys::GPGME_PK_RSA_S'>GPGME_PK_RSA_S</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_PROTOCOL_ASSUAN.html'
+                                  title='gpgme_sys::GPGME_PROTOCOL_ASSUAN'>GPGME_PROTOCOL_ASSUAN</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_PROTOCOL_CMS.html'
+                                  title='gpgme_sys::GPGME_PROTOCOL_CMS'>GPGME_PROTOCOL_CMS</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_PROTOCOL_DEFAULT.html'
+                                  title='gpgme_sys::GPGME_PROTOCOL_DEFAULT'>GPGME_PROTOCOL_DEFAULT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_PROTOCOL_G13.html'
+                                  title='gpgme_sys::GPGME_PROTOCOL_G13'>GPGME_PROTOCOL_G13</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_PROTOCOL_GPGCONF.html'
+                                  title='gpgme_sys::GPGME_PROTOCOL_GPGCONF'>GPGME_PROTOCOL_GPGCONF</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_PROTOCOL_OpenPGP.html'
+                                  title='gpgme_sys::GPGME_PROTOCOL_OpenPGP'>GPGME_PROTOCOL_OpenPGP</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_PROTOCOL_SPAWN.html'
+                                  title='gpgme_sys::GPGME_PROTOCOL_SPAWN'>GPGME_PROTOCOL_SPAWN</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_PROTOCOL_UISERVER.html'
+                                  title='gpgme_sys::GPGME_PROTOCOL_UISERVER'>GPGME_PROTOCOL_UISERVER</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_PROTOCOL_UNKNOWN.html'
+                                  title='gpgme_sys::GPGME_PROTOCOL_UNKNOWN'>GPGME_PROTOCOL_UNKNOWN</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_SIGSUM_BAD_POLICY.html'
+                                  title='gpgme_sys::GPGME_SIGSUM_BAD_POLICY'>GPGME_SIGSUM_BAD_POLICY</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_SIGSUM_CRL_MISSING.html'
+                                  title='gpgme_sys::GPGME_SIGSUM_CRL_MISSING'>GPGME_SIGSUM_CRL_MISSING</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_SIGSUM_CRL_TOO_OLD.html'
+                                  title='gpgme_sys::GPGME_SIGSUM_CRL_TOO_OLD'>GPGME_SIGSUM_CRL_TOO_OLD</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_SIGSUM_GREEN.html'
+                                  title='gpgme_sys::GPGME_SIGSUM_GREEN'>GPGME_SIGSUM_GREEN</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_SIGSUM_KEY_EXPIRED.html'
+                                  title='gpgme_sys::GPGME_SIGSUM_KEY_EXPIRED'>GPGME_SIGSUM_KEY_EXPIRED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_SIGSUM_KEY_MISSING.html'
+                                  title='gpgme_sys::GPGME_SIGSUM_KEY_MISSING'>GPGME_SIGSUM_KEY_MISSING</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_SIGSUM_KEY_REVOKED.html'
+                                  title='gpgme_sys::GPGME_SIGSUM_KEY_REVOKED'>GPGME_SIGSUM_KEY_REVOKED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_SIGSUM_RED.html'
+                                  title='gpgme_sys::GPGME_SIGSUM_RED'>GPGME_SIGSUM_RED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_SIGSUM_SIG_EXPIRED.html'
+                                  title='gpgme_sys::GPGME_SIGSUM_SIG_EXPIRED'>GPGME_SIGSUM_SIG_EXPIRED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_SIGSUM_SYS_ERROR.html'
+                                  title='gpgme_sys::GPGME_SIGSUM_SYS_ERROR'>GPGME_SIGSUM_SYS_ERROR</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_SIGSUM_VALID.html'
+                                  title='gpgme_sys::GPGME_SIGSUM_VALID'>GPGME_SIGSUM_VALID</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_SIG_MODE_CLEAR.html'
+                                  title='gpgme_sys::GPGME_SIG_MODE_CLEAR'>GPGME_SIG_MODE_CLEAR</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_SIG_MODE_DETACH.html'
+                                  title='gpgme_sys::GPGME_SIG_MODE_DETACH'>GPGME_SIG_MODE_DETACH</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_SIG_MODE_NORMAL.html'
+                                  title='gpgme_sys::GPGME_SIG_MODE_NORMAL'>GPGME_SIG_MODE_NORMAL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_SIG_NOTATION_CRITICAL.html'
+                                  title='gpgme_sys::GPGME_SIG_NOTATION_CRITICAL'>GPGME_SIG_NOTATION_CRITICAL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_SIG_NOTATION_HUMAN_READABLE.html'
+                                  title='gpgme_sys::GPGME_SIG_NOTATION_HUMAN_READABLE'>GPGME_SIG_NOTATION_HUMAN_READABLE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_SPAWN_ALLOW_SET_FG.html'
+                                  title='gpgme_sys::GPGME_SPAWN_ALLOW_SET_FG'>GPGME_SPAWN_ALLOW_SET_FG</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_SPAWN_DETACHED.html'
+                                  title='gpgme_sys::GPGME_SPAWN_DETACHED'>GPGME_SPAWN_DETACHED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_ABORT.html'
+                                  title='gpgme_sys::GPGME_STATUS_ABORT'>GPGME_STATUS_ABORT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_ALREADY_SIGNED.html'
+                                  title='gpgme_sys::GPGME_STATUS_ALREADY_SIGNED'>GPGME_STATUS_ALREADY_SIGNED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_ATTRIBUTE.html'
+                                  title='gpgme_sys::GPGME_STATUS_ATTRIBUTE'>GPGME_STATUS_ATTRIBUTE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_BACKUP_KEY_CREATED.html'
+                                  title='gpgme_sys::GPGME_STATUS_BACKUP_KEY_CREATED'>GPGME_STATUS_BACKUP_KEY_CREATED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_BADARMOR.html'
+                                  title='gpgme_sys::GPGME_STATUS_BADARMOR'>GPGME_STATUS_BADARMOR</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_BADMDC.html'
+                                  title='gpgme_sys::GPGME_STATUS_BADMDC'>GPGME_STATUS_BADMDC</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_BADSIG.html'
+                                  title='gpgme_sys::GPGME_STATUS_BADSIG'>GPGME_STATUS_BADSIG</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_BAD_PASSPHRASE.html'
+                                  title='gpgme_sys::GPGME_STATUS_BAD_PASSPHRASE'>GPGME_STATUS_BAD_PASSPHRASE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_BEGIN_DECRYPTION.html'
+                                  title='gpgme_sys::GPGME_STATUS_BEGIN_DECRYPTION'>GPGME_STATUS_BEGIN_DECRYPTION</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_BEGIN_ENCRYPTION.html'
+                                  title='gpgme_sys::GPGME_STATUS_BEGIN_ENCRYPTION'>GPGME_STATUS_BEGIN_ENCRYPTION</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_BEGIN_SIGNING.html'
+                                  title='gpgme_sys::GPGME_STATUS_BEGIN_SIGNING'>GPGME_STATUS_BEGIN_SIGNING</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_BEGIN_STREAM.html'
+                                  title='gpgme_sys::GPGME_STATUS_BEGIN_STREAM'>GPGME_STATUS_BEGIN_STREAM</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_CARDCTRL.html'
+                                  title='gpgme_sys::GPGME_STATUS_CARDCTRL'>GPGME_STATUS_CARDCTRL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_DECRYPTION_FAILED.html'
+                                  title='gpgme_sys::GPGME_STATUS_DECRYPTION_FAILED'>GPGME_STATUS_DECRYPTION_FAILED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_DECRYPTION_INFO.html'
+                                  title='gpgme_sys::GPGME_STATUS_DECRYPTION_INFO'>GPGME_STATUS_DECRYPTION_INFO</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_DECRYPTION_OKAY.html'
+                                  title='gpgme_sys::GPGME_STATUS_DECRYPTION_OKAY'>GPGME_STATUS_DECRYPTION_OKAY</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_DELETE_PROBLEM.html'
+                                  title='gpgme_sys::GPGME_STATUS_DELETE_PROBLEM'>GPGME_STATUS_DELETE_PROBLEM</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_ENC_TO.html'
+                                  title='gpgme_sys::GPGME_STATUS_ENC_TO'>GPGME_STATUS_ENC_TO</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_END_DECRYPTION.html'
+                                  title='gpgme_sys::GPGME_STATUS_END_DECRYPTION'>GPGME_STATUS_END_DECRYPTION</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_END_ENCRYPTION.html'
+                                  title='gpgme_sys::GPGME_STATUS_END_ENCRYPTION'>GPGME_STATUS_END_ENCRYPTION</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_END_STREAM.html'
+                                  title='gpgme_sys::GPGME_STATUS_END_STREAM'>GPGME_STATUS_END_STREAM</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_ENTER.html'
+                                  title='gpgme_sys::GPGME_STATUS_ENTER'>GPGME_STATUS_ENTER</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_EOF.html'
+                                  title='gpgme_sys::GPGME_STATUS_EOF'>GPGME_STATUS_EOF</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_ERRMDC.html'
+                                  title='gpgme_sys::GPGME_STATUS_ERRMDC'>GPGME_STATUS_ERRMDC</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_ERROR.html'
+                                  title='gpgme_sys::GPGME_STATUS_ERROR'>GPGME_STATUS_ERROR</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_ERRSIG.html'
+                                  title='gpgme_sys::GPGME_STATUS_ERRSIG'>GPGME_STATUS_ERRSIG</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_EXPKEYSIG.html'
+                                  title='gpgme_sys::GPGME_STATUS_EXPKEYSIG'>GPGME_STATUS_EXPKEYSIG</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_EXPSIG.html'
+                                  title='gpgme_sys::GPGME_STATUS_EXPSIG'>GPGME_STATUS_EXPSIG</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_FILE_DONE.html'
+                                  title='gpgme_sys::GPGME_STATUS_FILE_DONE'>GPGME_STATUS_FILE_DONE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_FILE_ERROR.html'
+                                  title='gpgme_sys::GPGME_STATUS_FILE_ERROR'>GPGME_STATUS_FILE_ERROR</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_FILE_START.html'
+                                  title='gpgme_sys::GPGME_STATUS_FILE_START'>GPGME_STATUS_FILE_START</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_GET_BOOL.html'
+                                  title='gpgme_sys::GPGME_STATUS_GET_BOOL'>GPGME_STATUS_GET_BOOL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_GET_HIDDEN.html'
+                                  title='gpgme_sys::GPGME_STATUS_GET_HIDDEN'>GPGME_STATUS_GET_HIDDEN</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_GET_LINE.html'
+                                  title='gpgme_sys::GPGME_STATUS_GET_LINE'>GPGME_STATUS_GET_LINE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_GOODMDC.html'
+                                  title='gpgme_sys::GPGME_STATUS_GOODMDC'>GPGME_STATUS_GOODMDC</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_GOODSIG.html'
+                                  title='gpgme_sys::GPGME_STATUS_GOODSIG'>GPGME_STATUS_GOODSIG</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_GOOD_PASSPHRASE.html'
+                                  title='gpgme_sys::GPGME_STATUS_GOOD_PASSPHRASE'>GPGME_STATUS_GOOD_PASSPHRASE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_GOT_IT.html'
+                                  title='gpgme_sys::GPGME_STATUS_GOT_IT'>GPGME_STATUS_GOT_IT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_IMPORTED.html'
+                                  title='gpgme_sys::GPGME_STATUS_IMPORTED'>GPGME_STATUS_IMPORTED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_IMPORT_OK.html'
+                                  title='gpgme_sys::GPGME_STATUS_IMPORT_OK'>GPGME_STATUS_IMPORT_OK</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_IMPORT_PROBLEM.html'
+                                  title='gpgme_sys::GPGME_STATUS_IMPORT_PROBLEM'>GPGME_STATUS_IMPORT_PROBLEM</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_IMPORT_RES.html'
+                                  title='gpgme_sys::GPGME_STATUS_IMPORT_RES'>GPGME_STATUS_IMPORT_RES</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_INV_RECP.html'
+                                  title='gpgme_sys::GPGME_STATUS_INV_RECP'>GPGME_STATUS_INV_RECP</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_INV_SGNR.html'
+                                  title='gpgme_sys::GPGME_STATUS_INV_SGNR'>GPGME_STATUS_INV_SGNR</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_KEYEXPIRED.html'
+                                  title='gpgme_sys::GPGME_STATUS_KEYEXPIRED'>GPGME_STATUS_KEYEXPIRED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_KEYREVOKED.html'
+                                  title='gpgme_sys::GPGME_STATUS_KEYREVOKED'>GPGME_STATUS_KEYREVOKED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_KEY_CREATED.html'
+                                  title='gpgme_sys::GPGME_STATUS_KEY_CREATED'>GPGME_STATUS_KEY_CREATED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_KEY_NOT_CREATED.html'
+                                  title='gpgme_sys::GPGME_STATUS_KEY_NOT_CREATED'>GPGME_STATUS_KEY_NOT_CREATED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_LEAVE.html'
+                                  title='gpgme_sys::GPGME_STATUS_LEAVE'>GPGME_STATUS_LEAVE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_MISSING_PASSPHRASE.html'
+                                  title='gpgme_sys::GPGME_STATUS_MISSING_PASSPHRASE'>GPGME_STATUS_MISSING_PASSPHRASE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_MOUNTPOINT.html'
+                                  title='gpgme_sys::GPGME_STATUS_MOUNTPOINT'>GPGME_STATUS_MOUNTPOINT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_NEED_PASSPHRASE.html'
+                                  title='gpgme_sys::GPGME_STATUS_NEED_PASSPHRASE'>GPGME_STATUS_NEED_PASSPHRASE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_NEED_PASSPHRASE_PIN.html'
+                                  title='gpgme_sys::GPGME_STATUS_NEED_PASSPHRASE_PIN'>GPGME_STATUS_NEED_PASSPHRASE_PIN</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_NEED_PASSPHRASE_SYM.html'
+                                  title='gpgme_sys::GPGME_STATUS_NEED_PASSPHRASE_SYM'>GPGME_STATUS_NEED_PASSPHRASE_SYM</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_NEWSIG.html'
+                                  title='gpgme_sys::GPGME_STATUS_NEWSIG'>GPGME_STATUS_NEWSIG</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_NODATA.html'
+                                  title='gpgme_sys::GPGME_STATUS_NODATA'>GPGME_STATUS_NODATA</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_NOTATION_DATA.html'
+                                  title='gpgme_sys::GPGME_STATUS_NOTATION_DATA'>GPGME_STATUS_NOTATION_DATA</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_NOTATION_NAME.html'
+                                  title='gpgme_sys::GPGME_STATUS_NOTATION_NAME'>GPGME_STATUS_NOTATION_NAME</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_NO_PUBKEY.html'
+                                  title='gpgme_sys::GPGME_STATUS_NO_PUBKEY'>GPGME_STATUS_NO_PUBKEY</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_NO_RECP.html'
+                                  title='gpgme_sys::GPGME_STATUS_NO_RECP'>GPGME_STATUS_NO_RECP</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_NO_SECKEY.html'
+                                  title='gpgme_sys::GPGME_STATUS_NO_SECKEY'>GPGME_STATUS_NO_SECKEY</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_NO_SGNR.html'
+                                  title='gpgme_sys::GPGME_STATUS_NO_SGNR'>GPGME_STATUS_NO_SGNR</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_PINENTRY_LAUNCHED.html'
+                                  title='gpgme_sys::GPGME_STATUS_PINENTRY_LAUNCHED'>GPGME_STATUS_PINENTRY_LAUNCHED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_PKA_TRUST_BAD.html'
+                                  title='gpgme_sys::GPGME_STATUS_PKA_TRUST_BAD'>GPGME_STATUS_PKA_TRUST_BAD</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_PKA_TRUST_GOOD.html'
+                                  title='gpgme_sys::GPGME_STATUS_PKA_TRUST_GOOD'>GPGME_STATUS_PKA_TRUST_GOOD</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_PLAINTEXT.html'
+                                  title='gpgme_sys::GPGME_STATUS_PLAINTEXT'>GPGME_STATUS_PLAINTEXT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_PLAINTEXT_LENGTH.html'
+                                  title='gpgme_sys::GPGME_STATUS_PLAINTEXT_LENGTH'>GPGME_STATUS_PLAINTEXT_LENGTH</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_POLICY_URL.html'
+                                  title='gpgme_sys::GPGME_STATUS_POLICY_URL'>GPGME_STATUS_POLICY_URL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_PROGRESS.html'
+                                  title='gpgme_sys::GPGME_STATUS_PROGRESS'>GPGME_STATUS_PROGRESS</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_REVKEYSIG.html'
+                                  title='gpgme_sys::GPGME_STATUS_REVKEYSIG'>GPGME_STATUS_REVKEYSIG</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_RSA_OR_IDEA.html'
+                                  title='gpgme_sys::GPGME_STATUS_RSA_OR_IDEA'>GPGME_STATUS_RSA_OR_IDEA</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_SC_OP_FAILURE.html'
+                                  title='gpgme_sys::GPGME_STATUS_SC_OP_FAILURE'>GPGME_STATUS_SC_OP_FAILURE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_SC_OP_SUCCESS.html'
+                                  title='gpgme_sys::GPGME_STATUS_SC_OP_SUCCESS'>GPGME_STATUS_SC_OP_SUCCESS</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_SESSION_KEY.html'
+                                  title='gpgme_sys::GPGME_STATUS_SESSION_KEY'>GPGME_STATUS_SESSION_KEY</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_SHM_GET.html'
+                                  title='gpgme_sys::GPGME_STATUS_SHM_GET'>GPGME_STATUS_SHM_GET</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_SHM_GET_BOOL.html'
+                                  title='gpgme_sys::GPGME_STATUS_SHM_GET_BOOL'>GPGME_STATUS_SHM_GET_BOOL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_SHM_GET_HIDDEN.html'
+                                  title='gpgme_sys::GPGME_STATUS_SHM_GET_HIDDEN'>GPGME_STATUS_SHM_GET_HIDDEN</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_SHM_INFO.html'
+                                  title='gpgme_sys::GPGME_STATUS_SHM_INFO'>GPGME_STATUS_SHM_INFO</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_SIGEXPIRED.html'
+                                  title='gpgme_sys::GPGME_STATUS_SIGEXPIRED'>GPGME_STATUS_SIGEXPIRED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_SIG_CREATED.html'
+                                  title='gpgme_sys::GPGME_STATUS_SIG_CREATED'>GPGME_STATUS_SIG_CREATED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_SIG_ID.html'
+                                  title='gpgme_sys::GPGME_STATUS_SIG_ID'>GPGME_STATUS_SIG_ID</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_SIG_SUBPACKET.html'
+                                  title='gpgme_sys::GPGME_STATUS_SIG_SUBPACKET'>GPGME_STATUS_SIG_SUBPACKET</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_SUCCESS.html'
+                                  title='gpgme_sys::GPGME_STATUS_SUCCESS'>GPGME_STATUS_SUCCESS</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_TRUNCATED.html'
+                                  title='gpgme_sys::GPGME_STATUS_TRUNCATED'>GPGME_STATUS_TRUNCATED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_TRUST_FULLY.html'
+                                  title='gpgme_sys::GPGME_STATUS_TRUST_FULLY'>GPGME_STATUS_TRUST_FULLY</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_TRUST_MARGINAL.html'
+                                  title='gpgme_sys::GPGME_STATUS_TRUST_MARGINAL'>GPGME_STATUS_TRUST_MARGINAL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_TRUST_NEVER.html'
+                                  title='gpgme_sys::GPGME_STATUS_TRUST_NEVER'>GPGME_STATUS_TRUST_NEVER</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_TRUST_ULTIMATE.html'
+                                  title='gpgme_sys::GPGME_STATUS_TRUST_ULTIMATE'>GPGME_STATUS_TRUST_ULTIMATE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_TRUST_UNDEFINED.html'
+                                  title='gpgme_sys::GPGME_STATUS_TRUST_UNDEFINED'>GPGME_STATUS_TRUST_UNDEFINED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_UNEXPECTED.html'
+                                  title='gpgme_sys::GPGME_STATUS_UNEXPECTED'>GPGME_STATUS_UNEXPECTED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_USERID_HINT.html'
+                                  title='gpgme_sys::GPGME_STATUS_USERID_HINT'>GPGME_STATUS_USERID_HINT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_STATUS_VALIDSIG.html'
+                                  title='gpgme_sys::GPGME_STATUS_VALIDSIG'>GPGME_STATUS_VALIDSIG</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_VALIDITY_FULL.html'
+                                  title='gpgme_sys::GPGME_VALIDITY_FULL'>GPGME_VALIDITY_FULL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_VALIDITY_MARGINAL.html'
+                                  title='gpgme_sys::GPGME_VALIDITY_MARGINAL'>GPGME_VALIDITY_MARGINAL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_VALIDITY_NEVER.html'
+                                  title='gpgme_sys::GPGME_VALIDITY_NEVER'>GPGME_VALIDITY_NEVER</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_VALIDITY_ULTIMATE.html'
+                                  title='gpgme_sys::GPGME_VALIDITY_ULTIMATE'>GPGME_VALIDITY_ULTIMATE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_VALIDITY_UNDEFINED.html'
+                                  title='gpgme_sys::GPGME_VALIDITY_UNDEFINED'>GPGME_VALIDITY_UNDEFINED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.GPGME_VALIDITY_UNKNOWN.html'
+                                  title='gpgme_sys::GPGME_VALIDITY_UNKNOWN'>GPGME_VALIDITY_UNKNOWN</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_cancel.html'
+                                  title='gpgme_sys::gpgme_cancel'>gpgme_cancel</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_cancel_async.html'
+                                  title='gpgme_sys::gpgme_cancel_async'>gpgme_cancel_async</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_check_version.html'
+                                  title='gpgme_sys::gpgme_check_version'>gpgme_check_version</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_check_version_internal.html'
+                                  title='gpgme_sys::gpgme_check_version_internal'>gpgme_check_version_internal</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_conf_arg_new.html'
+                                  title='gpgme_sys::gpgme_conf_arg_new'>gpgme_conf_arg_new</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_conf_arg_release.html'
+                                  title='gpgme_sys::gpgme_conf_arg_release'>gpgme_conf_arg_release</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_conf_opt_change.html'
+                                  title='gpgme_sys::gpgme_conf_opt_change'>gpgme_conf_opt_change</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_conf_release.html'
+                                  title='gpgme_sys::gpgme_conf_release'>gpgme_conf_release</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_ctx_get_engine_info.html'
+                                  title='gpgme_sys::gpgme_ctx_get_engine_info'>gpgme_ctx_get_engine_info</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_ctx_set_engine_info.html'
+                                  title='gpgme_sys::gpgme_ctx_set_engine_info'>gpgme_ctx_set_engine_info</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_data_get_encoding.html'
+                                  title='gpgme_sys::gpgme_data_get_encoding'>gpgme_data_get_encoding</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_data_get_file_name.html'
+                                  title='gpgme_sys::gpgme_data_get_file_name'>gpgme_data_get_file_name</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_data_identify.html'
+                                  title='gpgme_sys::gpgme_data_identify'>gpgme_data_identify</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_data_new.html'
+                                  title='gpgme_sys::gpgme_data_new'>gpgme_data_new</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_data_new_from_cbs.html'
+                                  title='gpgme_sys::gpgme_data_new_from_cbs'>gpgme_data_new_from_cbs</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_data_new_from_fd.html'
+                                  title='gpgme_sys::gpgme_data_new_from_fd'>gpgme_data_new_from_fd</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_data_new_from_file.html'
+                                  title='gpgme_sys::gpgme_data_new_from_file'>gpgme_data_new_from_file</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_data_new_from_filepart.html'
+                                  title='gpgme_sys::gpgme_data_new_from_filepart'>gpgme_data_new_from_filepart</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_data_new_from_mem.html'
+                                  title='gpgme_sys::gpgme_data_new_from_mem'>gpgme_data_new_from_mem</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_data_new_from_stream.html'
+                                  title='gpgme_sys::gpgme_data_new_from_stream'>gpgme_data_new_from_stream</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_data_read.html'
+                                  title='gpgme_sys::gpgme_data_read'>gpgme_data_read</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_data_release.html'
+                                  title='gpgme_sys::gpgme_data_release'>gpgme_data_release</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_data_release_and_get_mem.html'
+                                  title='gpgme_sys::gpgme_data_release_and_get_mem'>gpgme_data_release_and_get_mem</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_data_seek.html'
+                                  title='gpgme_sys::gpgme_data_seek'>gpgme_data_seek</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_data_set_encoding.html'
+                                  title='gpgme_sys::gpgme_data_set_encoding'>gpgme_data_set_encoding</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_data_set_file_name.html'
+                                  title='gpgme_sys::gpgme_data_set_file_name'>gpgme_data_set_file_name</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_data_write.html'
+                                  title='gpgme_sys::gpgme_data_write'>gpgme_data_write</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_engine_check_version.html'
+                                  title='gpgme_sys::gpgme_engine_check_version'>gpgme_engine_check_version</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_err_code.html'
+                                  title='gpgme_sys::gpgme_err_code'>gpgme_err_code</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_err_code_from_errno.html'
+                                  title='gpgme_sys::gpgme_err_code_from_errno'>gpgme_err_code_from_errno</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_err_code_from_syserror.html'
+                                  title='gpgme_sys::gpgme_err_code_from_syserror'>gpgme_err_code_from_syserror</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_err_code_to_errno.html'
+                                  title='gpgme_sys::gpgme_err_code_to_errno'>gpgme_err_code_to_errno</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_err_make.html'
+                                  title='gpgme_sys::gpgme_err_make'>gpgme_err_make</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_err_make_from_errno.html'
+                                  title='gpgme_sys::gpgme_err_make_from_errno'>gpgme_err_make_from_errno</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_err_set_errno.html'
+                                  title='gpgme_sys::gpgme_err_set_errno'>gpgme_err_set_errno</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_err_source.html'
+                                  title='gpgme_sys::gpgme_err_source'>gpgme_err_source</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_error_from_errno.html'
+                                  title='gpgme_sys::gpgme_error_from_errno'>gpgme_error_from_errno</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_error_from_syserror.html'
+                                  title='gpgme_sys::gpgme_error_from_syserror'>gpgme_error_from_syserror</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_free.html'
+                                  title='gpgme_sys::gpgme_free'>gpgme_free</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_get_armor.html'
+                                  title='gpgme_sys::gpgme_get_armor'>gpgme_get_armor</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_get_dirinfo.html'
+                                  title='gpgme_sys::gpgme_get_dirinfo'>gpgme_get_dirinfo</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_get_engine_info.html'
+                                  title='gpgme_sys::gpgme_get_engine_info'>gpgme_get_engine_info</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_get_include_certs.html'
+                                  title='gpgme_sys::gpgme_get_include_certs'>gpgme_get_include_certs</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_get_io_cbs.html'
+                                  title='gpgme_sys::gpgme_get_io_cbs'>gpgme_get_io_cbs</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_get_key.html'
+                                  title='gpgme_sys::gpgme_get_key'>gpgme_get_key</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_get_keylist_mode.html'
+                                  title='gpgme_sys::gpgme_get_keylist_mode'>gpgme_get_keylist_mode</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_get_offline.html'
+                                  title='gpgme_sys::gpgme_get_offline'>gpgme_get_offline</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_get_passphrase_cb.html'
+                                  title='gpgme_sys::gpgme_get_passphrase_cb'>gpgme_get_passphrase_cb</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_get_pinentry_mode.html'
+                                  title='gpgme_sys::gpgme_get_pinentry_mode'>gpgme_get_pinentry_mode</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_get_progress_cb.html'
+                                  title='gpgme_sys::gpgme_get_progress_cb'>gpgme_get_progress_cb</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_get_protocol.html'
+                                  title='gpgme_sys::gpgme_get_protocol'>gpgme_get_protocol</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_get_protocol_name.html'
+                                  title='gpgme_sys::gpgme_get_protocol_name'>gpgme_get_protocol_name</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_get_status_cb.html'
+                                  title='gpgme_sys::gpgme_get_status_cb'>gpgme_get_status_cb</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_get_sub_protocol.html'
+                                  title='gpgme_sys::gpgme_get_sub_protocol'>gpgme_get_sub_protocol</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_get_textmode.html'
+                                  title='gpgme_sys::gpgme_get_textmode'>gpgme_get_textmode</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_hash_algo_name.html'
+                                  title='gpgme_sys::gpgme_hash_algo_name'>gpgme_hash_algo_name</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_io_read.html'
+                                  title='gpgme_sys::gpgme_io_read'>gpgme_io_read</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_io_write.html'
+                                  title='gpgme_sys::gpgme_io_write'>gpgme_io_write</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_io_writen.html'
+                                  title='gpgme_sys::gpgme_io_writen'>gpgme_io_writen</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_key_from_uid.html'
+                                  title='gpgme_sys::gpgme_key_from_uid'>gpgme_key_from_uid</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_key_ref.html'
+                                  title='gpgme_sys::gpgme_key_ref'>gpgme_key_ref</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_key_release.html'
+                                  title='gpgme_sys::gpgme_key_release'>gpgme_key_release</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_key_unref.html'
+                                  title='gpgme_sys::gpgme_key_unref'>gpgme_key_unref</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_new.html'
+                                  title='gpgme_sys::gpgme_new'>gpgme_new</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_assuan_transact_ext.html'
+                                  title='gpgme_sys::gpgme_op_assuan_transact_ext'>gpgme_op_assuan_transact_ext</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_assuan_transact_start.html'
+                                  title='gpgme_sys::gpgme_op_assuan_transact_start'>gpgme_op_assuan_transact_start</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_card_edit.html'
+                                  title='gpgme_sys::gpgme_op_card_edit'>gpgme_op_card_edit</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_card_edit_start.html'
+                                  title='gpgme_sys::gpgme_op_card_edit_start'>gpgme_op_card_edit_start</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_conf_load.html'
+                                  title='gpgme_sys::gpgme_op_conf_load'>gpgme_op_conf_load</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_conf_save.html'
+                                  title='gpgme_sys::gpgme_op_conf_save'>gpgme_op_conf_save</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_decrypt.html'
+                                  title='gpgme_sys::gpgme_op_decrypt'>gpgme_op_decrypt</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_decrypt_result.html'
+                                  title='gpgme_sys::gpgme_op_decrypt_result'>gpgme_op_decrypt_result</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_decrypt_start.html'
+                                  title='gpgme_sys::gpgme_op_decrypt_start'>gpgme_op_decrypt_start</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_decrypt_verify.html'
+                                  title='gpgme_sys::gpgme_op_decrypt_verify'>gpgme_op_decrypt_verify</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_decrypt_verify_start.html'
+                                  title='gpgme_sys::gpgme_op_decrypt_verify_start'>gpgme_op_decrypt_verify_start</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_delete.html'
+                                  title='gpgme_sys::gpgme_op_delete'>gpgme_op_delete</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_delete_start.html'
+                                  title='gpgme_sys::gpgme_op_delete_start'>gpgme_op_delete_start</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_edit.html'
+                                  title='gpgme_sys::gpgme_op_edit'>gpgme_op_edit</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_edit_start.html'
+                                  title='gpgme_sys::gpgme_op_edit_start'>gpgme_op_edit_start</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_encrypt.html'
+                                  title='gpgme_sys::gpgme_op_encrypt'>gpgme_op_encrypt</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_encrypt_result.html'
+                                  title='gpgme_sys::gpgme_op_encrypt_result'>gpgme_op_encrypt_result</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_encrypt_sign.html'
+                                  title='gpgme_sys::gpgme_op_encrypt_sign'>gpgme_op_encrypt_sign</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_encrypt_sign_start.html'
+                                  title='gpgme_sys::gpgme_op_encrypt_sign_start'>gpgme_op_encrypt_sign_start</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_encrypt_start.html'
+                                  title='gpgme_sys::gpgme_op_encrypt_start'>gpgme_op_encrypt_start</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_export.html'
+                                  title='gpgme_sys::gpgme_op_export'>gpgme_op_export</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_export_ext.html'
+                                  title='gpgme_sys::gpgme_op_export_ext'>gpgme_op_export_ext</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_export_ext_start.html'
+                                  title='gpgme_sys::gpgme_op_export_ext_start'>gpgme_op_export_ext_start</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_export_keys.html'
+                                  title='gpgme_sys::gpgme_op_export_keys'>gpgme_op_export_keys</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_export_keys_start.html'
+                                  title='gpgme_sys::gpgme_op_export_keys_start'>gpgme_op_export_keys_start</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_export_start.html'
+                                  title='gpgme_sys::gpgme_op_export_start'>gpgme_op_export_start</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_genkey.html'
+                                  title='gpgme_sys::gpgme_op_genkey'>gpgme_op_genkey</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_genkey_result.html'
+                                  title='gpgme_sys::gpgme_op_genkey_result'>gpgme_op_genkey_result</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_genkey_start.html'
+                                  title='gpgme_sys::gpgme_op_genkey_start'>gpgme_op_genkey_start</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_getauditlog.html'
+                                  title='gpgme_sys::gpgme_op_getauditlog'>gpgme_op_getauditlog</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_getauditlog_start.html'
+                                  title='gpgme_sys::gpgme_op_getauditlog_start'>gpgme_op_getauditlog_start</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_import.html'
+                                  title='gpgme_sys::gpgme_op_import'>gpgme_op_import</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_import_keys.html'
+                                  title='gpgme_sys::gpgme_op_import_keys'>gpgme_op_import_keys</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_import_keys_start.html'
+                                  title='gpgme_sys::gpgme_op_import_keys_start'>gpgme_op_import_keys_start</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_import_result.html'
+                                  title='gpgme_sys::gpgme_op_import_result'>gpgme_op_import_result</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_import_start.html'
+                                  title='gpgme_sys::gpgme_op_import_start'>gpgme_op_import_start</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_keylist_end.html'
+                                  title='gpgme_sys::gpgme_op_keylist_end'>gpgme_op_keylist_end</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_keylist_ext_start.html'
+                                  title='gpgme_sys::gpgme_op_keylist_ext_start'>gpgme_op_keylist_ext_start</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_keylist_next.html'
+                                  title='gpgme_sys::gpgme_op_keylist_next'>gpgme_op_keylist_next</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_keylist_result.html'
+                                  title='gpgme_sys::gpgme_op_keylist_result'>gpgme_op_keylist_result</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_keylist_start.html'
+                                  title='gpgme_sys::gpgme_op_keylist_start'>gpgme_op_keylist_start</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_passwd.html'
+                                  title='gpgme_sys::gpgme_op_passwd'>gpgme_op_passwd</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_passwd_start.html'
+                                  title='gpgme_sys::gpgme_op_passwd_start'>gpgme_op_passwd_start</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_sign.html'
+                                  title='gpgme_sys::gpgme_op_sign'>gpgme_op_sign</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_sign_result.html'
+                                  title='gpgme_sys::gpgme_op_sign_result'>gpgme_op_sign_result</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_sign_start.html'
+                                  title='gpgme_sys::gpgme_op_sign_start'>gpgme_op_sign_start</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_spawn.html'
+                                  title='gpgme_sys::gpgme_op_spawn'>gpgme_op_spawn</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_spawn_start.html'
+                                  title='gpgme_sys::gpgme_op_spawn_start'>gpgme_op_spawn_start</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_trustlist_end.html'
+                                  title='gpgme_sys::gpgme_op_trustlist_end'>gpgme_op_trustlist_end</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_trustlist_next.html'
+                                  title='gpgme_sys::gpgme_op_trustlist_next'>gpgme_op_trustlist_next</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_trustlist_start.html'
+                                  title='gpgme_sys::gpgme_op_trustlist_start'>gpgme_op_trustlist_start</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_verify.html'
+                                  title='gpgme_sys::gpgme_op_verify'>gpgme_op_verify</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_verify_result.html'
+                                  title='gpgme_sys::gpgme_op_verify_result'>gpgme_op_verify_result</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_verify_start.html'
+                                  title='gpgme_sys::gpgme_op_verify_start'>gpgme_op_verify_start</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_vfs_create.html'
+                                  title='gpgme_sys::gpgme_op_vfs_create'>gpgme_op_vfs_create</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_vfs_mount.html'
+                                  title='gpgme_sys::gpgme_op_vfs_mount'>gpgme_op_vfs_mount</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_op_vfs_mount_result.html'
+                                  title='gpgme_sys::gpgme_op_vfs_mount_result'>gpgme_op_vfs_mount_result</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_pubkey_algo_name.html'
+                                  title='gpgme_sys::gpgme_pubkey_algo_name'>gpgme_pubkey_algo_name</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_release.html'
+                                  title='gpgme_sys::gpgme_release'>gpgme_release</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_result_ref.html'
+                                  title='gpgme_sys::gpgme_result_ref'>gpgme_result_ref</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_result_unref.html'
+                                  title='gpgme_sys::gpgme_result_unref'>gpgme_result_unref</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_set_armor.html'
+                                  title='gpgme_sys::gpgme_set_armor'>gpgme_set_armor</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_set_engine_info.html'
+                                  title='gpgme_sys::gpgme_set_engine_info'>gpgme_set_engine_info</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_set_global_flag.html'
+                                  title='gpgme_sys::gpgme_set_global_flag'>gpgme_set_global_flag</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_set_include_certs.html'
+                                  title='gpgme_sys::gpgme_set_include_certs'>gpgme_set_include_certs</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_set_io_cbs.html'
+                                  title='gpgme_sys::gpgme_set_io_cbs'>gpgme_set_io_cbs</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_set_keylist_mode.html'
+                                  title='gpgme_sys::gpgme_set_keylist_mode'>gpgme_set_keylist_mode</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_set_locale.html'
+                                  title='gpgme_sys::gpgme_set_locale'>gpgme_set_locale</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_set_offline.html'
+                                  title='gpgme_sys::gpgme_set_offline'>gpgme_set_offline</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_set_passphrase_cb.html'
+                                  title='gpgme_sys::gpgme_set_passphrase_cb'>gpgme_set_passphrase_cb</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_set_pinentry_mode.html'
+                                  title='gpgme_sys::gpgme_set_pinentry_mode'>gpgme_set_pinentry_mode</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_set_progress_cb.html'
+                                  title='gpgme_sys::gpgme_set_progress_cb'>gpgme_set_progress_cb</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_set_protocol.html'
+                                  title='gpgme_sys::gpgme_set_protocol'>gpgme_set_protocol</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_set_status_cb.html'
+                                  title='gpgme_sys::gpgme_set_status_cb'>gpgme_set_status_cb</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_set_sub_protocol.html'
+                                  title='gpgme_sys::gpgme_set_sub_protocol'>gpgme_set_sub_protocol</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_set_textmode.html'
+                                  title='gpgme_sys::gpgme_set_textmode'>gpgme_set_textmode</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_sig_notation_add.html'
+                                  title='gpgme_sys::gpgme_sig_notation_add'>gpgme_sig_notation_add</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_sig_notation_clear.html'
+                                  title='gpgme_sys::gpgme_sig_notation_clear'>gpgme_sig_notation_clear</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_sig_notation_get.html'
+                                  title='gpgme_sys::gpgme_sig_notation_get'>gpgme_sig_notation_get</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_signers_add.html'
+                                  title='gpgme_sys::gpgme_signers_add'>gpgme_signers_add</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_signers_clear.html'
+                                  title='gpgme_sys::gpgme_signers_clear'>gpgme_signers_clear</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_signers_count.html'
+                                  title='gpgme_sys::gpgme_signers_count'>gpgme_signers_count</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_signers_enum.html'
+                                  title='gpgme_sys::gpgme_signers_enum'>gpgme_signers_enum</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_strerror.html'
+                                  title='gpgme_sys::gpgme_strerror'>gpgme_strerror</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_strerror_r.html'
+                                  title='gpgme_sys::gpgme_strerror_r'>gpgme_strerror_r</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_strsource.html'
+                                  title='gpgme_sys::gpgme_strsource'>gpgme_strsource</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_trust_item_ref.html'
+                                  title='gpgme_sys::gpgme_trust_item_ref'>gpgme_trust_item_ref</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_trust_item_unref.html'
+                                  title='gpgme_sys::gpgme_trust_item_unref'>gpgme_trust_item_unref</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_wait.html'
+                                  title='gpgme_sys::gpgme_wait'>gpgme_wait</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.gpgme_wait_ext.html'
+                                  title='gpgme_sys::gpgme_wait_ext'>gpgme_wait_ext</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_assuan_data_cb_t.html'
+                                  title='gpgme_sys::gpgme_assuan_data_cb_t'>gpgme_assuan_data_cb_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_assuan_inquire_cb_t.html'
+                                  title='gpgme_sys::gpgme_assuan_inquire_cb_t'>gpgme_assuan_inquire_cb_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_assuan_status_cb_t.html'
+                                  title='gpgme_sys::gpgme_assuan_status_cb_t'>gpgme_assuan_status_cb_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_conf_arg_t.html'
+                                  title='gpgme_sys::gpgme_conf_arg_t'>gpgme_conf_arg_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_conf_comp_t.html'
+                                  title='gpgme_sys::gpgme_conf_comp_t'>gpgme_conf_comp_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_conf_level_t.html'
+                                  title='gpgme_sys::gpgme_conf_level_t'>gpgme_conf_level_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_conf_opt_t.html'
+                                  title='gpgme_sys::gpgme_conf_opt_t'>gpgme_conf_opt_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_conf_type_t.html'
+                                  title='gpgme_sys::gpgme_conf_type_t'>gpgme_conf_type_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_ctx_t.html'
+                                  title='gpgme_sys::gpgme_ctx_t'>gpgme_ctx_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_data_cbs_t.html'
+                                  title='gpgme_sys::gpgme_data_cbs_t'>gpgme_data_cbs_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_data_encoding_t.html'
+                                  title='gpgme_sys::gpgme_data_encoding_t'>gpgme_data_encoding_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_data_read_cb_t.html'
+                                  title='gpgme_sys::gpgme_data_read_cb_t'>gpgme_data_read_cb_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_data_release_cb_t.html'
+                                  title='gpgme_sys::gpgme_data_release_cb_t'>gpgme_data_release_cb_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_data_seek_cb_t.html'
+                                  title='gpgme_sys::gpgme_data_seek_cb_t'>gpgme_data_seek_cb_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_data_t.html'
+                                  title='gpgme_sys::gpgme_data_t'>gpgme_data_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_data_type_t.html'
+                                  title='gpgme_sys::gpgme_data_type_t'>gpgme_data_type_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_data_write_cb_t.html'
+                                  title='gpgme_sys::gpgme_data_write_cb_t'>gpgme_data_write_cb_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_decrypt_result_t.html'
+                                  title='gpgme_sys::gpgme_decrypt_result_t'>gpgme_decrypt_result_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_edit_cb_t.html'
+                                  title='gpgme_sys::gpgme_edit_cb_t'>gpgme_edit_cb_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_encrypt_flags_t.html'
+                                  title='gpgme_sys::gpgme_encrypt_flags_t'>gpgme_encrypt_flags_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_encrypt_result_t.html'
+                                  title='gpgme_sys::gpgme_encrypt_result_t'>gpgme_encrypt_result_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_engine_info_t.html'
+                                  title='gpgme_sys::gpgme_engine_info_t'>gpgme_engine_info_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_err_code_t.html'
+                                  title='gpgme_sys::gpgme_err_code_t'>gpgme_err_code_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_err_source_t.html'
+                                  title='gpgme_sys::gpgme_err_source_t'>gpgme_err_source_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_error_t.html'
+                                  title='gpgme_sys::gpgme_error_t'>gpgme_error_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_event_io_cb_t.html'
+                                  title='gpgme_sys::gpgme_event_io_cb_t'>gpgme_event_io_cb_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_event_io_t.html'
+                                  title='gpgme_sys::gpgme_event_io_t'>gpgme_event_io_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_export_mode_t.html'
+                                  title='gpgme_sys::gpgme_export_mode_t'>gpgme_export_mode_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_genkey_result_t.html'
+                                  title='gpgme_sys::gpgme_genkey_result_t'>gpgme_genkey_result_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_hash_algo_t.html'
+                                  title='gpgme_sys::gpgme_hash_algo_t'>gpgme_hash_algo_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_import_result_t.html'
+                                  title='gpgme_sys::gpgme_import_result_t'>gpgme_import_result_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_import_status_t.html'
+                                  title='gpgme_sys::gpgme_import_status_t'>gpgme_import_status_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_invalid_key_t.html'
+                                  title='gpgme_sys::gpgme_invalid_key_t'>gpgme_invalid_key_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_io_cb_t.html'
+                                  title='gpgme_sys::gpgme_io_cb_t'>gpgme_io_cb_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_io_cbs_t.html'
+                                  title='gpgme_sys::gpgme_io_cbs_t'>gpgme_io_cbs_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_io_event_done_data_t.html'
+                                  title='gpgme_sys::gpgme_io_event_done_data_t'>gpgme_io_event_done_data_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_key_sig_t.html'
+                                  title='gpgme_sys::gpgme_key_sig_t'>gpgme_key_sig_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_key_t.html'
+                                  title='gpgme_sys::gpgme_key_t'>gpgme_key_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_keylist_mode_t.html'
+                                  title='gpgme_sys::gpgme_keylist_mode_t'>gpgme_keylist_mode_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_keylist_result_t.html'
+                                  title='gpgme_sys::gpgme_keylist_result_t'>gpgme_keylist_result_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_new_signature_t.html'
+                                  title='gpgme_sys::gpgme_new_signature_t'>gpgme_new_signature_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_off_t.html'
+                                  title='gpgme_sys::gpgme_off_t'>gpgme_off_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_passphrase_cb_t.html'
+                                  title='gpgme_sys::gpgme_passphrase_cb_t'>gpgme_passphrase_cb_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_pinentry_mode_t.html'
+                                  title='gpgme_sys::gpgme_pinentry_mode_t'>gpgme_pinentry_mode_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_progress_cb_t.html'
+                                  title='gpgme_sys::gpgme_progress_cb_t'>gpgme_progress_cb_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_protocol_t.html'
+                                  title='gpgme_sys::gpgme_protocol_t'>gpgme_protocol_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_pubkey_algo_t.html'
+                                  title='gpgme_sys::gpgme_pubkey_algo_t'>gpgme_pubkey_algo_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_recipient_t.html'
+                                  title='gpgme_sys::gpgme_recipient_t'>gpgme_recipient_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_register_io_cb_t.html'
+                                  title='gpgme_sys::gpgme_register_io_cb_t'>gpgme_register_io_cb_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_remove_io_cb_t.html'
+                                  title='gpgme_sys::gpgme_remove_io_cb_t'>gpgme_remove_io_cb_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_sig_mode_t.html'
+                                  title='gpgme_sys::gpgme_sig_mode_t'>gpgme_sig_mode_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_sig_notation_flags_t.html'
+                                  title='gpgme_sys::gpgme_sig_notation_flags_t'>gpgme_sig_notation_flags_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_sig_notation_t.html'
+                                  title='gpgme_sys::gpgme_sig_notation_t'>gpgme_sig_notation_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_sign_result_t.html'
+                                  title='gpgme_sys::gpgme_sign_result_t'>gpgme_sign_result_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_signature_t.html'
+                                  title='gpgme_sys::gpgme_signature_t'>gpgme_signature_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_sigsum_t.html'
+                                  title='gpgme_sys::gpgme_sigsum_t'>gpgme_sigsum_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_ssize_t.html'
+                                  title='gpgme_sys::gpgme_ssize_t'>gpgme_ssize_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_status_cb_t.html'
+                                  title='gpgme_sys::gpgme_status_cb_t'>gpgme_status_cb_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_status_code_t.html'
+                                  title='gpgme_sys::gpgme_status_code_t'>gpgme_status_code_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_subkey_t.html'
+                                  title='gpgme_sys::gpgme_subkey_t'>gpgme_subkey_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_trust_item_t.html'
+                                  title='gpgme_sys::gpgme_trust_item_t'>gpgme_trust_item_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_user_id_t.html'
+                                  title='gpgme_sys::gpgme_user_id_t'>gpgme_user_id_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_validity_t.html'
+                                  title='gpgme_sys::gpgme_validity_t'>gpgme_validity_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_verify_result_t.html'
+                                  title='gpgme_sys::gpgme_verify_result_t'>gpgme_verify_result_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.gpgme_vfs_mount_result_t.html'
+                                  title='gpgme_sys::gpgme_vfs_mount_result_t'>gpgme_vfs_mount_result_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "gpgme_sys";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

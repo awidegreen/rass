@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["store",""],["tree","Contains structs and traits for a Tree structure. Subtrees are of the same type `Tree<T>`. A visitor-pattern trait is provided which also internally  used for the `TreePrinter`."],["vcs",""]]});

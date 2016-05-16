@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["GitWrapper",""]],"trait":[["VersionControl","Version control trait. Note that `add` and `remove` will not commit the operation. Hence `commit` has to be called separatly."]],"type":[["Result",""]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Context","A context for cryptographic operations"],["EditStatus",""],["Keys",""],["PassphraseRequest",""],["ProgressHandlerGuard",""],["ProgressInfo",""],["SignersIter",""],["StatusHandlerGuard",""],["TrustItems",""]],"trait":[["EditHandler",""],["PassphraseHandler",""],["ProgressHandler",""],["StatusHandler",""]]});
