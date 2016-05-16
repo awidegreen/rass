@@ -3,15 +3,15 @@ sudo: false
 addons:
   apt:
     packages:
-      - libgpgme11-dev
+    - libgpgme11-dev
 rust:
-  - stable
-  - beta
-  - nightly
-script: 
-  - cargo build --verbose
-  - cargo test --verbose
-  - cargo doc
+- stable
+- beta
+- nightly
+script:
+- cargo build --verbose
+- cargo test --verbose
+- cargo doc
 after_success: |
   [ $TRAVIS_BRANCH = master ] &&
   [ $TRAVIS_PULL_REQUEST = false ] &&
@@ -21,5 +21,4 @@ after_success: |
   git push -qf https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git gh-pages
 env:
   global:
-    - secure: "31EE4fA1hbq4j8NeiLJdn3HRWVzHWCa3ggRwuSvnscZBInqGOkRqxUsz70uqXBfkakGU1CPRKfS7zm0iLUu964U4gBd6lERzwPcEfyRJoKhj5jH9HKulrchssga1xKkHTNlb6SnBr6LTeCWzwEft5b7ATvhFEL3kpGHbcpNkKo3mXwy30SJNAXhE8u/w/QeQdsanN5yL8QnFCpP+DXchhlv1oIfk/oBMtAXDuqnmbd+cMnb3OyTaKb4JNDecCRaefboKvAPnToS0tl3uMrMafT24ANMQsLt+ExiGdUvGD3mhxsEPNGXRRwj6GWi+JlkwPxLxE7Bt0s8RBdrZEl6iayY93griX+Am9fym7FpzsKSJJad3c/fHd1RoOC5Ds"
-
+  - secure: vaFY3OT9u3OhRmI7HQvC9ycfi9Ug0jaj1e+Ux9IWyOAie1Liq5dSOR2ngIwRJQeYQE4AJUfS87ZtsyYhnvQsDzmq5+CF7dO497LY03g61MZ7uHLB5wxd3zonj0kV1enVnpulqxlLxEgFXLH52hjZBqaMQD4aVVoF85ssW+WIZUowPIODwwfQp3j3/HruFnDbWLc4+gvPBKaczacihShrp1qimqkIfD/XBaKFgXgYCruJ8HXHLCKKNaX0DOsngvgjq36evJFlwj6sOz3eTa5Z3D9Z3S0hnwSUVySaCRPKpP1XXtvjP34vd5dUEyi8OzR2Yi6QzuHGW7/arJRqB/v/t7XnGeBWTIFyWZIP2h1Yr7Zi/Kp8Mi3F7WTxCK0EzmRFo10/7wL3HIcxM+/UF39tuRKC5NMC0DuXIEB5Ozdoq/N9K2RDpXpAfSEiRk5pBl0aPqfJUrIGWn8uBJp5XhHCxHn/wqN9CIs9wRY6XzpN/f3QKGyeA4fuzEmM//HM3dgZBS9raGAXlY0lky9N23TmRehHq9kLrGW0zeOEud98rbDYAlst7qcg2qQNkz/08UAPgt4L+kfKeFcS9DsUwlyrWYNJBPpQmxpeurvsyNFuclZhk3IHWuNHW69tRnHzdPlWts7u0K7DlNbwAQe/7driKbeKucT/Ms48B1i8x6GBk0k=
