@@ -19,6 +19,8 @@ pub fn strip_path(full: &PathBuf, with: &PathBuf) -> PathBuf {
     result
 }
 
+
+
 #[test]
 fn test_strip_path() {
     let full1 = PathBuf::from("/home/foobar/.hiden/file");

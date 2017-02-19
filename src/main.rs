@@ -2,23 +2,26 @@ extern crate rasslib;
 #[macro_use]
 extern crate clap;
 extern crate rpassword;
+extern crate tempfile;
 
 use std::io;
 use std::io::prelude::*;
 use std::env;
 use std::path::PathBuf;
 use std::process;
- 
+
 use clap::{App, Arg, ArgMatches, SubCommand};
 
 use rasslib::store::PassStore;
 use rasslib::vcs;
 
+use tempfile::NamedTempFile;
+
 static STORE_DIR_ENV_NAME: &'static str = "PASSWORD_STORE_DIR";
 
 fn main() {
     let store = match env::var(STORE_DIR_ENV_NAME) {
-        Ok(val) => {         
+        Ok(val) => {
             let p = PathBuf::from(val);
             PassStore::from(&p)
         },
@@ -26,7 +29,7 @@ fn main() {
     };
     let store = match store {
         Ok(s) => s,
-        Err(e) => 
+        Err(e) =>
         {
             println!("Error parsing store {}", e);
             return
@@ -43,8 +46,9 @@ fn main() {
     if matches.is_present("verbose") {
         app.store.set_verbose(true);
     }
-    
+
     let ran_subcommand = match matches.subcommand() {
+        ("edit", Some(matches)) =>   { app.edit(vcs, &matches); true }
         ("find", Some(matches)) =>   { app.find(&matches); true }
         ("insert", Some(matches)) => { app.insert(vcs, &matches); true }
         ("add", Some(matches)) =>    { app.insert(vcs, &matches); true } // alias for insert
@@ -56,9 +60,9 @@ fn main() {
         _ => false
     };
 
-    if !ran_subcommand {              
+    if !ran_subcommand {
         if  matches.is_present("PASS") {
-            app.show(&matches); 
+            app.show(&matches);
         }
         else {
             app.list(&matches);
@@ -77,7 +81,7 @@ impl PassstoreApp {
             println!("Not git parameters found!");
             process::exit(-1);
         }
-;
+
         let params: Vec<_> = matches.values_of("PARAMS").unwrap().collect();
 
         if let Ok(r) = vcs.cmd_dispatch(params) {
@@ -89,7 +93,7 @@ impl PassstoreApp {
         let pass = matches.value_of("PASS").unwrap_or("");
 
         match self.store.get(pass) {
-            Some(_) => { 
+            Some(_) => {
                 let q = format!("An entry already exists for {}.\
                                 Overwrite it? [y/N] ", pass);
                 match yes_no(q.as_ref(), YesNoAnswer::NO) {
@@ -126,7 +130,7 @@ impl PassstoreApp {
     fn list(&self, matches: &ArgMatches) {
         let pass = matches.value_of("PASS").unwrap_or_default();
 
-        let pass = if pass.ends_with("/") { 
+        let pass = if pass.ends_with("/") {
             &pass[0..pass.len()-1]
         } else {
             pass
@@ -146,7 +150,7 @@ impl PassstoreApp {
                 match self.store.read(&entry) {
                     Some(x) => print!("{}", x),
                     None => println!("Unable to read!"),
-                }           
+                }
             } else {
                 self.store.print_tree(&entry);
             }
@@ -164,7 +168,7 @@ impl PassstoreApp {
         //};
         let matches = self.store.find(query);
 
-        if matches.len() == 1 {                
+        if matches.len() == 1 {
             let e = &matches[0];
             println!("Only found: '{}'", e);
             if let Some(x) =  self.store.read(e) {
@@ -175,7 +179,7 @@ impl PassstoreApp {
             }
         }
 
-        for e in matches {        
+        for e in matches {
             if print {
                 match self.store.read(&e) {
                     Some(x) => println!("{}:\n{}", e, x),
@@ -214,6 +218,24 @@ impl PassstoreApp {
         let searcher = matches.value_of("SEACHER").unwrap_or("grep");
         if let Ok(out) = self.store.grep(&searcher, &params) {
             println!("{}", out);
+        }
+    }
+
+    fn edit<T: vcs::VersionControl>(&mut self, vcs: T, matches: &ArgMatches) {
+        let pass = matches.value_of("PASS").unwrap_or("");
+        if let Some(entry) = self.store.get(pass) {
+            if let Some(content) = self.store.read(&entry) {
+                if let Some(content) = edit_in_tempfile(&content) {
+                    match self.store.insert(vcs, pass, content) {
+                        Ok(_) => (),
+                        Err(err) => panic!("{}", err)
+                    }
+                }
+            }
+            else { println!("Error: Unable to read {}.", entry); }
+            //let _ = self.store.remove(vcs, &entry);
+        } else {
+            println!("Error: {} is not in the password store.", pass);
         }
     }
 }
@@ -285,6 +307,14 @@ fn get_matches<'a>() -> ArgMatches<'a> {
                          .default_value("")
                          .required(false)
                          .index(1)))
+        .subcommand(SubCommand::with_name("edit")
+                    .about("Edit a given entry.")
+                    .arg(Arg::with_name("PASS")
+                         .help("Entry which shall be edited, first try \
+                                pass-name (full path), if nothing is found, I'll\
+                                try just the pass name.")
+                         .required(true)
+                         .index(1)))
         .subcommand(SubCommand::with_name("rm")
                     .about("Remove entry from the store")
                     .arg(Arg::with_name("PASS")
@@ -334,7 +364,7 @@ fn single_line_password(pass: &str) -> String {
         } else {
             return password.to_string();
         }
-    } 
+    }
 }
 
 #[derive(Debug)]
@@ -356,5 +386,31 @@ fn  yes_no(message: &str, default: YesNoAnswer) -> YesNoAnswer {
         "Yes" | "yes" | "Y" | "y" | "YeS" | "YES" => YesNoAnswer::YES,
         "No" | "NO" | "n" | "N"                   => YesNoAnswer::NO,
         _                                         => default,
+    }
+}
+
+fn edit_in_tempfile(content: &str) -> Option<String> {
+    let mut file = NamedTempFile::new().unwrap();
+    let _ = write!(file, "{}\n", &content);
+
+    match process::Command::new(env::var("EDITOR").unwrap_or("vim".to_string()))
+        .arg(file.path().to_str().unwrap()).status() {
+        Err(e) => {
+            println!("Error occured: '{:?}'", e);
+            return None
+        },
+        Ok(x) => if !x.success() {
+            println!("Editor exit was failure!");
+            return None
+        }
+    }
+
+    let mut f = io::BufReader::new(file.try_clone().unwrap());
+    let _ = f.seek(io::SeekFrom::Start(0));
+    let mut result = String::new();
+
+    match f.read_to_string(&mut result) {
+        Ok(_) => Some(result),
+        Err(_) => None,
     }
 }

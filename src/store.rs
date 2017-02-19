@@ -1,5 +1,3 @@
-extern crate gpgme;
-
 use std::path::PathBuf;
 use std::env;
 use std::ffi;
@@ -13,7 +11,7 @@ use std::io::prelude::*;
 use std::result;
 
 use tree;
-use gpgme::Data;
+use gpgme;
 
 use ::vcs;
 
@@ -78,7 +76,7 @@ pub type PassTree     = tree::Tree<PassEntry>;
 pub type PassTreePath = tree::Path<PassEntry>;
 
 
-/// Represents the underlying directory structure of a password store. 
+/// Represents the underlying directory structure of a password store.
 /// The folder structure is inherit from pass(1).
 #[derive(Debug)]
 pub struct PassStore {
@@ -86,19 +84,19 @@ pub struct PassStore {
     entries: PassTree,
     gpgid: String,
     verbose: bool,
-}       
+}
 
-/// Represents the underlying directory structure of a password store. 
+/// Represents the underlying directory structure of a password store.
 /// The folder structure is inherit from pass(1).
 ///
-/// On construction of the store, base directory is be walked. All found 
-/// gpg-files will be treated as store entries, which are represented by 
-/// `PassEntry`. 
+/// On construction of the store, base directory is be walked. All found
+/// gpg-files will be treated as store entries, which are represented by
+/// `PassEntry`.
 impl PassStore {
     /// Constructs a new `PassStore` with the default store location.
     pub fn new() -> Result<PassStore> {
         let def_path = PassStore::get_default_location();
-        let mut store =  PassStore { 
+        let mut store =  PassStore {
             entries: PassTree::default(),
             passhome: def_path.clone(),
             gpgid: String::new(),
@@ -122,12 +120,12 @@ impl PassStore {
     ///
     /// ```
     pub fn from(path: &PathBuf) -> Result<PassStore> {
-        let mut store =  PassStore { 
+        let mut store =  PassStore {
             entries: PassTree::default(),
             passhome: path.clone(),
             gpgid: String::new(),
             verbose: false,
-        };           
+        };
         try!(store.fill());
         Ok(store)
     }
@@ -181,7 +179,7 @@ impl PassStore {
                 if p.file_name() == Some(gpgid_fname) {
                     self.gpgid = match get_gpgid_from_file(&p) {
                         Ok(id) => id,
-                        Err(_) => panic!("Unable to open file: {}", 
+                        Err(_) => panic!("Unable to open file: {}",
                                             PASS_GPGID_FILE)
                     };
                     continue;
@@ -196,8 +194,8 @@ impl PassStore {
             }
         }
         Ok(current)
-    } 
-    
+    }
+
 
     /// Internal to get the default location of a store
     fn get_default_location() -> PathBuf {
@@ -212,7 +210,7 @@ impl PassStore {
     }
 
     /// Find and returns a Vector of `PassEntry`s by its name.
-    pub fn find<S>(&self, query: S) -> Vec<PassTreePath> 
+    pub fn find<S>(&self, query: S) -> Vec<PassTreePath>
         where S: Into<String> {
 
         let query = query.into();
@@ -222,8 +220,8 @@ impl PassStore {
             .collect()
     }
 
-    /// Get a `PassTreePath` from the give parameter `pass`. Returns an 
-    pub fn get<S>(&self, pass: S) -> Option<PassTreePath> where S: Into<String> 
+    /// Get a `PassTreePath` from the give parameter `pass`. Returns an
+    pub fn get<S>(&self, pass: S) -> Option<PassTreePath> where S: Into<String>
     {
         let pass = pass.into();
 
@@ -236,16 +234,16 @@ impl PassStore {
             .find(|x| x.to_string() == pass)
     }
 
-    /// Reads and returns the content of the given `PassEntry`. The for the 
-    /// gpg-file related to the `PassEntry` encrypt. 
+    /// Reads and returns the content of the given `PassEntry`. The for the
+    /// gpg-file related to the `PassEntry` encrypt.
     pub fn read(&self, entry: &PassTreePath) -> Option<String> {
-        let p = String::from(format!("{}.{}", entry.to_string(), 
+        let p = String::from(format!("{}.{}", entry.to_string(),
                                     PASS_ENTRY_EXTENSION));
         let p = self.passhome.clone().join(PathBuf::from(p));
         if self.verbose {
             println!("Read path: {}", p.to_str().unwrap());
         }
-        let mut input = match Data::load(p.to_str().unwrap()) {
+        let mut input = match gpgme::Data::load(p.to_str().unwrap()) {
             Ok(input) => input,
             Err(x) => {
                 println_stderr!("Unable to load ({:?}): {}", p, x);
@@ -253,9 +251,9 @@ impl PassStore {
             }
         };
 
-        let mut ctx = gpgme::create_context().unwrap();
-        let _ = ctx.set_protocol(gpgme::PROTOCOL_OPENPGP);
-        let mut output = Data::new().unwrap();
+        let mut ctx = gpgme::Context::from_protocol(
+            gpgme::Protocol::OpenPgp).unwrap();
+        let mut output = gpgme::Data::new().unwrap();
         match ctx.decrypt(&mut input, &mut output) {
             Ok(..) => (),
             Err(x) => {
@@ -271,7 +269,7 @@ impl PassStore {
         Some(result)
     }
 
-    /// Inserts a new entry into the store. This creates a new encrypted 
+    /// Inserts a new entry into the store. This creates a new encrypted
     /// gpg-file and add it to version control system, provided via `vcs`.
     pub fn insert<VCS, D>(&mut self, vcs: VCS, entry: &str, data: D) -> Result<()>
             where D: Into<Vec<u8>>, VCS: vcs::VersionControl
@@ -279,17 +277,15 @@ impl PassStore {
         let mut path = self.passhome.clone().join(entry);
         path.set_extension(PASS_ENTRY_EXTENSION);
 
-        let mut ctx = try!(gpgme::create_context());
-        let _ = ctx.set_protocol(gpgme::PROTOCOL_OPENPGP);
+        let mut ctx = gpgme::Context::from_protocol(
+            gpgme::Protocol::OpenPgp).unwrap();
         let key = try!(ctx.find_key(&*self.gpgid));
-        let mut input = try!(Data::from_bytes(data.into()));
-        let mut output = try!(Data::new());
-    
-        let flags = gpgme::ops::ENCRYPT_NO_ENCRYPT_TO 
-            | gpgme::ops::ENCRYPT_NO_COMPRESS;
+        let mut input = try!(gpgme::Data::from_bytes(data.into()));
+        let mut output = try!(gpgme::Data::new());
 
-        try!(ctx.encrypt(Some(&key), flags, &mut input, &mut output));
-        
+        let flags = gpgme::ENCRYPT_NO_ENCRYPT_TO | gpgme::ENCRYPT_NO_COMPRESS;
+        try!(ctx.encrypt_with_flags(Some(&key), flags, &mut input, &mut output));
+
         try!(output.seek(io::SeekFrom::Start(0)));
         if self.verbose {
             println!("Going to write file: {}", path.to_str().unwrap_or(""));
@@ -304,22 +300,22 @@ impl PassStore {
     }
 
     /// Removes a given `PassEntry` from the store. Therefore the related
-    /// gpg-file will be removed from the file-system and the internal entry 
-    /// list. Further the `vcs` will use to commit that change. 
+    /// gpg-file will be removed from the file-system and the internal entry
+    /// list. Further the `vcs` will use to commit that change.
     ///
-    /// Note that the `entry` passed into the function shall be a copy of the 
+    /// Note that the `entry` passed into the function shall be a copy of the
     /// original reference.
-    pub fn remove<VCS>(&mut self, 
+    pub fn remove<VCS>(&mut self,
                        vcs: VCS,
-                       entry: &PassTreePath) -> Result<()> 
-            where VCS: vcs::VersionControl 
+                       entry: &PassTreePath) -> Result<()>
+            where VCS: vcs::VersionControl
     {
         if self.verbose {
             println!("Remove {}", entry);
         }
 
         self.entries.remove(entry);
-    
+
         let mut p = self.absolute_path(&entry.to_string());
         p.set_extension(PASS_ENTRY_EXTENSION);
         println!("{:?}", p);
@@ -350,9 +346,9 @@ impl PassStore {
 
 
     /// Executes over all entries in the store with the given search parameters.
-    /// Take note that `grep_args` can include all grep parameters which are 
-    /// relevant for a piped grep execution. However, the last parameter shall 
-    /// always be the grep command. 
+    /// Take note that `grep_args` can include all grep parameters which are
+    /// relevant for a piped grep execution. However, the last parameter shall
+    /// always be the grep command.
     pub fn grep(&self, searcher: &str, grep_args: &Vec<&str>) -> Result<String> {
         use std::process::{Command, Stdio};
         use std::io::{Write};
@@ -382,22 +378,22 @@ impl PassStore {
                 .stdout(Stdio::piped())
                 .spawn() {
                 Ok(x) => x,
-                Err(why) => {   
-                    println_stderr!("unable to spawn {}: {}", 
+                Err(why) => {
+                    println_stderr!("unable to spawn {}: {}",
                                     searcher, why);
                     continue;
                     }
             };
 
             if let Err(why) = grep.stdin.unwrap().write_all(content.as_bytes()) {
-                println_stderr!("Could not write to grep stdin {}: {}", 
+                println_stderr!("Could not write to grep stdin {}: {}",
                          searcher, why);
             }
 
             let mut grep_out = String::new();
             match grep.stdout.unwrap().read_to_string(&mut grep_out) {
                 Err(why) =>
-                    println_stderr!("Unable to read from  {} stdout: {}", 
+                    println_stderr!("Unable to read from  {} stdout: {}",
                              searcher, why),
                 _ => ()
             }
@@ -408,6 +404,8 @@ impl PassStore {
 
         Ok(result)
     }
+
+
 }
 
 /// Represents an entry in a `PassStore` relative to the stores location.
@@ -432,7 +430,7 @@ impl PassEntry {
     ///
     /// assert_eq!("foobar", &format!("{}",entry));
     /// ```
-    /// 
+    ///
     pub fn new(path: &PathBuf, passhome: &PathBuf) -> PassEntry {
         let path = ::util::strip_path(path, passhome);
 
@@ -445,15 +443,15 @@ impl PassEntry {
         PassEntry {
             name: name,
         }
-    }               
+    }
 }
 
 impl fmt::Display for PassEntry {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.name.ends_with(".gpg") {
             write!(f, "{}", &self.name[..self.name.len()-4])
-        } 
-        else { 
+        }
+        else {
             write!(f, "{}", &self.name)
         }
     }

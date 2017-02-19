@@ -32,13 +32,12 @@ $ cargo install rust-rass
 
 In comparison to `pass`, `rass` does not support [yet]: 
 * no clipboard support
-* editing of pass entries
 * initialize
 * not all environment variables are support
   * supported: `PASSWORD_STORE_DIR`
   * not supported: `PASSWORD_STORE_DIR`, `PASSWORD_STORE_GIT`,
   `PASSWORD_STORE_X_SELECTION`, `PASSWORD_STORE_CLIP_TIME`, 
-  `PASSWORD_STORE_UMASK`, `EDITOR`
+  `PASSWORD_STORE_UMASK` 
  
 
 ## Usage
@@ -96,6 +95,14 @@ $ rass grep foobar
 ```
 For more information see the help: `rass help`
 
+Edit an entry will make use of the `EDITOR` environment variable. If the variable
+is not, `vim` will be assumed.
+
+```shell
+# edit entry foobar
+$ rass edit foobar
+```
+
 ## ToDo
 
 * subcommands
@@ -103,7 +110,6 @@ For more information see the help: `rass help`
   * `generate`
   * `mv`
   * `cp`
-  * `edit`
 * some more tests
 * a simple CLI UI?
 
