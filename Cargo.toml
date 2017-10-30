@@ -18,7 +18,7 @@ name = "rass"
 path = "src/main.rs"
 
 [dependencies]
-gpgme = "0.5.0"
+gpgme = "0.6.0"
 clap = "2.*"
 rpassword = "0.3.*"
 tempfile = "2.*"

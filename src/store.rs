@@ -284,7 +284,7 @@ impl PassStore {
         let mut output = try!(gpgme::Data::new());
 
         let flags = gpgme::ENCRYPT_NO_ENCRYPT_TO | gpgme::ENCRYPT_NO_COMPRESS;
-        try!(ctx.encrypt_with_flags(Some(&key), flags, &mut input, &mut output));
+        try!(ctx.encrypt_with_flags(Some(&key), &mut input, &mut output, flags));
 
         try!(output.seek(io::SeekFrom::Start(0)));
         if self.verbose {

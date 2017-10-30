@@ -1,17 +1,18 @@
 language: rust
-sudo: false
-addons:
-  apt:
-    packages:
-    - libgpgme11-dev
-rust:
-- stable
-- beta
-- nightly
-script:
-- cargo build --verbose
-- cargo test --verbose
-- cargo doc
+cache: cargo 
+sudo: true
+matrix:
+  include:
+    - os: linux
+      rust: stable
+      #addons:
+        #apt:
+          #packages:
+            #- libgpgme11-dev
+      script:
+        - cargo build --no-default-features
+        - cargo test --no-default-features --color always --no-fail-fast | tee
+        - cargo doc
 after_success: |
   [ $TRAVIS_BRANCH = master ] &&
   [ $TRAVIS_PULL_REQUEST = false ] &&
@@ -19,6 +20,33 @@ after_success: |
   pip install --user ghp-import &&
   $HOME/.local/bin/ghp-import -n target/doc &&
   git push -qf https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git gh-pages
+before_script:
+  # libgpg-error
+  - wget https://gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.27.tar.bz2
+  - tar xjf libgpg-error-1.27.tar.bz2
+  - pushd libgpg-error-1.27 && ./configure && make && sudo make install && popd
+  # libgcrypt
+  - wget https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.8.1.tar.bz2
+  - tar xjf libgcrypt-1.8.1.tar.bz2
+  - pushd libgcrypt-1.8.1 && ./configure && make && sudo make install && popd
+  # libksba
+  - wget https://gnupg.org/ftp/gcrypt/libksba/libksba-1.3.5.tar.bz2
+  - tar xjf libksba-1.3.5.tar.bz2
+  - pushd libksba-1.3.5 && ./configure && make && sudo make install && popd
+  # libassuan
+  - wget https://gnupg.org/ftp/gcrypt/libassuan/libassuan-2.4.3.tar.bz2
+  - tar xjf libassuan-2.4.3.tar.bz2
+  - pushd libassuan-2.4.3 && ./configure && make && sudo make install && popd
+  ######### tools
+  #- wget https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.1.tar.bz2
+  #- tar xjf gnupg-2.2.1.tar.bz2
+  #- pushd gnupg-2.2.1 && ./configure --prefix=/usr && make && sudo make install && popd
+  - wget https://gnupg.org/ftp/gcrypt/gpgme/gpgme-1.9.0.tar.bz2
+  - tar xjf gpgme-1.9.0.tar.bz2
+  - pushd gpgme-1.9.0 && ./configure --prefix=/usr && make && sudo make install && popd
 env:
   global:
-  - secure: vaFY3OT9u3OhRmI7HQvC9ycfi9Ug0jaj1e+Ux9IWyOAie1Liq5dSOR2ngIwRJQeYQE4AJUfS87ZtsyYhnvQsDzmq5+CF7dO497LY03g61MZ7uHLB5wxd3zonj0kV1enVnpulqxlLxEgFXLH52hjZBqaMQD4aVVoF85ssW+WIZUowPIODwwfQp3j3/HruFnDbWLc4+gvPBKaczacihShrp1qimqkIfD/XBaKFgXgYCruJ8HXHLCKKNaX0DOsngvgjq36evJFlwj6sOz3eTa5Z3D9Z3S0hnwSUVySaCRPKpP1XXtvjP34vd5dUEyi8OzR2Yi6QzuHGW7/arJRqB/v/t7XnGeBWTIFyWZIP2h1Yr7Zi/Kp8Mi3F7WTxCK0EzmRFo10/7wL3HIcxM+/UF39tuRKC5NMC0DuXIEB5Ozdoq/N9K2RDpXpAfSEiRk5pBl0aPqfJUrIGWn8uBJp5XhHCxHn/wqN9CIs9wRY6XzpN/f3QKGyeA4fuzEmM//HM3dgZBS9raGAXlY0lky9N23TmRehHq9kLrGW0zeOEud98rbDYAlst7qcg2qQNkz/08UAPgt4L+kfKeFcS9DsUwlyrWYNJBPpQmxpeurvsyNFuclZhk3IHWuNHW69tRnHzdPlWts7u0K7DlNbwAQe/7driKbeKucT/Ms48B1i8x6GBk0k=
+    - GPGME_DEBUG=9
+    - AUTOMAKE_VERSION=1.14.1
+    - GETTEXT_VERSION=0.19.3
+    - secure: vaFY3OT9u3OhRmI7HQvC9ycfi9Ug0jaj1e+Ux9IWyOAie1Liq5dSOR2ngIwRJQeYQE4AJUfS87ZtsyYhnvQsDzmq5+CF7dO497LY03g61MZ7uHLB5wxd3zonj0kV1enVnpulqxlLxEgFXLH52hjZBqaMQD4aVVoF85ssW+WIZUowPIODwwfQp3j3/HruFnDbWLc4+gvPBKaczacihShrp1qimqkIfD/XBaKFgXgYCruJ8HXHLCKKNaX0DOsngvgjq36evJFlwj6sOz3eTa5Z3D9Z3S0hnwSUVySaCRPKpP1XXtvjP34vd5dUEyi8OzR2Yi6QzuHGW7/arJRqB/v/t7XnGeBWTIFyWZIP2h1Yr7Zi/Kp8Mi3F7WTxCK0EzmRFo10/7wL3HIcxM+/UF39tuRKC5NMC0DuXIEB5Ozdoq/N9K2RDpXpAfSEiRk5pBl0aPqfJUrIGWn8uBJp5XhHCxHn/wqN9CIs9wRY6XzpN/f3QKGyeA4fuzEmM//HM3dgZBS9raGAXlY0lky9N23TmRehHq9kLrGW0zeOEud98rbDYAlst7qcg2qQNkz/08UAPgt4L+kfKeFcS9DsUwlyrWYNJBPpQmxpeurvsyNFuclZhk3IHWuNHW69tRnHzdPlWts7u0K7DlNbwAQe/7driKbeKucT/Ms48B1i8x6GBk0k=
