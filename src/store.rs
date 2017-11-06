@@ -244,18 +244,16 @@ impl PassStore {
         let gpgid_fname = String::from(PASS_GPGID_FILE);
         let gpgid_path = self.passhome.clone().join(PathBuf::from(gpgid_fname));
 
-        if let Err(_) = fs::create_dir_all(&self.passhome.clone()) {
+        if let Err(_) = fs::create_dir_all(&self.passhome) {
             let s = format!("Failed to create directory: {:?}", self.passhome);
             return Err(PassStoreError::Other(s))
         }
 
-        match write_gpgid_to_file(&gpgid_path, &self.gpgid) {
-            Ok(id) => id,
-            Err(_) => {
-                let s = format!("Unable to write to file: {:?}", gpgid_path);
-                return Err(PassStoreError::Other(s))
-            },
-        };
+        if let Err(_) = write_gpgid_to_file(&gpgid_path, &self.gpgid) {
+            let s = format!("Unable to write to file: {:?}", gpgid_path);
+            return Err(PassStoreError::Other(s))
+        }
+
         Ok(())
     }
 

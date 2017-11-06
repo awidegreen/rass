@@ -243,10 +243,11 @@ impl PassstoreApp {
     fn init(&mut self, matches: &ArgMatches) {
         let gpgid = matches.value_of("GPGID").unwrap_or("");
 
-        match self.store.init(gpgid) {
-            Ok(_) => (),
-            Err(err) => panic!("{}", err)
+        if let Err(err) = self.store.init(gpgid) {
+            panic!("{}", err);
         }
+
+        println!("Password store initialized for {}.", gpgid);
     }
 }
 
