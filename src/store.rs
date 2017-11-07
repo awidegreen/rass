@@ -332,8 +332,8 @@ impl PassStore {
 
     /// Inserts a new entry into the store. This creates a new encrypted
     /// gpg-file and add it to version control system, provided via `vcs`.
-    pub fn insert<VCS, D>(&mut self, vcs: VCS, entry: &str, data: D) -> Result<()>
-            where D: Into<Vec<u8>>, VCS: vcs::VersionControl
+    pub fn insert<D>(&mut self, vcs: &Box<vcs::VersionControl>, entry: &str, data: D) -> Result<()>
+            where D: Into<Vec<u8>>
     {
         let mut path = self.passhome.clone().join(entry);
         path.set_extension(PASS_ENTRY_EXTENSION);
@@ -366,10 +366,8 @@ impl PassStore {
     ///
     /// Note that the `entry` passed into the function shall be a copy of the
     /// original reference.
-    pub fn remove<VCS>(&mut self,
-                       vcs: VCS,
+    pub fn remove(&mut self, vcs: &Box<vcs::VersionControl>,
                        entry: &PassTreePath) -> Result<()>
-            where VCS: vcs::VersionControl
     {
         if self.verbose {
             println!("Remove {}", entry);

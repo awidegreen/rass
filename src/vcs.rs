@@ -1,6 +1,13 @@
-use std::process::{Command,ExitStatus};
+use std::process::{Command,ExitStatus,Stdio};
+use std::os::unix::process::ExitStatusExt;
 use std::io;
 use std::result;
+
+
+#[derive(Debug)]
+pub struct NoVcs;
+
+impl VersionControl for NoVcs { }
 
 #[derive(Debug)]
 pub struct GitWrapper {
@@ -8,20 +15,47 @@ pub struct GitWrapper {
     sign: bool,
 }
 
+pub fn from_path(repo_path: &str) -> Box<VersionControl> {
+    let r =  Command::new("git").arg("-C")
+            .arg(&repo_path)
+            .arg("rev-parse")
+            .arg("--is-inside-work-tree")
+            .stderr(Stdio::null())
+            .stdout(Stdio::null())
+            .status()
+            .expect("git command not found.").success();
+
+    if r {
+        Box::new(GitWrapper::new(repo_path))
+    } else {
+        println!("'{}' is not a git repo, no vcs support!", repo_path);
+        Box::new(NoVcs{})
+    }
+}
+
 pub type Result<T> = result::Result<T, io::Error>;
 
-/// Version control trait. Note that `add` and `remove` will not commit the 
+/// Version control trait. Note that `add` and `remove` will not commit the
 /// operation. Hence `commit` has to be called separatly.
 pub trait VersionControl {
-    fn add(&self, file: &str) -> Result<ExitStatus>; 
-    fn remove(&self, file: &str) -> Result<ExitStatus>;
-    fn commit(&self, message: &str) -> Result<ExitStatus>;
-    fn cmd_dispatch(&self, args: Vec<&str>) -> Result<ExitStatus>;
+    fn add(&self, _file: &str) -> Result<ExitStatus> {
+        Ok(ExitStatus::from_raw(0))
+    }
+    fn remove(&self, _file: &str) -> Result<ExitStatus> {
+        Ok(ExitStatus::from_raw(0))
+    }
+    fn commit(&self, _message: &str) -> Result<ExitStatus> {
+        Ok(ExitStatus::from_raw(0))
+    }
+    fn cmd_dispatch(&self, _args: Vec<&str>) -> Result<ExitStatus> {
+        Ok(ExitStatus::from_raw(0))
+    }
 }
 
 impl GitWrapper {
-    pub fn new(repo_path: &str) -> GitWrapper {
+    fn new(repo_path: &str) -> GitWrapper {
         let repo_path = String::from(repo_path);
+
         let output = Command::new("git")
                         .arg("config")
                         .arg("--bool")
@@ -46,7 +80,6 @@ impl GitWrapper {
         }
     }
 }
-
 
 impl VersionControl for GitWrapper {
     fn add(&self, file: &str) -> Result<ExitStatus> {
@@ -85,3 +118,4 @@ impl VersionControl for GitWrapper {
         cmd.status()
     }
 }
+

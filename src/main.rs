@@ -35,9 +35,9 @@ fn main() {
             return
         }
     };
-    let vcs = vcs::GitWrapper::new(&store.get_location());
 
     let mut app = PassstoreApp {
+        vcs: vcs::from_path(&store.get_location()),
         store: store,
     };
 
@@ -48,14 +48,14 @@ fn main() {
     }
 
     let ran_subcommand = match matches.subcommand() {
-        ("edit", Some(matches)) =>   { app.edit(vcs, &matches); true }
+        ("edit", Some(matches)) =>   { app.edit(&matches); true }
         ("find", Some(matches)) =>   { app.find(&matches); true }
-        ("insert", Some(matches)) => { app.insert(vcs, &matches); true }
-        ("add", Some(matches)) =>    { app.insert(vcs, &matches); true } // alias for insert
+        ("insert", Some(matches)) => { app.insert(&matches); true }
+        ("add", Some(matches)) =>    { app.insert(&matches); true } // alias for insert
         ("show", Some(matches)) =>   { app.show(&matches); true }
         ("ls", Some(matches)) =>     { app.list(&matches); true }
-        ("git", Some(matches)) =>    { app.git_exec(vcs, &matches); true }
-        ("rm", Some(matches)) =>     { app.remove(vcs, &matches); true }
+        ("git", Some(matches)) =>    { app.git_exec(&matches); true }
+        ("rm", Some(matches)) =>     { app.remove(&matches); true }
         ("grep", Some(matches)) =>   { app.grep(&matches); true }
         ("init", Some(matches)) =>   { app.init(&matches); true }
         _ => false
@@ -71,13 +71,13 @@ fn main() {
     }
 }
 
-#[derive(Debug)]
 struct PassstoreApp {
     store: PassStore,
+    vcs: Box<vcs::VersionControl>
 }
 
 impl PassstoreApp {
-    fn git_exec<T: vcs::VersionControl>(&self, vcs: T, matches: &ArgMatches) {
+    fn git_exec(&self, matches: &ArgMatches) {
         if !matches.is_present("PARAMS") {
             println!("Not git parameters found!");
             process::exit(-1);
@@ -85,12 +85,12 @@ impl PassstoreApp {
 
         let params: Vec<_> = matches.values_of("PARAMS").unwrap().collect();
 
-        if let Ok(r) = vcs.cmd_dispatch(params) {
+        if let Ok(r) = self.vcs.cmd_dispatch(params) {
             process::exit(r.code().unwrap_or(-1))
         }
     }
 
-    fn insert<T: vcs::VersionControl>(&mut self, vcs: T, matches: &ArgMatches) {
+    fn insert(&mut self, matches: &ArgMatches) {
         let pass = matches.value_of("PASS").unwrap_or("");
 
         match self.store.get(pass) {
@@ -122,7 +122,7 @@ impl PassstoreApp {
             buffer.push('\n' as u8);
         }
 
-        match self.store.insert(vcs, pass, buffer) {
+        match self.store.insert(&self.vcs, pass, buffer) {
             Ok(_) => (),
             Err(err) => panic!("{}", err)
         }
@@ -193,7 +193,7 @@ impl PassstoreApp {
         }
     }
 
-    fn remove<T: vcs::VersionControl>(&mut self, vcs: T, matches: &ArgMatches) {
+    fn remove(&mut self, matches: &ArgMatches) {
         let pass = matches.value_of("PASS").unwrap_or("");
         if let Some(entry) = self.store.get(pass) {
             if !matches.is_present("force") {
@@ -202,7 +202,7 @@ impl PassstoreApp {
                     YesNoAnswer::NO  => return,
                     YesNoAnswer::YES => (),
                 }
-                let _ = self.store.remove(vcs, &entry);
+                let _ = self.store.remove(&self.vcs, &entry);
             }
         } else {
             println!("Error: {} is not in the password store.", pass);
@@ -222,12 +222,12 @@ impl PassstoreApp {
         }
     }
 
-    fn edit<T: vcs::VersionControl>(&mut self, vcs: T, matches: &ArgMatches) {
+    fn edit(&mut self, matches: &ArgMatches) {
         let pass = matches.value_of("PASS").unwrap_or("");
         if let Some(entry) = self.store.get(pass) {
             if let Some(content) = self.store.read(&entry) {
                 if let Some(content) = edit_in_tempfile(&content) {
-                    match self.store.insert(vcs, pass, content) {
+                    match self.store.insert(&self.vcs, pass, content) {
                         Ok(_) => (),
                         Err(err) => panic!("{}", err)
                     }
