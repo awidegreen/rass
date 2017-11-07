@@ -57,6 +57,7 @@ fn main() {
         ("git", Some(matches)) =>    { app.git_exec(vcs, &matches); true }
         ("rm", Some(matches)) =>     { app.remove(vcs, &matches); true }
         ("grep", Some(matches)) =>   { app.grep(&matches); true }
+        ("init", Some(matches)) =>   { app.init(&matches); true }
         _ => false
     };
 
@@ -238,6 +239,16 @@ impl PassstoreApp {
             println!("Error: {} is not in the password store.", pass);
         }
     }
+
+    fn init(&mut self, matches: &ArgMatches) {
+        let gpgid = matches.value_of("GPGID").unwrap_or("");
+
+        if let Err(err) = self.store.init(gpgid) {
+            panic!("{}", err);
+        }
+
+        println!("Password store initialized for {}.", gpgid);
+    }
 }
 
 
@@ -346,6 +357,13 @@ fn get_matches<'a>() -> ArgMatches<'a> {
                     .arg(Arg::with_name("PARAMS")
                          .multiple(true)
                          .required(true)))
+        .subcommand(SubCommand::with_name("init")
+                    .about("Initialize new password storage and use gpg-id for encryption.")
+                    .arg(Arg::with_name("GPGID")
+                         .help("identifier for gpg key to use for encryption, can \
+                               be either of key id/fingerprint, or user id")
+                         .required(true)
+                         .index(1)))
         .get_matches()
 }
 

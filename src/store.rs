@@ -196,6 +196,67 @@ impl PassStore {
         Ok(current)
     }
 
+    /// Initializes the directory structure for the password store. Fails if the directory exists
+    /// and has files or folders or if no secret key can be found for the specified `gpgid`.
+    ///
+    /// # Examples
+    /// 
+    /// ```
+    /// use std::path::PathBuf;
+    /// use rasslib::store::PassStore;
+    /// 
+    /// let store_path = PathBuf::from("/tmp/.store");
+    /// let mut store = PassStore::from(&store_path).unwrap();
+    /// let gpgid = "pb@opatut.de";
+    /// 
+    /// store.init(gpgid).unwrap();
+    /// ```
+    ///
+    pub fn init(&mut self, gpgid: &str) -> Result<()> {
+        let ctx = gpgme::Context::from_protocol(
+            gpgme::Protocol::OpenPgp).unwrap();
+
+
+        if self.passhome.is_dir() {
+            if let Ok(r) = fs::read_dir(self.passhome.clone()) {
+                if r.count() > 0 {
+                    let s = format!("Directory exists and not empty: {:?} ", self.passhome);
+                    return Err(PassStoreError::Other(s));
+                }
+            }
+        }
+
+        match ctx.find_secret_key(gpgid) {
+            Ok(key) => {
+                if ! key.has_secret() {
+                    let s = format!("Secret key for {:?} is not available, wouldn't be able to decrypt passwords.", key.id().unwrap());
+                    return Err(PassStoreError::Other(s))
+                }
+
+                self.gpgid = String::from(key.fingerprint().unwrap());
+            },
+            Err(_) => {
+                let s = format!("Secret key {} not found.", gpgid);
+                return Err(PassStoreError::Other(s))
+            }
+        }
+
+        let gpgid_fname = String::from(PASS_GPGID_FILE);
+        let gpgid_path = self.passhome.clone().join(PathBuf::from(gpgid_fname));
+
+        if let Err(_) = fs::create_dir_all(&self.passhome) {
+            let s = format!("Failed to create directory: {:?}", self.passhome);
+            return Err(PassStoreError::Other(s))
+        }
+
+        if let Err(_) = write_gpgid_to_file(&gpgid_path, &self.gpgid) {
+            let s = format!("Unable to write to file: {:?}", gpgid_path);
+            return Err(PassStoreError::Other(s))
+        }
+
+        Ok(())
+    }
+
 
     /// Internal to get the default location of a store
     fn get_default_location() -> PathBuf {
@@ -470,6 +531,13 @@ fn get_gpgid_from_file(path: &PathBuf) -> Result<String> {
     let mut buffer = String::new();
     reader.read_line(&mut buffer).unwrap();
     Ok(buffer.trim().to_string())
+}
+
+fn write_gpgid_to_file(path: &PathBuf, gpgid: &String) -> Result<()> {
+    let mut file = File::create(path)?;
+    file.write_all(&gpgid.clone().into_bytes())?;
+    file.write_all(b"\n")?;
+    Ok(())
 }
 
 #[cfg(test)]
