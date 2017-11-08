@@ -1,6 +1,6 @@
 [root]
 name = "rass"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "clap 2.27.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "gpgme 0.6.1 (registry+https://github.com/rust-lang/crates.io-index)",

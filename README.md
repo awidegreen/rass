@@ -1,18 +1,18 @@
-# rass 
+# rass
 [![Build Status](https://travis-ci.org/awidegreen/rass.svg?branch=master)](https://travis-ci.org/awidegreen/rass)
 
-A [password-store](https://www.passwordstore.org/) clone written in Rust. 
+A [password-store](https://www.passwordstore.org/) clone written in Rust.
 
-The name `rass` is a combination of **r**ust and p**ass** whereas `pass` being 
+The name `rass` is a combination of **r**ust and p**ass** whereas `pass` being
 the command line tool for password-store.
 
 [Documentation](https://awidegreen.github.io/rass/)
 
 ## Requirements
 
-Due to `rass` dependency to [rust-gpgme](https://crates.io/crates/gpgme/) you 
-need to have a recent version of GPGme installed, 
-[see](https://github.com/johnschug/rust-gpgme). 
+Due to `rass` dependency to [rust-gpgme](https://crates.io/crates/gpgme/) you
+need to have a recent version of GPGme installed,
+[see](https://github.com/johnschug/rust-gpgme).
 
 ## Installation
 
@@ -30,24 +30,22 @@ $ cargo install rust-rass
 
 ## Limitations
 
-In comparison to `pass`, `rass` does not support [yet]: 
+In comparison to `pass`, `rass` does not support [yet]:
 * no clipboard support
-* initialize
 * not all environment variables are support
   * supported: `PASSWORD_STORE_DIR`
-  * not supported: `PASSWORD_STORE_DIR`, `PASSWORD_STORE_GIT`,
-  `PASSWORD_STORE_X_SELECTION`, `PASSWORD_STORE_CLIP_TIME`, 
-  `PASSWORD_STORE_UMASK` 
- 
+  * not supported: `PASSWORD_STORE_GIT`, `PASSWORD_STORE_X_SELECTION`,
+  `PASSWORD_STORE_CLIP_TIME`, `PASSWORD_STORE_UMASK`
+
 
 ## Usage
 
 **Note**: `rass` is not yet able to create and initialize a new password store,
-therefore use `pass init <gpg-ide>`. 
+therefore use `pass init <gpg-ide>`.
 
-As `pass`, `rass` assume that your password store is located in 
-`$HOME/.password-store`. If your store is in a different location, set the 
-`PASSWORD_STORE_DIR` variable. 
+As `pass`, `rass` assume that your password store is located in
+`$HOME/.password-store`. If your store is in a different location, set the
+`PASSWORD_STORE_DIR` variable.
 
 Show the help
 ```shell
@@ -57,9 +55,14 @@ $ rass -h
 $ rass insert -h
 ```
 
+Initialize a new password-store.
+```
+$ rass init /path/to/new/store
+```
+
 List all store entries (subcommand `ls`)
 ```shell
-$ rass 
+$ rass
 ```
 
 Show an entry
@@ -72,7 +75,7 @@ Insert a new entry (subcommand `insert` or `add`)
 # single-line
 $ rass insert foobar
 
-# multi-line 
+# multi-line
 $ rass insert -m foobar
 ```
 
@@ -88,9 +91,9 @@ $ rass git pull
 $ rass git log
 ```
 
-Grep for a string in the password store. 
+Grep for a string in the password store.
 ```shell
-# search for "foobar" in the entire store 
+# search for "foobar" in the entire store
 $ rass grep foobar
 ```
 For more information see the help: `rass help`
@@ -106,7 +109,6 @@ $ rass edit foobar
 ## ToDo
 
 * subcommands
-  * `init`
   * `generate`
   * `mv`
   * `cp`
