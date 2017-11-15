@@ -196,31 +196,18 @@ impl PassStore {
         Ok(current)
     }
 
-    /// Initializes the directory structure for the password store. Fails if the directory exists
-    /// and has files or folders or if no secret key can be found for the specified `gpgid`.
-    ///
-    /// # Examples
-    /// 
-    /// ```
-    /// use std::path::PathBuf;
-    /// use rasslib::store::PassStore;
-    /// 
-    /// let store_path = PathBuf::from("/tmp/.store");
-    /// let mut store = PassStore::from(&store_path).unwrap();
-    /// let gpgid = "pb@opatut.de";
-    /// 
-    /// store.init(gpgid).unwrap();
-    /// ```
-    ///
+    /// Initializes the directory structure for the password store. Fails if the
+    /// directory exists and has files or folders or if no secret key can be
+    /// found for the specified `gpgid`.
     pub fn init(&mut self, gpgid: &str) -> Result<()> {
         let ctx = gpgme::Context::from_protocol(
             gpgme::Protocol::OpenPgp).unwrap();
 
-
         if self.passhome.is_dir() {
             if let Ok(r) = fs::read_dir(self.passhome.clone()) {
                 if r.count() > 0 {
-                    let s = format!("Directory exists and not empty: {:?} ", self.passhome);
+                    let s = format!("Directory exists and not empty: {:?} ",
+                                    self.passhome);
                     return Err(PassStoreError::Other(s));
                 }
             }
@@ -229,7 +216,9 @@ impl PassStore {
         match ctx.find_secret_key(gpgid) {
             Ok(key) => {
                 if ! key.has_secret() {
-                    let s = format!("Secret key for {:?} is not available, wouldn't be able to decrypt passwords.", key.id().unwrap());
+                    let s = format!("Secret key for {:?} is not available, \
+                                     wouldn't be able to decrypt passwords.",
+                                    key.id().unwrap());
                     return Err(PassStoreError::Other(s))
                 }
 

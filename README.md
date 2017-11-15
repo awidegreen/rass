@@ -40,9 +40,6 @@ In comparison to `pass`, `rass` does not support [yet]:
 
 ## Usage
 
-**Note**: `rass` is not yet able to create and initialize a new password store,
-therefore use `pass init <gpg-ide>`.
-
 As `pass`, `rass` assume that your password store is located in
 `$HOME/.password-store`. If your store is in a different location, set the
 `PASSWORD_STORE_DIR` variable.
@@ -118,6 +115,6 @@ $ rass edit foobar
 
 ## License
 
-Copyright (C) 2016 by Armin Widegreen
+Copyright (C) 2017 by Armin Widegreen
 
 This is free software, licensed under The [ISC License](LICENSE).
