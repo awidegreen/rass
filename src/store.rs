@@ -3,7 +3,6 @@ use std::env;
 use std::ffi;
 use std::fmt;
 use std::convert;
-use std::error;
 use std::io;
 use std::fs::File;
 use std::fs;
@@ -15,6 +14,8 @@ use gpgme;
 
 use ::vcs;
 
+use failure::Error;
+
 macro_rules! println_stderr(
     ($($arg:tt)*) => { {
         let r = writeln!(&mut ::std::io::stderr(), $($arg)*);
@@ -25,52 +26,7 @@ macro_rules! println_stderr(
 pub static PASS_ENTRY_EXTENSION: &'static str = "gpg";
 pub static PASS_GPGID_FILE: &'static str = ".gpg-id";
 
-#[derive(Debug)]
-pub enum PassStoreError {
-    GPG(gpgme::Error),
-    Io(io::Error),
-    Other(String),
-}
-
-pub type Result<T> = result::Result<T, PassStoreError>;
-
-impl From<gpgme::Error> for PassStoreError {
-    fn from(err: gpgme::Error) -> PassStoreError {
-        PassStoreError::GPG(err)
-    }
-}
-impl From<io::Error> for PassStoreError {
-    fn from(err: io::Error) -> PassStoreError {
-        PassStoreError::Io(err)
-    }
-}
-
-impl fmt::Display for PassStoreError {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        match *self {
-            PassStoreError::GPG(ref err) => write!(f, "GPG error: {}", err),
-            PassStoreError::Io(ref err) => write!(f, "IO error: {}", err),
-            PassStoreError::Other(ref err) => write!(f, "Other error: {}", err),
-        }
-    }
-}
-impl error::Error for PassStoreError {
-    fn description(&self) -> &str {
-        match *self {
-            PassStoreError::GPG(_) => "gpg error",
-            PassStoreError::Io(ref err) => err.description(),
-            PassStoreError::Other(ref err) => err,
-        }
-    }
-
-    fn cause(&self) -> Option<&error::Error> {
-        match *self {
-            PassStoreError::GPG(ref err) => Some(err),
-            PassStoreError::Io(ref err) => Some(err),
-            PassStoreError::Other(ref _err) => None,
-        }
-    }
-}
+pub type Result<T> = result::Result<T, Error>;
 
 pub type PassTree     = tree::Tree<PassEntry>;
 pub type PassTreePath = tree::Path<PassEntry>;
@@ -158,8 +114,7 @@ impl PassStore {
         if path.is_dir() {
             let rd = match fs::read_dir(path) {
                 Err(_) => {
-                    let s = format!("Unable to read dir: {:?}", path);
-                    return Err(PassStoreError::Other(s))
+                    return Err(format_err!("Unable to read dir: {:?}", path))
                 },
                 Ok(r) => r
             };
@@ -206,9 +161,9 @@ impl PassStore {
         if self.passhome.is_dir() {
             if let Ok(r) = fs::read_dir(self.passhome.clone()) {
                 if r.count() > 0 {
-                    let s = format!("Directory exists and not empty: {:?} ",
-                                    self.passhome);
-                    return Err(PassStoreError::Other(s));
+                    return Err(
+                        format_err!("Directory exists and not empty: {:?} ",
+                                    self.passhome));
                 }
             }
         }
@@ -216,17 +171,16 @@ impl PassStore {
         match ctx.find_secret_key(gpgid) {
             Ok(key) => {
                 if ! key.has_secret() {
-                    let s = format!("Secret key for {:?} is not available, \
+                    return Err(
+                        format_err!("Secret key for {:?} is not available, \
                                      wouldn't be able to decrypt passwords.",
-                                    key.id().unwrap());
-                    return Err(PassStoreError::Other(s))
+                                     key.id().unwrap()))
                 }
 
                 self.gpgid = String::from(key.fingerprint().unwrap());
             },
             Err(_) => {
-                let s = format!("Secret key {} not found.", gpgid);
-                return Err(PassStoreError::Other(s))
+                return Err(format_err!("Secret key {} not found.", gpgid))
             }
         }
 
@@ -234,13 +188,12 @@ impl PassStore {
         let gpgid_path = self.passhome.clone().join(PathBuf::from(gpgid_fname));
 
         if let Err(_) = fs::create_dir_all(&self.passhome) {
-            let s = format!("Failed to create directory: {:?}", self.passhome);
-            return Err(PassStoreError::Other(s))
+            return Err(format_err!("Failed to create directory: {:?}",
+                                   self.passhome))
         }
 
         if let Err(_) = write_gpgid_to_file(&gpgid_path, &self.gpgid) {
-            let s = format!("Unable to write to file: {:?}", gpgid_path);
-            return Err(PassStoreError::Other(s))
+            return Err(format_err!("Unable to write to file: {:?}", gpgid_path))
         }
 
         Ok(())

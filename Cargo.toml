@@ -22,3 +22,5 @@ gpgme = "0.6.0"
 clap = "2.*"
 rpassword = "0.3.*"
 tempfile = "2.*"
+failure = "0.1.*"
+
