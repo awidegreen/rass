@@ -1,6 +1,8 @@
 extern crate rasslib;
 #[macro_use]
 extern crate clap;
+extern crate clipboard;
+extern crate fork;
 extern crate rpassword;
 extern crate tempfile;
 
@@ -9,8 +11,12 @@ use std::io::prelude::*;
 use std::env;
 use std::path::PathBuf;
 use std::process;
+use std::thread;
+use std::time::Duration;
 
 use clap::{App, Arg, ArgMatches, SubCommand};
+use clipboard::{ClipboardContext, ClipboardProvider};
+use fork::{daemon, Fork};
 
 use rasslib::store::PassStore;
 use rasslib::vcs;
@@ -18,6 +24,7 @@ use rasslib::vcs;
 use tempfile::NamedTempFile;
 
 static STORE_DIR_ENV_NAME: &'static str = "PASSWORD_STORE_DIR";
+static CLIP_TIME_ENV_NAME: &'static str = "PASSWORD_STORE_CLIP_TIME";
 
 fn main() {
     let store = match env::var(STORE_DIR_ENV_NAME) {
@@ -52,7 +59,8 @@ fn main() {
         ("find", Some(matches)) =>   { app.find(&matches); true }
         ("insert", Some(matches)) => { app.insert(&matches); true }
         ("add", Some(matches)) =>    { app.insert(&matches); true } // alias for insert
-        ("show", Some(matches)) =>   { app.show(&matches); true }
+        ("clip", Some(matches)) =>   { app.show(&matches, true); true }
+        ("show", Some(matches)) =>   { app.show(&matches, false); true }
         ("ls", Some(matches)) =>     { app.list(&matches); true }
         ("git", Some(matches)) =>    { app.git_exec(&matches); true }
         ("rm", Some(matches)) =>     { app.remove(&matches); true }
@@ -63,7 +71,7 @@ fn main() {
 
     if !ran_subcommand {
         if  matches.is_present("PASS") {
-            app.show(&matches);
+            app.show(&matches, true);
         }
         else {
             app.list(&matches);
@@ -144,12 +152,16 @@ impl PassstoreApp {
         }
     }
 
-    fn show(&self, matches: &ArgMatches) {
+    fn show(&self, matches: &ArgMatches, clip: bool) {
         let pass = matches.value_of("PASS").unwrap_or("");
         if let Some(entry) = self.store.get(pass) {
             if entry.is_leaf() {
                 match self.store.read(&entry) {
-                    Some(x) => print!("{}", x),
+                    Some(x) => if clip || matches.is_present("clip") {
+                            copy_clipboard(&x)
+                        } else if !clip {
+                            print!("{}", x)
+                        },
                     None => println!("Unable to read!"),
                 }
             } else {
@@ -259,7 +271,7 @@ fn get_matches<'a>() -> ArgMatches<'a> {
         .version(crate_version!())
         .about("A manager for password-store, the *nix command line password manager")
         .arg(Arg::with_name("PASS")
-             .help("pass-name which shall be shown, first try pass-name (full path),\
+             .help("pass-name which shall be copied to the clipboard, first try pass-name (full path),\
                    if nothing is found, I'll try just the pass name.")
              .required(false)
              .index(1)
@@ -282,10 +294,24 @@ fn get_matches<'a>() -> ArgMatches<'a> {
                          .short("n")
                          .long("name")
                          .help("use name instead of location for find")))
+        .subcommand(SubCommand::with_name("clip")
+                    .about("Copy a given entry to the clipboard. First try \
+                            complete location within the store, afterwards, \
+                            if nothing found, just go with the name!")
+                    .arg(Arg::with_name("PASS")
+                        .help("PASS which shall be copied, first try \
+                               pass-name (full path), if nothing is found, I'll\
+                               try just the pass name.")
+                        .required(true)
+                        .index(1)))
         .subcommand(SubCommand::with_name("show")
                     .about("Show, print a given entry. First try \
                             complete location within the store, afterwards, \
                             if nothing found, just go with the name!")
+                    .arg(Arg::with_name("clip")
+                         .short("c")
+                         .long("clip")
+                         .help("Copy the password to the clipboard also"))
                     .arg(Arg::with_name("PASS")
                         .help("PASS which shall be shown, first try \
                                pass-name (full path), if nothing is found, I'll\
@@ -382,6 +408,39 @@ fn single_line_password(pass: &str) -> String {
         } else {
             return password.to_string();
         }
+    }
+}
+
+fn copy_clipboard(s: &str) {
+    if s.is_empty() {
+        eprintln!("empty password");
+        return
+    }
+
+    let clip_secs = match env::var(CLIP_TIME_ENV_NAME) {
+        Ok(val) => match val.parse() {
+            Ok(secs) => secs,
+            Err(_) => {
+                eprintln!("invalid number of seconds in env {}: {}", CLIP_TIME_ENV_NAME, val);
+                45
+            }
+        },
+        Err(_) => 45,
+    };
+
+    let pass = s[..s.len() - 1].to_string();
+    match daemon(false, false) {
+        Ok(Fork::Child) => {
+            let mut ctx: ClipboardContext = ClipboardProvider::new().unwrap();
+            ctx.set_contents(pass.clone()).unwrap();
+            thread::sleep(Duration::from_secs(clip_secs));
+            if ctx.get_contents().unwrap() == pass {
+                ctx.set_contents("".to_string()).unwrap()
+            }
+            process::exit(0)
+        },
+        Ok(Fork::Parent(_)) => (),
+        Err(err) => eprintln!("error handling clipboard: {:?}", err),
     }
 }
 

@@ -31,11 +31,10 @@ $ cargo install rust-rass
 ## Limitations
 
 In comparison to `pass`, `rass` does not support [yet]:
-* no clipboard support
 * not all environment variables are support
-  * supported: `PASSWORD_STORE_DIR`
+  * supported: `PASSWORD_STORE_DIR`, `PASSWORD_STORE_CLIP_TIME`
   * not supported: `PASSWORD_STORE_GIT`, `PASSWORD_STORE_X_SELECTION`,
-  `PASSWORD_STORE_CLIP_TIME`, `PASSWORD_STORE_UMASK`
+  `PASSWORD_STORE_UMASK`
 
 
 ## Usage
@@ -62,9 +61,14 @@ List all store entries (subcommand `ls`)
 $ rass
 ```
 
-Show an entry
+Copy an entry to clipboard
 ```shell
 $ rass PASS_ENTRY
+```
+
+Show an entry
+```shell
+$ rass show PASS_ENTRY
 ```
 
 Insert a new entry (subcommand `insert` or `add`)
