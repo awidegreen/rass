@@ -20,5 +20,7 @@ path = "src/main.rs"
 [dependencies]
 gpgme = "0.6.0"
 clap = "2.*"
+clipboard = "0.5.*"
+fork = "0.1.*"
 rpassword = "0.3.*"
 tempfile = "2.*"
